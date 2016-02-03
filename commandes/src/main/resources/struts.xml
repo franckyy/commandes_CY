@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+        "http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+    <constant name="struts.enable.DynamicMethodInvocation" value="false"/>
+    <constant name="struts.devMode" value="true"/>
+	<constant name="struts.action.extension" value=","/>
+    <constant name="struts.enable.SlashesInActionNames" value="true" />
+
+    <package name="default" namespace="/" extends="json-default">
+
+        <default-action-ref name="index"/>
+
+        <action name="index" class="com.chezyen.commandes.actions.IndexAction" method="index" >
+            <result name="success">/index.jsp</result>
+        </action>
+		<action name="gestComm/produit" class="com.chezyen.commandes.actions.IndexAction" method="gestionCommandes">
+			<result name="success" type="json">
+				<param name="includeProperties">
+					^produits\[\d\]\.id$,
+					^produits\[\d\]\.designation$,
+					^produits\[\d\]\.prix$,
+					^produits\[\d\]\.stock
+				</param>
+			</result>
+		</action>
+		
+		<action name="gestComm/produitSave" class="com.chezyen.commandes.actions.IndexAction" method="save">
+			<interceptor-ref name="defaultStack" />
+			<interceptor-ref name="json" />
+			<result name="success" type="json">
+				<param name="includeProperties">
+					^produit\.id$,
+					^produit\.designation$,
+					^produit\.prix$,
+					^produit\.stock$
+				</param>
+			</result>
+		</action>
+
+    </package>
+
+    <!-- Add addition packages and configuration here. -->
+</struts>
