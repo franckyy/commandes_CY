@@ -8,6 +8,16 @@
 <title>hello</title>
 </head>
 <body>
-<h2><s:property value="message" /> </h2>
+
+ <div class="container theme-showcase" role="main">
+        <div class="col-md-2" >
+            <button id="bouton1" type="button" class="btn btn-primary" ng-click="navigateTo('views/editProduct.html')">Creer Produit</button><br />
+            <button id="bouton2" type="button" class="btn btn-primary" ng-click="navigateTo('views/productsList.html')">Liste Produit</button><br />
+        </div>
+        <div class="col-md-10" ng-include="currentView"  >
+        <h2><s:property value="message" /> </h2>
+        </div>
+       <!-- <ng-include src="'views/productsList2.html'"></ng-include> -->
+ </div>
 </body>
 </html>

@@ -27,8 +27,8 @@ public class GenericDAO<T extends IGenericEntity> implements IGenericDAO<T> {
 	@Override
 	@Transactional
 	public List<T> findAll() {
-		log.info("GenericDAO : findAll");
-		return em.createQuery("from" + entityType.getSimpleName(), entityType).getResultList();
+		log.info("GenericDAO : findAll - from " + entityType.getSimpleName());
+		return em.createQuery("from " + entityType.getSimpleName(), entityType).getResultList();
 	}
 
 	@Override
