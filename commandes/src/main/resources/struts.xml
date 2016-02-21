@@ -15,7 +15,8 @@
         <action name="index" class="com.chezyen.commandes.actions.IndexAction" method="index" >
             <result name="success">/index.jsp</result>
         </action>
-		<action name="gestComm/produits" class="com.chezyen.commandes.actions.IndexAction" method="gestionCommandes">
+        
+		<action name="gestComm/produits" class="com.chezyen.commandes.actions.ProduitsAction" method="gestionCommandes">
 			<result name="success" type="json">
 				<param name="includeProperties">
 					^produits\[\d\]\.id$,
@@ -39,6 +40,8 @@
 			</result>
 		</action>
 
+		<action name="gestComm/commandes" class="" method="">
+		</action>
     </package>
 
     <!-- Add addition packages and configuration here. -->
