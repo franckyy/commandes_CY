@@ -14,17 +14,17 @@ todoApp.controller("StoreCtrl", function($scope, $http) {
        $scope.produits = response.data.produits;
    });
  
-   $scope.produits = [
-        {   
-            "id":1,
-            "designation":"Poulet curry",
-            "prix":5.90,
-            "stock":8},
-        {   "id":2,
-            "designation":"Crabe",
-            "prix":2.00,
-            "stock":10}
-       ];
+//   $scope.produits = [
+//        {   
+//            "id":1,
+//            "designation":"Poulet curry",
+//            "prix":5.90,
+//            "stock":8},
+//        {   "id":2,
+//            "designation":"Crabe",
+//            "prix":2.00,
+//            "stock":10}
+//       ];
    
    $scope.incompleteCount = function() {
      var count = 0;

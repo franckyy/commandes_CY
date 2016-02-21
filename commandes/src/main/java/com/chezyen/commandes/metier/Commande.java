@@ -41,7 +41,6 @@ public class Commande implements IGenericEntity {
 		this.client = client;
 	}
 
-
 	public int getIdCommande() {return idCommande;}
 	public void setIdCommande(int id) {this.idCommande = id;}
 	public Date getDateCommande() {return dateCommande;}

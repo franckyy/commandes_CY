@@ -1,12 +1,14 @@
 package com.chezyen.commandes.actions;
 
 import java.util.List;
+import java.util.Set;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import com.chezyen.commandes.dao.IProduitDAO;
 import com.chezyen.commandes.metier.Produit;
+import com.chezyen.commandes.metier.ProduitConditionne;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class IndexAction extends ActionSupport {
@@ -21,6 +23,7 @@ public class IndexAction extends ActionSupport {
 	}
 	
 	private int produitID;
+	private Set<ProduitConditionne> produitsConditionnes;
 	private String produitDesignation;
 	private double produitPrix;
 	private int produitStock;
@@ -33,6 +36,8 @@ public class IndexAction extends ActionSupport {
 	public void setProduitPrix(double produitPrix) {this.produitPrix = produitPrix;}
 	public int getProduitStock() {return produitStock;}
 	public void setProduitStock(int produitStock) {this.produitStock = produitStock;}
+	public Set<ProduitConditionne> getProduitsConditionnes() {return produitsConditionnes;}
+	public void setProduitsConditionnes(Set<ProduitConditionne> produitsConditionnes) {this.produitsConditionnes = produitsConditionnes;}
 
 	private String message;	
 	public String getMessage() {return message;}
@@ -59,7 +64,7 @@ public class IndexAction extends ActionSupport {
 	public String save() {
 		log.info("IndexAction - save");
 		this.produit = produitDAO.save(new Produit(
-												getProduitID(),
+												getProduitsConditionnes(),
 												getProduitDesignation(),
 												getProduitPrix(),
 												getProduitStock()

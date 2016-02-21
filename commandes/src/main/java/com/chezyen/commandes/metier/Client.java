@@ -26,14 +26,15 @@ public class Client implements IGenericEntity {
 	private Set<Commande> commandes;
 	
 	public Client() {super();}
-	public Client(int idClient, String nom, String prenom, Adresse adresse) {
+	public Client(String nom, String prenom, Adresse adresse, Set<Commande> commandes) {
 		super();
-		this.idClient = idClient;
 		this.nom = nom;
 		this.prenom = prenom;
 		this.adresse = adresse;
+		this.commandes = commandes;
 	}
-	
+
+
 	public int getIdClient() {return idClient;}
 	public void setIdClient(int id) {this.idClient = id;}
 	public String getNom() {return nom;}

@@ -27,13 +27,14 @@ public class LigneCommande implements IGenericEntity {
 	private double prixLigne;
 	
 	public LigneCommande()	{}
-	public LigneCommande(ProduitConditionne produitConditionne, int quantite, double prixLigne) {
+	public LigneCommande(Commande commande, ProduitConditionne produitConditionne, int quantite, double prixLigne) {
 		super();
+		this.commande = commande;
 		this.produitConditionne = produitConditionne;
 		this.quantite = quantite;
 		this.prixLigne = prixLigne;
 	}
-	
+
 	public int getIdLigneCommande() {return idLigneCommande;}
 	public void setIdLigneCommande(int idLigneCommande) {this.idLigneCommande = idLigneCommande;}
 	public ProduitConditionne getProduitConditionne() {return produitConditionne;}

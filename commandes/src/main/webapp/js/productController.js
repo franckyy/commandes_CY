@@ -11,10 +11,11 @@ angular.module("produitsModule", [])
                 // struts2 dans le cas présent
                 $http.post('gestComm/produitSave',
                   {
-                      "produitDesignation" : produit.designation,
-                      "produitPrix" : produit.prix,
-                      "produitStock" : produit.stock,
-                      "produitID" : produit.ID
+                	"produitsConditionnes" : produit.produitsConditionnes,
+                	"produitDesignation" : produit.designation,
+                	"produitPrix" : produit.prix,
+                	"produitStock" : produit.stock,
+                	"produitID" : produit.ID
                   }
                  ).then(function(response){
                      // dans la réponse, le serveur nous renvoie

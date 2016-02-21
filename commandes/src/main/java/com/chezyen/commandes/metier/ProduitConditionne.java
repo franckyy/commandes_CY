@@ -28,8 +28,8 @@ public class ProduitConditionne implements IGenericEntity {
 	private boolean enCarte;
 
 	public ProduitConditionne() {}
-	public ProduitConditionne(String designation, Produit produit, Conditionnement conditionnement,
-			double prixProdCond, boolean enCarte) {
+	public ProduitConditionne(String designation, Produit produit, Conditionnement conditionnement, double prixProdCond,
+			boolean enCarte) {
 		super();
 		this.designation = designation;
 		this.produit = produit;
@@ -37,7 +37,7 @@ public class ProduitConditionne implements IGenericEntity {
 		this.prixProdCond = prixProdCond;
 		this.enCarte = enCarte;
 	}
-	
+
 	public int getIdProduitConditionne() {return idProduitConditionne;}
 	public void setIdProduitConditionne(int idProduitConditionne) {this.idProduitConditionne = idProduitConditionne;}
 	public String getDesignation() {return designation;}

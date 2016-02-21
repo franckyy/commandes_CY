@@ -18,15 +18,15 @@ public class Produit implements IGenericEntity{
 	@Id @GeneratedValue
 	private int id;
 	@OneToMany(mappedBy="produit")
-	private Set<ProduitConditionne> ProduitsConditionnes;
+	private Set<ProduitConditionne> produitsConditionnes;
 	private String designation;
 	private double prix;
-	private int stock;
+	private int stock;	
 	
 	public Produit() {}
-	public Produit(int id, String designation, double prix, int stock) {
+	public Produit(Set<ProduitConditionne> produitsConditionnes, String designation, double prix, int stock) {
 		super();
-		this.id = id;
+		this.produitsConditionnes = produitsConditionnes;
 		this.designation = designation;
 		this.prix = prix;
 		this.stock = stock;
@@ -42,8 +42,8 @@ public class Produit implements IGenericEntity{
 	public void setPrix(double prix) {this.prix = prix;}
 	public int getStock() {return stock;}
 	public void setStock(int stock) {this.stock = stock;}
-	public Set<ProduitConditionne> getProduitsConditionnes() {return ProduitsConditionnes;}
-	public void setProduitsConditionnes(Set<ProduitConditionne> produitsConditionnes) {ProduitsConditionnes = produitsConditionnes;}
+	public Set<ProduitConditionne> getProduitsConditionnes() {return produitsConditionnes;}
+	public void setProduitsConditionnes(Set<ProduitConditionne> produitsConditionnes) {this.produitsConditionnes = produitsConditionnes;}
 	
 	@Override
 	public int fetchPrimaryKey() {

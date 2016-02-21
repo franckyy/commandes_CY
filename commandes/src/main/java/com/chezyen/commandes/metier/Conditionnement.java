@@ -22,13 +22,14 @@ public class Conditionnement implements IGenericEntity {
 	@OneToMany(mappedBy="conditionnement")
 	private Set<ProduitConditionne> produitsConditionnes;
 	
-	public Conditionnement() {this("construct", 0);}
-	public Conditionnement(String designation, int quantite) {
+	public Conditionnement() {}
+	public Conditionnement(String designation, int quantite, Set<ProduitConditionne> produitsConditionnes) {
 		super();
 		this.designation = designation;
 		this.quantite = quantite;
+		this.produitsConditionnes = produitsConditionnes;
 	}
-	
+
 	public int getId() {return id;}
 	public void setId(int id) {this.id = id;}
 	public String getDesignation() {return designation;}

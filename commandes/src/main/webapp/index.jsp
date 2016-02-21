@@ -47,7 +47,9 @@
     
         <div class="row">
 	        <div class="col-sm-2" >
-	            <button id="bouton1" type="button" class="btn btn-primary" onclick="location.href='views/gestionCommandes.html'">Gestion des commandes</button><br />
+	            <button id="boutonCommandes" type="button" class="btn btn-primary" onclick="location.href='views/gestionCommandes.html'">Gestion des commandes</button><br />
+	            <button id="boutonProduits" type="button" class="btn btn-primary" onclick="location.href='views/gestionProduitss.html'">Gestion des produits</button><br />
+	            <button id="boutonClients" type="button" class="btn btn-primary" onclick="location.href='views/gestionClients.html'">Gestion des clients</button><br />
 	        </div>
 	        <div class="col-sm-2" >
 			</div>
