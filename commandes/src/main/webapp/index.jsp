@@ -21,13 +21,17 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css">
 	
-<%-- 	<style type="text/css">
-		.navbar {
-			margin-top: 20px;
-		}
-	</style> --%>
+<style type="text/css">
+	.navbar {
+		margin-top: 20px;
+	}
+	
+	.btn {
+		margin-top: 20px;
+	}
+</style>
 </head>
-<body>
+<body style="background-color:black;">
 	<div class="container">
 		<div class="row">
 			<%@include file="commons/navbar.html"%>
@@ -35,25 +39,22 @@
 
 		<div class="row">
 			<div class="col-sm-2">
-				<button id="boutonCommandes" type="button" class="btn btn-primary"
+			</div>
+			<div class="col-sm-8" ng-include="currentView" style="text-align:center;">
+				<button id="boutonCommandes" type="button" class="btn btn-lg btn-primary"
 					onclick="location.href='views/gestionCommandes.html'">Gestion
 					des commandes</button>
 				<br />
-				<button id="boutonProduits" type="button" class="btn btn-primary"
+				<button id="boutonProduits" type="button" class="btn btn-lg btn-primary"
 					onclick="location.href='views/gestionProduits.html'">Gestion
 					des produits</button>
 				<br />
-				<button id="boutonClients" type="button" class="btn btn-primary"
+				<button id="boutonClients" type="button" class="btn btn-lg btn-primary"
 					onclick="location.href='views/gestionClients.html'">Gestion
 					des clients</button>
 				<br />
 			</div>
 			<div class="col-sm-2"></div>
-			<div class="col-sm-8" ng-include="currentView">
-				<h2>
-					<s:property value="message" />
-				</h2>
-			</div>
 		</div>
 		<!-- <ng-include src="'views/productsList2.html'"></ng-include> -->
 	</div>

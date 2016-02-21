@@ -1,10 +1,65 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
+	<meta charset="ISO-8859-1">
+	<title>Gestion des clients</title>
+	<link type="text/css" rel="stylesheet" href="../css/bootstrap.css" />
+	<link type="text/css" rel="stylesheet" href="../css/bootstrap-theme" />
+	<link type="text/css" rel="stylesheet" href="../css/chezYenApp.css" />
+	<script type="text/javascript" src="../js/jquery-2.2.0.js"></script>
+	<script type="text/javascript" src="../js/angular.js"></script>
+	<script type="text/javascript" src="../js/angular-route.js"></script>
+	<script type="text/javascript" src="../js/angularapp_clients.js"></script>
+	<script type="text/javascript" src="../js/productController.js"></script>
+	<script type="text/javascript" src="../js/chezYenDirective.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css">
+	
+<style type="text/css">
+	.navbar {
+		margin-top: 20px;
+	}
+	
+	.btn {
+		margin-top: 20px;
+	}
+</style>
 </head>
-<body>
-
+<body ng-controler="clientCtrl">
+	<div class="container">
+		<div class="row">
+			<object type="text/html" data="commons/navbar.html"></object>
+		</div>
+		<div class="row">
+			<div class="col-sm-2">
+				<button class="btn">Nouveau</button>
+			</div>
+		</div>
+		<div class="col-sm-8">
+			<table class="table table-striped">
+				<thead>
+					<tr>
+						<th>Nom</th>
+						<th>Prénom</th>
+						<th>Adresse</th>
+						<th>actions</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="client in clients">
+						<td>{{client.nom}}</td>
+						<td>{{client.prenom}}</td>
+						<td>{{client.adresse.numeroVoie}}{{client.adresse.typeVoie}}{{client.adresse.nomVoie}}{{client.adresse.ville}}</td>
+						<td><button class="btn btn-danger"
+								ng-click="deleteClient(client.id)">effacer</button></td>
+					</tr>
+			</table>
+		</div>
+		<div class="col-sm-2">
+		</div>
+	</div>
 </body>
 </html>
