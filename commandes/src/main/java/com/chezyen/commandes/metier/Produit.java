@@ -1,8 +1,11 @@
 package com.chezyen.commandes.metier;
 
+import java.util.Set;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -14,6 +17,8 @@ public class Produit implements IGenericEntity{
 	
 	@Id @GeneratedValue
 	private int id;
+	@OneToMany(mappedBy="produit")
+	private Set<ProduitConditionne> ProduitsConditionnes;
 	private String designation;
 	private double prix;
 	private int stock;
@@ -37,6 +42,8 @@ public class Produit implements IGenericEntity{
 	public void setPrix(double prix) {this.prix = prix;}
 	public int getStock() {return stock;}
 	public void setStock(int stock) {this.stock = stock;}
+	public Set<ProduitConditionne> getProduitsConditionnes() {return ProduitsConditionnes;}
+	public void setProduitsConditionnes(Set<ProduitConditionne> produitsConditionnes) {ProduitsConditionnes = produitsConditionnes;}
 	
 	@Override
 	public int fetchPrimaryKey() {

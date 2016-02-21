@@ -1,8 +1,11 @@
 package com.chezyen.commandes.metier;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -15,7 +18,11 @@ public class ProduitConditionne implements IGenericEntity {
 	@Id@GeneratedValue
 	private int idProduitConditionne;
 	private String designation;
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name="idProduit")
 	private Produit produit;
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name="idConditionnement")
 	private Conditionnement conditionnement;
 	private double prixProdCond;
 	private boolean enCarte;

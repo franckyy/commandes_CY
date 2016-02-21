@@ -5,8 +5,7 @@ import javax.persistence.Embeddable;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-//@Embeddable
-
+@Embeddable
 public class Adresse {
 	
 	public static Logger log = LogManager.getLogger(ProduitConditionne.class);

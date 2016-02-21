@@ -1,8 +1,11 @@
 package com.chezyen.commandes.metier;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -14,6 +17,11 @@ public class LigneCommande implements IGenericEntity {
 
 	@Id@GeneratedValue
 	private int idLigneCommande;
+	@ManyToOne
+	@JoinColumn(name="idCommande")
+	private Commande commande;
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name="idProduitConditionne")
 	private ProduitConditionne produitConditionne;
 	private int quantite;
 	private double prixLigne;
@@ -34,6 +42,8 @@ public class LigneCommande implements IGenericEntity {
 	public void setQuantite(int quantite) {this.quantite = quantite;}
 	public double getPrixLigne() {return prixLigne;}
 	public void setPrixLigne(double prixLigne) {this.prixLigne = prixLigne;}
+	public Commande getCommande() {return commande;}
+	public void setCommande(Commande commande) {this.commande = commande;}
 	
 	@Override
 	public int fetchPrimaryKey() {
