@@ -18,16 +18,7 @@ public class Produit implements IGenericEntity{
 	private double prix;
 	private int stock;
 	
-	public int getId() {return id;}
-	public void setId(int id) {this.id = id;}
-	public String getDesignation() {return designation;}
-	public void setDesignation(String designation) {this.designation = designation;}
-	public double getPrix() {return prix;}
-	public void setPrix(double prix) {this.prix = prix;}
-	public int getStock() {return stock;}
-	public void setStock(int stock) {this.stock = stock;}
-	
-	public Produit() {this(0, "nouveau produit", 0.0, 0);}
+	public Produit() {}
 	public Produit(int id, String designation, double prix, int stock) {
 		super();
 		this.id = id;
@@ -38,9 +29,18 @@ public class Produit implements IGenericEntity{
 		log.info("Creation produit : " + getDesignation());
 	}
 	
+	public int getId() {return id;}
+	public void setId(int id) {this.id = id;}
+	public String getDesignation() {return designation;}
+	public void setDesignation(String designation) {this.designation = designation;}
+	public double getPrix() {return prix;}
+	public void setPrix(double prix) {this.prix = prix;}
+	public int getStock() {return stock;}
+	public void setStock(int stock) {this.stock = stock;}
+	
 	@Override
 	public int fetchPrimaryKey() {
-		log.info("produit : fetchPrimaryKey");
+		log.info("Produit : fetchPrimaryKey");
 		return getId();
 	}
 }

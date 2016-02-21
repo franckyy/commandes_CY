@@ -1,60 +1,95 @@
 <!DOCTYPE html>
 <html ng-app="storeApp">
 <head>
-        <meta http-equiv="content-type" content="text/html; charset=utf-8" /> 
-        <title>Gestion des commandes</title>
-        <link  type="text/css" rel="stylesheet" href="css/bootstrap.css" />
-        <link  type="text/css" rel="stylesheet" href="css/bootstrap-theme" />        
-       <link  type="text/css" rel="stylesheet" href="css/chezYenApp.css" />
-        <script type="text/javascript" src="js/jquery-2.2.0.js">
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>Gestion des commandes</title>
+<link type="text/css" rel="stylesheet" href="../css/bootstrap.css" />
+<link type="text/css" rel="stylesheet" href="../css/bootstrap-theme" />
+<link type="text/css" rel="stylesheet" href="../css/chezYenApp.css" />
+<script type="text/javascript" src="../js/jquery-2.2.0.js">
         </script>
-        <script type="text/javascript" src="js/angular.js">
-        </script>      
-        <script type="text/javascript" src="js/angular-route.js">
-        </script>              
-        <script type="text/javascript" src="js/angularapp.js">
+<script type="text/javascript" src="../js/angular.js">
         </script>
-        <script type="text/javascript" src="js/productController.js">
+<script type="text/javascript" src="js/angular-route.js">
         </script>
-        <script type="text/javascript" src="js/chezYenDirective.js">
+<script type="text/javascript" src="../js/angularapp.js">
+        </script>
+<script type="text/javascript" src="../js/productController.js">
+        </script>
+<script type="text/javascript" src="../js/chezYenDirective.js">
         </script>
 
-    </head>
-   <body ng-controller="StoreCtrl">
-   <nav class="navbar navbar-inverse navbar-fixed-top">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="#">Bootstrap theme</a>
-        </div>
-        <div id="navbar" class="navbar-collapse collapse">
-          <ul class="nav navbar-nav">
-            <li class="active"><a href="#/products">products</a></li>
-            <li><a href="#/admin">Admin</a></li>
-            <li><a href="#/contact">Contact</a></li>
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
-              <ul class="dropdown-menu">
-                <li><a href="#">Action</a></li>
-                <li><a href="#">Another action</a></li>
-                <li><a href="#">Something else here</a></li>
-                <li role="separator" class="divider"></li>
-                <li class="dropdown-header">Nav header</li>
-                <li><a href="#">Separated link</a></li>
-                <li><a href="#">One more separated link</a></li>
-              </ul>
-            </li>
-          </ul>
-        </div><!--/.nav-collapse -->
-      </div>
-    </nav>
-    
-    <ng-view />
- 
-   </body>
+</head>
+<body ng-controller="StoreCtrl">
+	<nav class="navbar navbar-inverse navbar-fixed-top">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed"
+					data-toggle="collapse" data-target="#navbar" aria-expanded="false"
+					aria-controls="navbar">
+					<span class="sr-only">Toggle navigation</span> <span
+						class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="#">Chez Yen</a>
+			</div>
+			<div id="navbar" class="navbar-collapse collapse">
+				<ul class="nav navbar-nav">
+					<li class="active"><a href="#/products">produits</a></li>
+					<li><a href="#/admin">Admin</a></li>
+					<li><a href="#/contact">Contact</a></li>
+					<li><a href="#/contact">horaires</a></li>
+					<li class="dropdown"><a href="#" class="dropdown-toggle"
+						data-toggle="dropdown" role="button" aria-haspopup="true"
+						aria-expanded="false">Dropdown <span class="caret"></span></a>
+						<ul class="dropdown-menu">
+							<li><a href="#">Action</a></li>
+							<li><a href="#">Another action</a></li>
+							<li><a href="#">Something else here</a></li>
+							<li role="separator" class="divider"></li>
+							<li class="dropdown-header">Nav header</li>
+							<li><a href="#">Separated link</a></li>
+							<li><a href="#">One more separated link</a></li>
+						</ul></li>
+				</ul>
+			</div>
+			<!--/.nav-collapse -->
+		</div>
+	</nav>
+
+	<div class="page-header" ng-hide="incompleteCount() == 0">
+		<h1>
+			nombre de commandes incomplètes <span class="label label-default"
+				ng-class="warningLevel()"> {{incompleteCount()}} </span>
+		</h1>
+	</div>
+	<div>
+		<label>désignation</label><input type="text" class="form-control"
+			ng-model="produitDesignation" /> <label>prix</label><input
+			type="text" class="form-control" ng-model="produitPrix" /> <span
+			class="input-group-btn">
+			<button class="btn btn-default"
+				ng-click="addNewTask2(tacheLibelle, tacheCategory)">Add product</button>
+		</span>
+	</div>
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<th>designation</th>
+				<th>prix</th>
+				<th>stock</th>
+				<th>actions</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="produit in produits">
+				<td>{{produit.designation}}</td>
+				<td>{{produit.prix}}</td>
+				<td>{{produit.stock}}</td>
+				<td><button class="btn btn-default"
+						ng-click="deleteTask(produit.id)">delete</button></td>
+			</tr>
+	</table>
+
+</body>
 </html>

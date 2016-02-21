@@ -48,8 +48,6 @@ public class IndexAction extends ActionSupport {
 	public String index() {
 		log.info("Appel de index");
 		
-		message = "bonjour depuis index le " + new Date();
-		
 		return SUCCESS;
 	}
 	

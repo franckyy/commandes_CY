@@ -28,7 +28,7 @@
  	<!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Example of Bootstrap 3 Responsive Navbar</title>
+<title>Chez Yen</title>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
@@ -44,13 +44,14 @@
 
     <%@include file="commons/navbar.html" %>
     
+    
         <div class="row">
-	        <div class="col-md-2" >
+	        <div class="col-sm-2" >
 	            <button id="bouton1" type="button" class="btn btn-primary" onclick="location.href='views/gestionCommandes.html'">Gestion des commandes</button><br />
 	        </div>
-	        <div class="col-md-2" >
+	        <div class="col-sm-2" >
 			</div>
-	        <div class="col-md-8" ng-include="currentView"  >
+	        <div class="col-sm-8" ng-include="currentView"  >
 	        	<h2><s:property value="message" /> </h2>
 	        </div>
         </div>
