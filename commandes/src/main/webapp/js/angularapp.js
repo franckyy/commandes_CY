@@ -8,20 +8,11 @@ var todoApp = angular.module("storeApp", []);
 // le scope est automatiquement injecté par angular
 todoApp.controller("StoreCtrl", function($scope, $http) {
    $scope.produits = [];
-   $scope.commandes = [];
-   $scope.clients = [];
    
    $http.get('../gestComm/produits').then(function (response) {
        $scope.produits = response.data.produits;
    });
  
-   $http.get('../gestComm/commandes').then(function (response) {
-       $scope.commandes = response.data.commandes;
-   });
-   
-   $http.get('../gestComm/clients').then(function (response) {
-       $scope.clients = response.data.clients;
-   });
 //   $scope.produits = [
 //        {   
 //            "id":1,

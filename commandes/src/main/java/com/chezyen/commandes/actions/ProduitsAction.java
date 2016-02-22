@@ -38,10 +38,6 @@ public class ProduitsAction extends ActionSupport {
 	public void setProduitStock(int produitStock) {this.produitStock = produitStock;}
 	public Set<ProduitConditionne> getProduitsConditionnes() {return produitsConditionnes;}
 	public void setProduitsConditionnes(Set<ProduitConditionne> produitsConditionnes) {this.produitsConditionnes = produitsConditionnes;}
-
-	private String message;	
-	public String getMessage() {return message;}
-	public void setMessage(String message) {this.message = message;}
 	
 	private Produit produit;
 	public Produit getProduit() {return produit;}

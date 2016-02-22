@@ -16,6 +16,7 @@
             <result name="success">/index.jsp</result>
         </action>
         
+        
 		<action name="gestComm/produits" class="com.chezyen.commandes.actions.ProduitsAction" method="gestionCommandes">
 			<result name="success" type="json">
 				<param name="includeProperties">
@@ -40,7 +41,21 @@
 			</result>
 		</action>
 
-		<action name="gestComm/commandes" class="" method="">
+
+
+		<action name="gestComm/clients" class="com.chezyen.commandes.actions.ClientsAction" method="repertoire">
+			<result name="success" type="json">
+				<param name="includeProperties">
+					^clients\[\d\]\.id$,
+					^clients\[\d\]\.nom$,
+					^clients\[\d\]\.prenom$,
+					^clients\[\d\]\.codePostal$,
+					^clients\[\d\]\.typeVoie$,
+					^clients\[\d\]\.nomVoie$,
+					^clients\[\d\]\.numeroVoie$,
+					^clients\[\d\]\.ville$
+				</param>
+			</result>
 		</action>
     </package>
 

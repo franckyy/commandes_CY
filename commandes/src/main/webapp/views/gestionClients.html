@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="chezYenApp">
 <head>
 	<meta charset="ISO-8859-1">
 	<title>Gestion des clients</title>
@@ -9,7 +9,7 @@
 	<script type="text/javascript" src="../js/jquery-2.2.0.js"></script>
 	<script type="text/javascript" src="../js/angular.js"></script>
 	<script type="text/javascript" src="../js/angular-route.js"></script>
-	<script type="text/javascript" src="../js/angularapp_clients.js"></script>
+	<script type="text/javascript" src="../js/gestion_clients.js"></script>
 	<script type="text/javascript" src="../js/productController.js"></script>
 	<script type="text/javascript" src="../js/chezYenDirective.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
@@ -31,11 +31,10 @@
 <body ng-controler="clientCtrl">
 	<div class="container">
 		<div class="row">
-			<object type="text/html" data="commons/navbar.html"></object>
 		</div>
 		<div class="row">
 			<div class="col-sm-2">
-				<button class="btn">Nouveau</button>
+				<button class="btn">Nouveau client</button>
 			</div>
 		</div>
 		<div class="col-sm-8">
@@ -52,9 +51,8 @@
 					<tr ng-repeat="client in clients">
 						<td>{{client.nom}}</td>
 						<td>{{client.prenom}}</td>
-						<td>{{client.adresse.numeroVoie}}{{client.adresse.typeVoie}}{{client.adresse.nomVoie}}{{client.adresse.ville}}</td>
-						<td><button class="btn btn-danger"
-								ng-click="deleteClient(client.id)">effacer</button></td>
+						<td>{{client.numeroVoie}}{{client.typeVoie}}</td>
+						<td><button class="btn btn-danger" ng-click="deleteClient(client.id)">effacer</button></td>
 					</tr>
 			</table>
 		</div>
