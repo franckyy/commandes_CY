@@ -17,10 +17,7 @@ import com.opensymphony.xwork2.ActionSupport;
 
 public class ClientsAction extends ActionSupport {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = -4469042474624857369L;
+	private static final long serialVersionUID = 1L;
 
 	private static Logger log = LogManager.getLogger(ClientsAction.class);
 	
@@ -62,7 +59,7 @@ public class ClientsAction extends ActionSupport {
 	public Client getClient() {return client;}
 	
 	private List<Client> clients;
-	public void setClients(List<Client> clients) {this.clients = clients;}
+	public List<Client> getClients() {return clients;}
 	
 	public String repertoire() {
 		log.info("ClientsAction - repertoire");

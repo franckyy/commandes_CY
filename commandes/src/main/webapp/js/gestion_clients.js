@@ -11,19 +11,7 @@ chezYenApp.controller("clientCtrl", function($scope, $http) {
    $http.get('../gestComm/clients').then(function (response) {
        $scope.clients = response.data.client;
    });
-   $scope.clients = [
-        {   
-            "id":1,
-            "nom":"Dupont",
-            "prenom":"Jacques",
-            "numeroVoie":6,
-            "typeVoie":"impasse"},
-        {   "id":2,
-            "nom":"Hollande",
-            "prenom":"François",
-            "numeroVoie":5,
-            "typeVoie":"impasse"}
-       ];
+  
    
 //   $scope.incompleteCount = function() {
 //     var count = 0;

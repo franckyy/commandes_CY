@@ -62,5 +62,4 @@ public class GenericDAO<T extends IGenericEntity> implements IGenericDAO<T> {
 		}
 		return entity;
 	}
-
 }

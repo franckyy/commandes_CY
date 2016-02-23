@@ -46,7 +46,7 @@
 		<action name="gestComm/clients" class="com.chezyen.commandes.actions.ClientsAction" method="repertoire">
 			<result name="success" type="json">
 				<param name="includeProperties">
-					^clients\[\d\]\.id$,
+					^clients\[\d\]\.idClient$,
 					^clients\[\d\]\.nom$,
 					^clients\[\d\]\.prenom$,
 					^clients\[\d\]\.codePostal$,
