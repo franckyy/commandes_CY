@@ -5,7 +5,7 @@
 	<title>Gestion des clients</title>
 	<link type="text/css" rel="stylesheet" href="../css/bootstrap.css" />
 	<link type="text/css" rel="stylesheet" href="../css/bootstrap-theme" />
-	<link type="text/css" rel="stylesheet" href="../css/chezYenApp.css" />
+	<link type="text/css" rel="stylesheet" href="../css/gestion_clients.css" />
 	<script type="text/javascript" src="../js/jquery-2.2.0.js"></script>
 	<script type="text/javascript" src="../js/angular.js"></script>
 	<script type="text/javascript" src="../js/angular-route.js"></script>
@@ -17,29 +17,21 @@
 	
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css">
-	
-<style type="text/css">
-	.navbar {
-		margin-top: 20px;
-	}
-	
-	.btn {
-		margin-top: 20px;
-	}
-</style>
+
 </head>
 <body>
 	<nav class="navbar navbar-inverse">
-		<div class="container-fluid">	
-			<ul class="nav navbar-nav">
-				<li class="active"><a href="index.html"><img src="images/logo-little.jpg" class="img-responsive center-block"/></a></li>
-				<li><a class="navbar-brand" href="#">Chez Yen</a></li>
-				<li><a href="#"><span class="glyphicon glyphicon-envelope"></span> Contact</a></li>
-				<li><a href="#/contact"><span class="glyphicon glyphicon-time"></span> horaires</a></li>
+		<div class="container-fluid">
+			<ul class="nav navbar-nav navbar-left">
+				<li class="active"><a href="index.html"><img src="../images/logo.jpg" class="img-responsive center-block"/></a></li>
 			</ul>
+			<span style="text-align:center">
+				<span style="text-align:center"><a href="index.html" style="color:yellow;">ACCEUIL</a></span>
+				<span style="text-align:center; color:yellow;"> / </span>
+				<span style="text-align:center"><a href="index.html" style="color:yellow;">GESTION CLIENTS</a></span>
+			</span>
 			<ul class="nav navbar-nav navbar-right">
-				<li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-				<li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+				<li class="active"><a href="index.html"><img src="../images/logo.jpg" class="img-responsive center-block"/></a></li>
 			</ul>
 		 </div>
 	</nav>
@@ -47,30 +39,46 @@
 		<div class="row">
 		</div>
 		<div class="row">
-			<div class="col-sm-2">
+			<div class="col-sm-1">
+			</div>
+			<div class="col-sm-10">
 				<button class="btn">Nouveau client</button>
 			</div>
+			<div class="col-sm-1">
+			</div>
 		</div>
-		<div class="col-sm-8"  ng-controller="clientCtrl">
-			<table class="table table-striped">
-				<thead>
-					<tr>
-						<th>Nom</th>
-						<th>Prénom</th>
-						<th>Adresse</th>
-						<th>actions</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr ng-repeat="client in clients">
-						<td>{{client.nom}}</td>
-						<td>{{client.prenom}}</td>
-						<td>{{client.adresse.numeroVoie + ", " + client.adresse.typeVoie + " " + client.adresse.nomVoie + " " + client.adresse.codePostal + client.adresse.ville}}</td>
-						<td><button class="btn btn-danger" ng-click="deleteClient(client.id)">effacer</button></td>
-					</tr>
-			</table>
-		</div>
-		<div class="col-sm-2">
+		<div class="row">
+			<div class="col-sm-1">
+			</div>
+			<div class="col-sm-10"  ng-controller="clientCtrl">
+				<table class="table table-striped">
+					<thead>
+						<tr>
+							<th>Nom</th>
+							<th>Prénom</th>
+							<th>Adresse</th>
+							<th>actions</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr ng-repeat="client in clients">
+							<td>{{client.nom}}</td>
+							<td>{{client.prenom}}</td>
+							<td>{{client.adresse.numeroVoie + ", " +
+								 client.adresse.typeVoie + " " + 
+								 client.adresse.nomVoie + " " + 
+								 client.adresse.codePostal + " " + 
+								 client.adresse.ville}}
+							 </td>
+							<td>
+								<button class="btn btn-default" ng-click="modifierClient(client.id)">Modifier</button>
+								<button class="btn btn-danger" ng-click="supprimerClient(client.id)">Supprimer</button>
+							</td>
+						</tr>
+				</table>
+			</div>
+			<div class="col-sm-1">
+			</div>
 		</div>
 	</div>
 </body>

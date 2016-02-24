@@ -21,3 +21,7 @@ div#contenu1 {
     border: black solid 1px;
     background-color: lightblue;
 }
+
+.btn {
+	margin-top: 20px;
+}
