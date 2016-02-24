@@ -9,7 +9,7 @@ var chezYenApp = angular.module("chezYenApp", []);
 chezYenApp.controller("clientCtrl", function($scope, $http) {
    $scope.clients = [];
    $http.get('../gestComm/clients').then(function (response) {
-       $scope.clients = response.data.client;
+       $scope.clients = response.data.clients;
    });
   
    

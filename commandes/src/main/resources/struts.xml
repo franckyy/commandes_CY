@@ -49,11 +49,11 @@
 					^clients\[\d\]\.idClient$,
 					^clients\[\d\]\.nom$,
 					^clients\[\d\]\.prenom$,
-					^clients\[\d\]\.codePostal$,
-					^clients\[\d\]\.typeVoie$,
-					^clients\[\d\]\.nomVoie$,
-					^clients\[\d\]\.numeroVoie$,
-					^clients\[\d\]\.ville$
+					^clients\[\d\]\.adresse\.codePostal$,
+					^clients\[\d\]\.adresse\.ville$,
+					^clients\[\d\]\.adresse\.numeroVoie$,
+					^clients\[\d\]\.adresse\.typeVoie$,
+					^clients\[\d\]\.adresse\.nomVoie$
 				</param>
 			</result>
 		</action>

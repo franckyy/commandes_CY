@@ -28,7 +28,21 @@
 	}
 </style>
 </head>
-<body ng-controler="clientCtrl">
+<body>
+	<nav class="navbar navbar-inverse">
+		<div class="container-fluid">	
+			<ul class="nav navbar-nav">
+				<li class="active"><a href="index.html"><img src="images/logo-little.jpg" class="img-responsive center-block"/></a></li>
+				<li><a class="navbar-brand" href="#">Chez Yen</a></li>
+				<li><a href="#"><span class="glyphicon glyphicon-envelope"></span> Contact</a></li>
+				<li><a href="#/contact"><span class="glyphicon glyphicon-time"></span> horaires</a></li>
+			</ul>
+			<ul class="nav navbar-nav navbar-right">
+				<li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+				<li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+			</ul>
+		 </div>
+	</nav>
 	<div class="container">
 		<div class="row">
 		</div>
@@ -37,7 +51,7 @@
 				<button class="btn">Nouveau client</button>
 			</div>
 		</div>
-		<div class="col-sm-8">
+		<div class="col-sm-8"  ng-controller="clientCtrl">
 			<table class="table table-striped">
 				<thead>
 					<tr>
@@ -51,7 +65,7 @@
 					<tr ng-repeat="client in clients">
 						<td>{{client.nom}}</td>
 						<td>{{client.prenom}}</td>
-						<td>{{client.numeroVoie}}{{client.typeVoie}}</td>
+						<td>{{client.adresse.numeroVoie + ", " + client.adresse.typeVoie + " " + client.adresse.nomVoie + " " + client.adresse.codePostal + client.adresse.ville}}</td>
 						<td><button class="btn btn-danger" ng-click="deleteClient(client.id)">effacer</button></td>
 					</tr>
 			</table>
