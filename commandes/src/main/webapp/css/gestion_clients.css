@@ -1,4 +1,35 @@
 @CHARSET "ISO-8859-1";
-body {
+
+
+#body {
 	background-color: black;
+}
+
+#chezYenBar {
+    width:100%;
+    text-align:center;
+    background-color: black;
+}
+
+#left {
+    float:left;
+    width:100px;
+}
+
+#center {
+    display: inline-block;
+    margin:0 auto;
+  	vertical-align:middle;
+  	margin-top:30px;
+  	color:yellow;
+}
+
+#right {
+    float:right;
+    width:100px;
+}
+
+
+#firstRow {
+	margin-top:20px;
 }
