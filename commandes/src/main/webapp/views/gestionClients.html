@@ -43,7 +43,10 @@ $(document).ready(function(){
 					Créer un nouveau client
 				</div>
 				<div id="panelNouveauClient">
-					<div class="encadre" style="height:100px;">
+					<div class="encadre" style="height:130px;">
+		                <div style="text-align:center;">
+		                	<label style="color:#c7b988;">Identité</label><br />
+		                </div>
 						<div style="width:45%;float:left;">
 		                	<label>Nom</label><input type="text" class="form-control"/>
 		                </div>
@@ -52,8 +55,10 @@ $(document).ready(function(){
 		                </div>
 	                </div>
 	                <div class="encadre">
-		                <label style="text-align:center;">Adresse</label><br />
-		                <table id="tableAdresse" cellpadding="10px">
+		                <div style="text-align:center;">
+		                	<label style="color:#c7b988;">Adresse</label><br />
+		                </div>
+		                <table id="tableAdresse" cellpadding="10px" style="width:100%">
 		                	<tr>
 		                		<td width="10%">
 		                			<label>Numéro</label>
@@ -61,16 +66,22 @@ $(document).ready(function(){
 		                		<td width="20%">
 		                			<label>Voie</label>
 		                		</td>
-		                		<td width="65%">
+		                		<td width="28%">
 		                			<label>Nom voie</label>
+		                		</td>
+		                		<td width="12%">
+		                			<label>Code postal</label>
+		                		</td>
+		                		<td width="30%">
+		                			<label>Ville</label>
 		                		</td>
 		                	</tr>
 		                	<tr>
 		                		<td>
-		                			<input type="text" class="form-control"  maxlength="8" size="10"/>
+		                			<input id="numVoie" type="text" class="form-control"  maxlength="8" style="width:80px;"/>
 		                		</td>
 		                		<td>
-					                <select class="form-control" width="100">
+					                <select id="typeVoie" class="form-control" style="width:170px">
 					                	<option>Impasse</option>
 					                	<option>Route</option>
 					                	<option selected="selected">Rue</option>
@@ -78,17 +89,14 @@ $(document).ready(function(){
 					                </select>
 		                		</td>
 		                		<td>
-		                			<input type="text" class="form-control"/>
+		                			<input id="nomVoie" type="text" class="form-control"  style="width:250px;"/>
 		                		</td>
-		                	</tr>
-		                	<tr>
-		                		<td colspan="3">
-		                			<div style="width:45%;float:left;">
-		                				<label>Code postal</label><input type="text" class="form-control" maxlength="4" size="5"/>
-		                			</div>
-		                			<div style="width:45%;float:right;">
-		                				<label>Ville</label><input type="text" class="form-control" />
-		                			</div>
+		                		<td>
+		                			<input id="codePostal" type="text" class="form-control" maxlength="5" style="width:90px;"/>
+		                		</td>
+		                		<td>
+		                			<input id="ville" type="text" class="form-control"  style="width:290px;"/>
+		                		</td>
 		                	</tr>
 		                </table>
 	                </div>
