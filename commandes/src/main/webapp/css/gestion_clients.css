@@ -2,18 +2,20 @@
 
 
 #body {
-	background-color: black;
+	background-color: #0a0905;
 }
 
 #chezYenBar {
     width:100%;
     text-align:center;
-    background-color: black;
+    background-color: #0a0905;
 }
 
 #left {
     float:left;
     width:100px;
+    padding-top:20px;
+    padding-left:20px;
 }
 
 #center {
@@ -27,9 +29,47 @@
 #right {
     float:right;
     width:100px;
+    padding-top:20px;
+    padding-right:20px;
 }
 
+#panelNouveauClient{
+	display:none;
+	margin-top:10px;
+	color:#fff8d7;
+}
+
+#nouveauClient {
+	background-color: #c7b988;
+	color:#0a0905;
+	-webkit-border-radius:25px;
+    border-radius: 25px;
+    border: 2px solid #c90016; 
+}
+
+.encadre {
+	-webkit-border-radius:25px;
+    border-radius: 25px;
+    border: 2px solid #fff8d7;
+    padding: 20px;
+    margin-bottom:10px;
+}
 
 #firstRow {
-	margin-top:20px;
+	margin-top:50px;
 }
+
+.table-striped>tbody>tr:nth-child(even)>td, 
+.table-striped>tbody>tr:nth-child(even)>th {
+   background-color: #fff8d7;
+ }
+ 
+ #tableClients {	
+ 	-webkit-border-radius:25px;
+    margin-top:10px;
+ }
+ 
+ thead {
+ 	color:#c7b988;
+    border: 2px solid #fff8d7; 
+ }
