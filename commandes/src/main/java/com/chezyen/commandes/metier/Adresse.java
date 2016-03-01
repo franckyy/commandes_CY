@@ -19,6 +19,7 @@ public class Adresse {
 	public Adresse() {}
 	public Adresse(String nomVoie, String typeVoie, String numeroVoie, int codePostal, String ville) {
 		super();
+		log.info("Adresse - new - nomVoie : " + nomVoie);
 		this.nomVoie = nomVoie;
 		this.typeVoie = typeVoie;
 		this.numeroVoie = numeroVoie;

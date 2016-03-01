@@ -8,11 +8,23 @@ var chezYenApp = angular.module("chezYenApp", []);
 // le scope est automatiquement injecté par angular
 chezYenApp.controller("clientCtrl", function($scope, $http) {
    $scope.clients = [];
-   $http.get('../gestComm/clients').then(function (response) {
+   $http.get('../gestClients/repertoire').then(function (response) {
        $scope.clients = response.data.clients;
    });
   
-   
+   $scope.nouveau_client = function(nom, prenom, numVoie, typeVoie, nomVoie, codePostal, ville){
+	   $http.post('../gestClients/nouveau', {
+		   	"client_nom": nom,
+		   	"client_prenom": prenom,
+		   	"client_numVoie": numVoie,
+		   	"client_typeVoie": typeVoie,
+		   	"client_nomVoie": nomVoie,
+		   	"client_codePostal": codePostal,
+		   	"client_ville": ville
+		   }).success(function(response) {
+			   $scope.clients.push(response.client);
+	   });
+   };
 //   $scope.incompleteCount = function() {
 //     var count = 0;
 //     angular.forEach($scope.produits, function(t) {
@@ -31,6 +43,20 @@ chezYenApp.controller("clientCtrl", function($scope, $http) {
 //        return "label-warning";
 //     }
 //   };
+   
+
+// $scope.addNewTask2 = function(libelle, category) {
+//   // j'envoie une requette POST pour demander au serveur de creer la tache en BDD
+//   $http.post('../rest/savetache2', {"tacheLibelle": libelle, "tacheCategory" : category} 
+//    ).success(function(response) {
+//        // cette fonction est rappellée quand le serveur renvoie sa réponse
+//        // le serveur nous renvoie la tache insérée sous format JSON
+//        // angular désérialise le json dans response.data
+//        // nous ajoutons la tache insérée dans le tableau des taches du scope
+//       $scope.taches.push(response.tache);
+//    }); 
+// };
+   
    // appelé quand le formulaire est soumis (click bouton)
    // on recoit le libelle de la tache a cree, et sa categorie
 //   $scope.nouveauClient = function(nom, prenom, adresse) {
@@ -49,17 +75,6 @@ chezYenApp.controller("clientCtrl", function($scope, $http) {
 //       console.log("delete client no " + id);
 //   };
 
-//   $scope.addNewTask2 = function(libelle, category) {
-//     // j'envoie une requette POST pour demander au serveur de creer la tache en BDD
-//     $http.post('../rest/savetache2', {"tacheLibelle": libelle, "tacheCategory" : category} 
-//      ).success(function(response) {
-//          // cette fonction est rappellée quand le serveur renvoie sa réponse
-//          // le serveur nous renvoie la tache inséré sous format JSON
-//          // angular deserialise le json dans response.data
-//          // nous ajoutons la tache insérée dans le tableau des taches du scope
-//         $scope.taches.push(response.tache);
-//      }); 
-//   };
 
 
    

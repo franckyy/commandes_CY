@@ -48,10 +48,10 @@ $(document).ready(function(){
 		                	<label style="color:#c7b988;">Identité</label><br />
 		                </div>
 						<div style="width:45%;float:left;">
-		                	<label>Nom</label><input type="text" class="form-control"/>
+		                	<label>Nom</label><input type="text" class="form-control" ng-model="client_nom" />
 		                </div>
 		                <div style="width:45%;float:right;">
-		                	<label>Prénom</label><input type="text" class="form-control" />
+		                	<label>Prénom</label><input type="text" class="form-control"  ng-model="client_prenom" />
 		                </div>
 	                </div>
 	                <div class="encadre">
@@ -78,10 +78,10 @@ $(document).ready(function(){
 		                	</tr>
 		                	<tr>
 		                		<td>
-		                			<input id="numVoie" type="text" class="form-control"  maxlength="8" style="width:80px;"/>
+		                			<input id="numVoie" type="text" class="form-control"  ng-model="client_numVoie" maxlength="8" style="width:80px;"/>
 		                		</td>
 		                		<td>
-					                <select id="typeVoie" class="form-control" style="width:170px">
+					                <select id="typeVoie" class="form-control" ng-model="client_typeVoie" style="width:170px">
 					                	<option>Impasse</option>
 					                	<option>Route</option>
 					                	<option selected="selected">Rue</option>
@@ -89,20 +89,20 @@ $(document).ready(function(){
 					                </select>
 		                		</td>
 		                		<td>
-		                			<input id="nomVoie" type="text" class="form-control"  style="width:250px;"/>
+		                			<input id="nomVoie" type="text" class="form-control" ng-model="client_nomVoie" style="width:250px;"/>
 		                		</td>
 		                		<td>
-		                			<input id="codePostal" type="text" class="form-control" maxlength="5" style="width:90px;"/>
+		                			<input id="codePostal" type="text" class="form-control" ng-model="client_codePostal" maxlength="5" style="width:90px;"/>
 		                		</td>
 		                		<td>
-		                			<input id="ville" type="text" class="form-control"  style="width:290px;"/>
+		                			<input id="ville" type="text" class="form-control" ng-model="client_ville" style="width:290px;"/>
 		                		</td>
 		                	</tr>
 		                </table>
 	                </div>
 	                <span class="input-group-btn">
 	                    <button class="btn btn-default"
-	                            ng-click="addNewTask2(tacheLibelle, tacheCategory)">
+	                            ng-click="nouveau_client(client_nom, client_prenom, client_numVoie, client_typeVoie, client_nomVoie, client_codePostal, client_ville)">
 	                            Ajouter client
 	                    </button>
 	                </span>

@@ -41,9 +41,24 @@
 			</result>
 		</action>
 
+		<action name="gestClients/nouveau" class="com.chezyen.commandes.actions.ClientsAction" method="nouveauClient">
+			<interceptor-ref name="defaultStack"/>
+			<interceptor-ref name="json"/>
+			<result name="success" type="json">
+				<param name="includeProperties">
+					^client\.idClient$,
+					^client\.nom$,
+					^client\.prenom$,
+					^client\.adresse\.numVoie$,
+					^client\.adresse\.typeVoie$,
+					^client\.adresse\.nomVoie$,
+					^client\.adresse\.codePostal$,
+					^client\.adresse\.ville$
+				</param>
+			</result>
+		</action>
 
-
-		<action name="gestComm/clients" class="com.chezyen.commandes.actions.ClientsAction" method="repertoire">
+		<action name="gestClients/repertoire" class="com.chezyen.commandes.actions.ClientsAction" method="repertoire">
 			<result name="success" type="json">
 				<param name="includeProperties">
 					^clients\[\d\]\.idClient$,

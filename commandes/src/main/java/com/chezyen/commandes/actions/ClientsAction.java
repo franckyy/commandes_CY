@@ -3,9 +3,6 @@ package com.chezyen.commandes.actions;
 import java.util.List;
 import java.util.Set;
 
-import javax.persistence.Embedded;
-import javax.persistence.OneToMany;
-
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -22,18 +19,17 @@ public class ClientsAction extends ActionSupport {
 	private static Logger log = LogManager.getLogger(ClientsAction.class);
 	
 	private IClientDAO clientDAO;
-	public void setClientDAO(IClientDAO clientDAO) {
-		this.clientDAO = clientDAO;
-	}
+	public void setClientDAO(IClientDAO clientDAO) {this.clientDAO = clientDAO;}
+	public IClientDAO getClientDAO() {return clientDAO;}
 	
 	private int clientID;
 	private String clientNom;
 	private String clientPrenom;
-	private Adresse clientCodePostal;
-	private Adresse clientNomVoie;
-	private Adresse clientTypeVoie;
-	private Adresse clientNumeroVoie;
-	private Adresse clientVille;
+	private int clientCodePostal;
+	private String clientNomVoie;
+	private String clientTypeVoie;
+	private String clientNumeroVoie;
+	private String clientVille;
 	private Set<Commande> commandes;
 	
 	public int getClientID() {return clientID;}
@@ -42,16 +38,16 @@ public class ClientsAction extends ActionSupport {
 	public void setClientNom(String clientNom) {this.clientNom = clientNom;}
 	public String getClientPrenom() {return clientPrenom;}
 	public void setClientPrenom(String clientPrenom) {this.clientPrenom = clientPrenom;}
-	public Adresse getClientCodePostal() {return clientCodePostal;}
-	public void setClientCodePostal(Adresse clientCodePostal) {this.clientCodePostal = clientCodePostal;}
-	public Adresse getClientNomVoie() {return clientNomVoie;}
-	public void setClientNomVoie(Adresse clientNomVoie) {this.clientNomVoie = clientNomVoie;}
-	public Adresse getClientTypeVoie() {return clientTypeVoie;}
-	public void setClientTypeVoie(Adresse clientTypeVoie) {this.clientTypeVoie = clientTypeVoie;}
-	public Adresse getClientNumeroVoie() {return clientNumeroVoie;}
-	public void setClientNumeroVoie(Adresse clientNumeroVoie) {this.clientNumeroVoie = clientNumeroVoie;}
-	public Adresse getClientVille() {return clientVille;}
-	public void setClientVille(Adresse clientVille) {this.clientVille = clientVille;}
+	public int getClientCodePostal() {return clientCodePostal;}
+	public void setClientCodePostal(int clientCodePostal) {this.clientCodePostal = clientCodePostal;}
+	public String getClientNomVoie() {return clientNomVoie;}
+	public void setClientNomVoie(String clientNomVoie) {this.clientNomVoie = clientNomVoie;}
+	public String getClientTypeVoie() {return clientTypeVoie;}
+	public void setClientTypeVoie(String clientTypeVoie) {this.clientTypeVoie = clientTypeVoie;}
+	public String getClientNumeroVoie() {return clientNumeroVoie;}
+	public void setClientNumeroVoie(String clientNumeroVoie) {this.clientNumeroVoie = clientNumeroVoie;}
+	public String getClientVille() {return clientVille;}
+	public void setClientVille(String clientVille) {this.clientVille = clientVille;}
 	public Set<Commande> getCommandes() {return commandes;}
 	public void setCommandes(Set<Commande> commandes) {this.commandes = commandes;}
 
@@ -64,6 +60,14 @@ public class ClientsAction extends ActionSupport {
 	public String repertoire() {
 		log.info("ClientsAction - repertoire");
 		this.clients = clientDAO.findAll();
+		return SUCCESS;
+	}
+	
+	public String nouveauClient() {
+		log.info("ClientsAction - nouveauClient - nom : " + getClientNom());
+		Adresse adresse = new Adresse(getClientNomVoie(), getClientTypeVoie(), clientNumeroVoie, getClientCodePostal(), getClientVille());
+		Client client = new Client(getClientNom(), getClientPrenom(), adresse, null);
+		this.client = getClientDAO().save(client);
 		return SUCCESS;
 	}
 }
