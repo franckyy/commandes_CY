@@ -31,7 +31,7 @@ public class Client implements IGenericEntity {
 	}
 	public Client(String nom, String prenom, Adresse adresse, Set<Commande> commandes) {
 		super();
-		log.info("Client - new - nom : " + nom);
+		log.info("new Client() - nom : " + nom);
 		this.nom = nom;
 		this.prenom = prenom;
 		this.adresse = adresse;
