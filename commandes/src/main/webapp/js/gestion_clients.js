@@ -13,6 +13,7 @@ chezYenApp.controller("clientCtrl", function($scope, $http) {
    });
   
    $scope.nouveau_client = function(nom, prenom, numVoie, typeVoie, nomVoie, codePostal, ville){
+	   console.log("nouveauClient nom : " + nom);
 	   $http.post('../gestClients/nouveau', {
 		   	"client_nom": nom,
 		   	"client_prenom": prenom,
