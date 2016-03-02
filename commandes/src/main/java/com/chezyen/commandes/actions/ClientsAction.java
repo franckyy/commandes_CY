@@ -65,7 +65,8 @@ public class ClientsAction extends ActionSupport {
 	
 	public String nouveauClient() {
 		log.info("ClientsAction - nouveauClient - nom : " + getClientNom());
-		Adresse adresse = new Adresse(getClientNomVoie(), getClientTypeVoie(), clientNumeroVoie, getClientCodePostal(), getClientVille());
+		Adresse adresse = new Adresse(getClientNomVoie(), getClientTypeVoie(), getClientNumeroVoie(), getClientCodePostal(), getClientVille());
+		log.info("numero adresse : " + getClientNumeroVoie());
 		Client client = new Client(getClientNom(), getClientPrenom(), adresse, null);
 		this.client = getClientDAO().save(client);
 		return SUCCESS;
