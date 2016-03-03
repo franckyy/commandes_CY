@@ -36,73 +36,91 @@ $(document).ready(function(){
 	</div>
 	<div class="container">
 		<div id="firstRow" class="row">
-			<div class="col-sm-1">
-			</div>
-			<div class="col-sm-11"  ng-controller="clientCtrl" style="padding-right:30px;">
+			<div class="col-sm-12"  ng-controller="clientCtrl" style="padding-right:30px;">
 				<div id="nouveauClient" style="text-align:center;">
 					Créer un nouveau client
 				</div>
 				<div id="panelNouveauClient">
-					<div class="encadre" style="height:130px;">
+					<div class="encadre" style="height:130px; min-width: 600px;">
 		                <div style="text-align:center;">
 		                	<label style="color:#c7b988;">Identité</label><br />
 		                </div>
-						<div style="width:45%;float:left;">
-		                	<label>Nom</label><input type="text" class="form-control" ng-model="client_nom" />
-		                </div>
-		                <div style="width:45%;float:right;">
-		                	<label>Prénom</label><input type="text" class="form-control"  ng-model="client_prenom" />
+		                <div>
+		                	<div id="tablesInlineBlock" style="width:49%;">
+		                		<div id="tablesBlock">
+		                			<label>Nom</label>
+	                			</div>
+		                		<div id="tablesBlock" style="min-width: 270px;">
+		                			<input type="text" class="form-control" ng-model="client_nom" style="width:200px;"/>
+	                			</div>
+		                	</div>
+		                	<div id="tablesInlineBlock" style="width:50%;">
+		                		<div  id="tablesBlock">
+		                			<label>Prénom</label>
+		                		</div>
+		                		<div id="tablesBlock" style="min-width: 250px;">
+		                			<input type="text" class="form-control"  ng-model="client_prenom" style="width:200px;"/>
+	                			</div>
+		                	</div>
 		                </div>
 	                </div>
-	                <div class="encadre">
+	                <div class="encadre" style="min-width: 600px;">
 		                <div style="text-align:center;">
 		                	<label style="color:#c7b988;">Adresse</label><br />
 		                </div>
-		                <table id="tableAdresse" cellpadding="10px" style="width:100%">
-		                	<tr>
-		                		<td width="10%">
+		                <div>
+		                	<div id="tablesInlineBlock" style="width:24%;">
+		                		<div id="tablesBlock">
 		                			<label>Numéro</label>
-		                		</td>
-		                		<td width="20%">
+	                			</div>
+		                		<div id="tablesBlock" style="min-width: 60px;">
+		                			<input id="numVoie" type="text" class="form-control"  ng-model="client_numVoie" maxlength="8" style="width:110px;"/>
+	                			</div>
+		                	</div>
+		                	<div id="tablesInlineBlock" style="width:30%;">
+		                		<div id="tablesBlock">
 		                			<label>Voie</label>
-		                		</td>
-		                		<td width="28%">
-		                			<label>Nom voie</label>
-		                		</td>
-		                		<td width="12%">
-		                			<label>Code postal</label>
-		                		</td>
-		                		<td width="30%">
-		                			<label>Ville</label>
-		                		</td>
-		                	</tr>
-		                	<tr>
-		                		<td>
-		                			<input id="numVoie" type="text" class="form-control"  ng-model="client_numVoie" maxlength="8" style="width:80px;"/>
-		                		</td>
-		                		<td>
-					                <select id="typeVoie" class="form-control" ng-model="client_typeVoie" style="width:170px">
+	                			</div>
+		                		<div id="tablesBlock" style="min-width: 170px;">
+		                			<select id="typeVoie" class="form-control" ng-model="client_typeVoie" style="width:150px;">
 					                	<option>Impasse</option>
 					                	<option>Route</option>
 					                	<option selected="selected">Rue</option>
 					                	<option>Autre</option>
 					                </select>
-		                		</td>
-		                		<td>
-		                			<input id="nomVoie" type="text" class="form-control" ng-model="client_nomVoie" style="width:250px;"/>
-		                		</td>
-		                		<td>
-		                			<input id="codePostal" type="text" class="form-control" ng-model="client_codePostal" maxlength="5" style="width:90px;"/>
-		                		</td>
-		                		<td>
-		                			<input id="ville" type="text" class="form-control" ng-model="client_ville" style="width:290px;"/>
-		                		</td>
-		                	</tr>
-		                </table>
+	                			</div>
+		                	</div>
+		                	<div id="tablesInlineBlock" style="width:45%;">
+		                		<div  id="tablesBlock">
+		                			<label>Nom voie</label>
+		                		</div>
+		                		<div id="tablesBlock" style="min-width: 250px;">
+		                			<input id="nomVoie" type="text" class="form-control" ng-model="client_nomVoie"/>
+	                			</div>
+		                	</div>
+		                </div>
+		                <div>
+		                	<div id="tablesInlineBlock" style="width:49%;">
+		                		<div id="tablesBlock">
+		                			<label>Code postal</label>
+	                			</div>
+		                		<div id="tablesBlock" style="min-width: 90px;">
+		                			<input id="codePostal" type="text" class="form-control" ng-model="client_codePostal" maxlength="5" style="width:110px;"/>
+	                			</div>
+		                	</div>
+		                	<div id="tablesInlineBlock" style="width:50%;">
+		                		<div  id="tablesBlock">
+		                			<label>Ville</label>
+		                		</div>
+		                		<div id="tablesBlock" style="min-width: 290px;">
+		                			<input id="ville" type="text" class="form-control" ng-model="client_ville" style="width:250px;"/>
+	                			</div>
+		                	</div>
+		                </div>
 	                </div>
 	                <span class="input-group-btn">
 	                    <button class="btn btn-default"
-	                            ng-click="nouveau_client(client_nom, client_prenom, client_numVoie, client_typeVoie, client_nomVoie, client_codePostal, client_ville)">
+	                            ng-click="nouveau_client(client_nom, client_prenom, client_numVoie, client_typeVoie, client_nomVoie, client_codePostal, client_ville);">
 	                            Ajouter client
 	                    </button>
 	                </span>

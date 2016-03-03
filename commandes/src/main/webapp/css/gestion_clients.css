@@ -6,6 +6,7 @@
 }
 
 #chezYenBar {
+	min-width:600px;
     width:100%;
     text-align:center;
     background-color: #0a0905;
@@ -40,6 +41,7 @@
 }
 
 #nouveauClient {
+	min-width:600px;
 	background-color: #c7b988;
 	color:#0a0905;
 	-webkit-border-radius:25px;
@@ -55,6 +57,14 @@
     margin-bottom:10px;
 }
 
+#tablesInlineBlock {
+	display:inline-block;
+}
+
+#tablesBlock {
+	display:block;
+}
+
 #firstRow {
 	margin-top:50px;
 }
@@ -65,6 +75,7 @@
  }
  
  #tableClients {	
+ 	min-width:600px;
  	-webkit-border-radius:25px;
     margin-top:10px;
  }
