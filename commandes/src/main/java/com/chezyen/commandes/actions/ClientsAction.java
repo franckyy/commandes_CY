@@ -71,4 +71,11 @@ public class ClientsAction extends ActionSupport {
 		this.client = getClientDAO().save(client);
 		return SUCCESS;
 	}
+	
+	public String suppression(int idClient){
+		log.info("ClientsAction - suppression - idClient : " + idClient);
+		Client client = new Client();
+		client = getClientDAO().remove(idClient);
+		return SUCCESS;
+	}
 }

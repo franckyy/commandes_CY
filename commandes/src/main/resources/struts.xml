@@ -72,6 +72,21 @@
 				</param>
 			</result>
 		</action>
+		
+		<action name="gestClients/supprimer" class="com.chezyen.commandes.actions.CLientsAction" method="suppression">
+			<result name="success" type="json">
+				<param name="includeProperties">
+					^client\.idClient$,
+					^client\.nom$,
+					^client\.prenom$,
+					^client\.adresse\.numVoie$,
+					^client\.adresse\.typeVoie$,
+					^client\.adresse\.nomVoie$,
+					^client\.adresse\.codePostal$,
+					^client\.adresse\.ville$
+				</param>
+			</result>
+		</action>
     </package>
 
     <!-- Add addition packages and configuration here. -->

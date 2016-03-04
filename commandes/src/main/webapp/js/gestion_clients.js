@@ -26,6 +26,19 @@ chezYenApp.controller("clientCtrl", function($scope, $http) {
 			   $scope.clients.push(response.client);
 	   });
    };
+   
+   $scope.supprimerClient = function(idClient){
+	   console.log("supprimerClient");
+	   $http.post('../gestClients/supprimer', {
+		   "clientID":idClient
+	   }).then(function successCallback(response) {	  
+		   		console.log("succes suppression client");
+		   		var index = $scope.clients.indexOf(idClient);
+		   		$scope.clients.splice(index, 1);
+		  }, function errorCallback(response) {
+			  	console.log("problème suppression client");
+		  });
+   };
 // $scope.addNewTask2 = function(libelle, category) {
 //   // j'envoie une requette POST pour demander au serveur de creer la tache en BDD
 //   $http.post('../rest/savetache2', {"tacheLibelle": libelle, "tacheCategory" : category} 
