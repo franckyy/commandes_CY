@@ -12,9 +12,10 @@ chezYenApp.controller("clientCtrl", function($scope, $http) {
        $scope.clients = response.data.clients;
    });
   
-   $scope.nouveau_client = function(nom, prenom, numVoie, typeVoie, nomVoie, codePostal, ville){
+   $scope.nouveau_client = function(idClient, nom, prenom, numVoie, typeVoie, nomVoie, codePostal, ville){
 	   console.log("nouveau client");
 	   $http.post('../gestClients/nouveau', {
+		   	"clientId": idClient,
 		   	"clientNom": nom,
 		   	"clientPrenom": prenom,
 		   	"clientNumeroVoie": numVoie,
@@ -28,16 +29,16 @@ chezYenApp.controller("clientCtrl", function($scope, $http) {
    };
    
    $scope.supprimerClient = function(idClient){
-	   console.log("supprimerClient");
+	   console.log("supprimerClient id : " + idClient);
 	   $http.post('../gestClients/supprimer', {
-		   "clientID":idClient
+	   "clientId":idClient
 	   }).then(function successCallback(response) {	  
-		   		console.log("succes suppression client");
-		   		var index = $scope.clients.indexOf(idClient);
-		   		$scope.clients.splice(index, 1);
-		  }, function errorCallback(response) {
-			  	console.log("problème suppression client");
-		  });
+		   	console.log("succes suppression client");
+	   		var index = $scope.clients.indexOf(idClient);
+	   		$scope.clients.splice(index, 1);
+	   }, function errorCallback(response) {
+		  	console.log("problème suppression client");
+	   });
    };
 // $scope.addNewTask2 = function(libelle, category) {
 //   // j'envoie une requette POST pour demander au serveur de creer la tache en BDD
@@ -50,10 +51,6 @@ chezYenApp.controller("clientCtrl", function($scope, $http) {
 //       $scope.taches.push(response.tache);
 //    }); 
 // };
-//   
-//   $scope.deleteClient = function(id) {
-//       console.log("delete client no " + id);
-//   };
 
 });
 

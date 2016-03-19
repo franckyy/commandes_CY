@@ -73,7 +73,8 @@
 			</result>
 		</action>
 		
-		<action name="gestClients/supprimer" class="com.chezyen.commandes.actions.CLientsAction" method="suppression">
+		<action name="gestClients/supprimer" class="com.chezyen.commandes.actions.ClientsAction" method="suppression">
+			<param name="idClient">idClient</param>
 			<result name="success" type="json">
 				<param name="includeProperties">
 					^client\.idClient$,
