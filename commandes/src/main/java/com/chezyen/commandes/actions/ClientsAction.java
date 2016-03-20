@@ -58,8 +58,14 @@ public class ClientsAction extends ActionSupport {
 	public List<Client> getClients() {return clients;}
 	
 	private int clientId;
-	public int getClientId() {return clientId;}
-	public void setclientId(int clientId) {this.clientId = clientId;}	
+	public int getClientId() {
+		log.info("get clientId");
+		return clientId;
+	}
+	public void setClientId(int clientId) {
+		log.info("set clientId");
+		this.clientId = clientId;
+	}	
 	
 	public String repertoire() {		log.info("ClientsAction - ");
 		this.clients = clientDAO.findAll();
