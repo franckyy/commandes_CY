@@ -30,14 +30,14 @@ chezYenApp.controller("clientCtrl", function($scope, $http) {
    
    $scope.supprimerClient = function(idClient){
 	   console.log("supprimerClient id : " + idClient);
-	   $http.post('../gestClients/supprimer', {
-	   "clientId":idClient
-	   }).then(function successCallback(response) {	  
-		   	console.log("succes suppression client");
-	   		var index = $scope.clients.indexOf(idClient);
-	   		$scope.clients.splice(index, 1);
-	   }, function errorCallback(response) {
-		  	console.log("problème suppression client");
+   $http.post('../gestClients/supprimer', {
+   "clientId":idClient
+   }).then(function successCallback(response) {	  
+	   	console.log("succes suppression client");
+   		var index = $scope.clients.indexOf(idClient);
+   		$scope.clients.splice(index, 1);
+   }, function errorCallback(response) {
+	  	console.log("problème suppression client");
 	   });
    };
 // $scope.addNewTask2 = function(libelle, category) {

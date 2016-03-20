@@ -57,14 +57,17 @@ public class ClientsAction extends ActionSupport {
 	private List<Client> clients;
 	public List<Client> getClients() {return clients;}
 	
-	public String repertoire() {
-		log.info("ClientsAction - repertoire");
+	private int clientId;
+	public int getClientId() {return clientId;}
+	public void setclientId(int clientId) {this.clientId = clientId;}	
+	
+	public String repertoire() {		log.info("ClientsAction - ");
 		this.clients = clientDAO.findAll();
 		return SUCCESS;
 	}
 	
 	public String nouveauClient() {
-		log.info("ClientsAction - nouveauClient - nom : " + getClientNom());
+		log.info("ClientsAction - nouveauClient - prénom : " + getClientNom());
 		Adresse adresse = new Adresse(getClientNomVoie(), getClientTypeVoie(), getClientNumeroVoie(), getClientCodePostal(), getClientVille());
 		log.info("numero adresse : " + getClientNumeroVoie());
 		Client client = new Client(getClientNom(), getClientPrenom(), adresse, null);
@@ -72,10 +75,10 @@ public class ClientsAction extends ActionSupport {
 		return SUCCESS;
 	}
 	
-	public String suppression(int idClient){
-		log.info("ClientsAction - suppression - idClient : " + idClient);
+	public String suppression(){
+		log.info("ClientsAction - suppression - clientId : " + clientId);
 		Client client = new Client();
-		client = getClientDAO().remove(idClient);
+		client = getClientDAO().remove(clientId);
 		return SUCCESS;
 	}
 }
