@@ -52,11 +52,16 @@
 					^client\.idClient$,
 					^client\.nom$,
 					^client\.prenom$,
-					^client\.adresse\.numVoie$,
+					^client\.adresse\.numeroVoie$,
 					^client\.adresse\.typeVoie$,
 					^client\.adresse\.nomVoie$,
 					^client\.adresse\.codePostal$,
 					^client\.adresse\.ville$
+				</param>
+			</result>
+			<result name="error" type="json">
+				<param name="includeProperties">
+					^erreurs\.message$
 				</param>
 			</result>
 		</action>

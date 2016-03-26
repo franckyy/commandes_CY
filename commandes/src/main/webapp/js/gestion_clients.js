@@ -24,7 +24,9 @@ chezYenApp.controller("clientCtrl", function($scope, $http) {
 		   	"clientVille": ville
 		   }).success(function(response) {
 			   $scope.clients.push(response.client);
-	   });
+		   }).error(function(response){
+			   $scope.erreurs.push(response.erreurs);
+		   });
    };
    
    $scope.supprimer_client = function(idClient){
@@ -33,7 +35,7 @@ chezYenApp.controller("clientCtrl", function($scope, $http) {
    "clientID":idClient
    }).then(function successCallback(response) {	  
 	   	console.log("succes suppression client");
-	       $scope.clients = response.data.clients;
+	    $scope.clients = response.data.clients;
    }, function errorCallback(response) {
 	  	console.log("problème suppression client");
 	   });

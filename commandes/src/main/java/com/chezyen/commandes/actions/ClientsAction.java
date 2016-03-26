@@ -6,6 +6,7 @@ import java.util.Set;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import com.chezyen.commandes.commons.Erreurs;
 import com.chezyen.commandes.dao.IClientDAO;
 import com.chezyen.commandes.metier.Adresse;
 import com.chezyen.commandes.metier.Client;
@@ -64,14 +65,30 @@ public class ClientsAction extends ActionSupport {
 	}
 	
 	public String nouveauClient() {
-		log.info("ClientsAction - nouveauClient - prénom : " + getClientNom());
+		log.info("nouveauClient - nom : " + getClientNom());
 		Adresse adresse = new Adresse(getClientNomVoie(), getClientTypeVoie(), getClientNumeroVoie(), getClientCodePostal(), getClientVille());
-		log.info("numero adresse : " + getClientNumeroVoie());
+		log.info("numero adresse : " + getClientNumeroVoie() + ", " + getClientTypeVoie() + " " + getClientNomVoie() + " " + getClientCodePostal() + " " + getClientVille());
 		Client client = new Client(getClientNom(), getClientPrenom(), adresse, null);
-		this.client = getClientDAO().save(client);
-		return SUCCESS;
+		if(verificationNouveauClient(adresse, client)){
+			log.info("vérification OK");
+			this.client = getClientDAO().save(client);
+			return SUCCESS;
+		} else {
+			Erreurs err = new Erreurs("NewCliErr", "erreur nouveau client");
+			return ERROR;
+		}
 	}
 	
+	private boolean verificationNouveauClient(Adresse adresse, Client client) {
+		this.clients = clientDAO.findAll();
+		for(Client cl : clients) {
+			if(adresse.getNomVoie().equals(cl.getAdresse().getNomVoie())){
+				log.info("Nom de voie identique trouvé. Nom : " + adresse.getNomVoie());
+				return false;
+			}
+		}
+		return true;
+	}
 	public String suppression(){
 		log.info("ClientsAction - suppression - clientID : " + getClientID() + ", nom : " + getClientNom());
 		Client client = new Client();
@@ -79,4 +96,6 @@ public class ClientsAction extends ActionSupport {
 		this.clients = clientDAO.findAll();
 		return SUCCESS;
 	}
+	
+	
 }

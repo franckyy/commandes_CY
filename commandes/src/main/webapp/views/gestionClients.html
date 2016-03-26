@@ -137,7 +137,7 @@ $(document).ready(function(){
 					<tbody>
 						<tr ng-repeat="client in clients">
 							<td style="display: none;" ng-model="idClient">{{client.idClient}}</td>
-							<td>{{client.nom}}</td>
+							<td>{{erreurs.message}}{{client.nom}}</td>
 							<td>{{client.prenom}}</td>
 							<td>{{client.adresse.numeroVoie + ", " +
 								 client.adresse.typeVoie + " " + 

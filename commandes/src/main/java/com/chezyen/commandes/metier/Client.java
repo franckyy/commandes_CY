@@ -14,7 +14,7 @@ import org.apache.logging.log4j.Logger;
 @Entity
 public class Client implements IGenericEntity {
 
-	private static Logger log = LogManager.getLogger(LigneCommande.class);
+	private static Logger log = LogManager.getLogger(Client.class);
 
 	@Id@GeneratedValue
 	private int idClient;
@@ -52,7 +52,7 @@ public class Client implements IGenericEntity {
 	
 	@Override
 	public int fetchPrimaryKey() {
-		log.info("Client - fetchPrimaryKey()");
+		log.info("fetchPrimaryKey()");
 		return getIdClient();
 	}
 
