@@ -120,7 +120,7 @@ $(document).ready(function(){
 	                </div>
 	                <span class="input-group-btn">
 	                    <button class="btn btn-default"
-	                            ng-click="nouveau_client(client_idClient, client_nom, client_prenom, client_numVoie, client_typeVoie, client_nomVoie, client_codePostal, client_ville);">
+	                            ng-click="nouveau_client(client_nom, client_prenom, client_numVoie, client_typeVoie, client_nomVoie, client_codePostal, client_ville);">
 	                            Ajouter client
 	                    </button>
 	                </span>
@@ -136,7 +136,7 @@ $(document).ready(function(){
 					</thead>
 					<tbody>
 						<tr ng-repeat="client in clients">
-							<td style="display: none;">{{client.idClient}}</td>
+							<td style="display: none;" ng-model="idClient">{{client.idClient}}</td>
 							<td>{{client.nom}}</td>
 							<td>{{client.prenom}}</td>
 							<td>{{client.adresse.numeroVoie + ", " +
@@ -146,8 +146,8 @@ $(document).ready(function(){
 								 client.adresse.ville}}
 							 </td>
 							<td>
-								<button class="btn btn-default" ng-click="modifierClient(client.id)">Modifier</button>
-								<button class="btn btn-danger" ng-click="supprimerClient(client.idClient);">Supprimer</button>
+								<button class="btn btn-default" ng-click="modifierClient(client.idClient)">Modifier</button>
+								<button class="btn btn-danger" ng-click="supprimer_client(client.idClient);">Supprimer</button>
 							</td>
 						</tr>
 				</table>

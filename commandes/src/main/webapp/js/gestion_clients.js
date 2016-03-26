@@ -12,10 +12,9 @@ chezYenApp.controller("clientCtrl", function($scope, $http) {
        $scope.clients = response.data.clients;
    });
   
-   $scope.nouveau_client = function(idClient, nom, prenom, numVoie, typeVoie, nomVoie, codePostal, ville){
+   $scope.nouveau_client = function(nom, prenom, numVoie, typeVoie, nomVoie, codePostal, ville){
 	   console.log("nouveau client");
 	   $http.post('../gestClients/nouveau', {
-		   	"clientId": idClient,
 		   	"clientNom": nom,
 		   	"clientPrenom": prenom,
 		   	"clientNumeroVoie": numVoie,
@@ -28,26 +27,25 @@ chezYenApp.controller("clientCtrl", function($scope, $http) {
 	   });
    };
    
-   $scope.supprimerClient = function(idClient){
+   $scope.supprimer_client = function(idClient){
 	   console.log("supprimerClient id : " + idClient);
    $http.post('../gestClients/supprimer', {
-   "clientId":idClient
+   "clientID":idClient
    }).then(function successCallback(response) {	  
 	   	console.log("succes suppression client");
-   		var index = $scope.clients.indexOf(idClient);
-   		$scope.clients.splice(index, 1);
+	       $scope.clients = response.data.clients;
    }, function errorCallback(response) {
 	  	console.log("problème suppression client");
 	   });
    };
 // $scope.addNewTask2 = function(libelle, category) {
-//   // j'envoie une requette POST pour demander au serveur de creer la tache en BDD
+//    j'envoie une requette POST pour demander au serveur de creer la tache en BDD
 //   $http.post('../rest/savetache2', {"tacheLibelle": libelle, "tacheCategory" : category} 
 //    ).success(function(response) {
-//        // cette fonction est rappellée quand le serveur renvoie sa réponse
-//        // le serveur nous renvoie la tache insérée sous format JSON
-//        // angular désérialise le json dans response.data
-//        // nous ajoutons la tache insérée dans le tableau des taches du scope
+//         cette fonction est rappellée quand le serveur renvoie sa réponse
+//         le serveur nous renvoie la tache insérée sous format JSON
+//         angular désérialise le json dans response.data
+//         nous ajoutons la tache insérée dans le tableau des taches du scope
 //       $scope.taches.push(response.tache);
 //    }); 
 // };

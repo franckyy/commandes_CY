@@ -57,17 +57,8 @@ public class ClientsAction extends ActionSupport {
 	private List<Client> clients;
 	public List<Client> getClients() {return clients;}
 	
-	private int clientId;
-	public int getClientId() {
-		log.info("get clientId");
-		return clientId;
-	}
-	public void setClientId(int clientId) {
-		log.info("set clientId");
-		this.clientId = clientId;
-	}	
-	
-	public String repertoire() {		log.info("ClientsAction - ");
+	public String repertoire() {		
+		log.info("répertoire client");
 		this.clients = clientDAO.findAll();
 		return SUCCESS;
 	}
@@ -82,9 +73,10 @@ public class ClientsAction extends ActionSupport {
 	}
 	
 	public String suppression(){
-		log.info("ClientsAction - suppression - clientId : " + clientId);
+		log.info("ClientsAction - suppression - clientID : " + getClientID() + ", nom : " + getClientNom());
 		Client client = new Client();
-		client = getClientDAO().remove(clientId);
+		client = getClientDAO().remove(getClientID());
+		this.clients = clientDAO.findAll();
 		return SUCCESS;
 	}
 }

@@ -77,16 +77,18 @@
 		</action>
 		
 		<action name="gestClients/supprimer" class="com.chezyen.commandes.actions.ClientsAction" method="suppression">
+			<interceptor-ref name="defaultStack"/>
+			<interceptor-ref name="json"/>
 			<result name="success" type="json">
 				<param name="includeProperties">
-					^client\.idClient$,
-					^client\.nom$,
-					^client\.prenom$,
-					^client\.adresse\.numVoie$,
-					^client\.adresse\.typeVoie$,
-					^client\.adresse\.nomVoie$,
-					^client\.adresse\.codePostal$,
-					^client\.adresse\.ville$
+					^clients\[\d\]\.idClient$,
+					^clients\[\d\]\.nom$,
+					^clients\[\d\]\.prenom$,
+					^clients\[\d\]\.adresse\.codePostal$,
+					^clients\[\d\]\.adresse\.ville$,
+					^clients\[\d\]\.adresse\.numeroVoie$,
+					^clients\[\d\]\.adresse\.typeVoie$,
+					^clients\[\d\]\.adresse\.nomVoie$
 				</param>
 			</result>
 		</action>
