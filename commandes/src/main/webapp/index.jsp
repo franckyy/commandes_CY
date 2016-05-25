@@ -8,7 +8,8 @@
 	<title>Chez Yen</title>
 	<link type="text/css" rel="stylesheet" href="css/bootstrap.css" />
 	<link type="text/css" rel="stylesheet" href="css/bootstrap-theme" />
-	<link type="text/css" rel="stylesheet" href="css/chezYenApp.css" />
+	<link type="text/css" rel="stylesheet" href="css/header.css" />
+	<link type="text/css" rel="stylesheet" href="css/gestion_clients.css" />
 	<script type="text/javascript" src="js/jquery-2.2.0.js"></script>
 	<script type="text/javascript" src="js/angular.js"></script>
 	<script type="text/javascript" src="js/angular-route.js"></script>
@@ -32,11 +33,18 @@
 </style>
 </head>
 <body style="background-color:black;">
+	<div id="chezYenBar">
+		<img id="left" src="images/logo_stylise.png" class="img-responsive center-block"/>
+		<div id="center">
+			<h3 style="color:#fff8d7;"> / ACCUEIL</h3>
+		</div>
+		<img id="right" src="images/logo_stylise.png" class="img-responsive center-block"/>
+	</div>
 	<div class="container">
-		<div class="row">
+		<%-- <div class="row">
 			<%@include file="commons/navbar.html"%>
 		</div>
-
+ --%>
 		<div class="row">
 			<div class="col-sm-2">
 			</div>

@@ -1,0 +1,9 @@
+@CHARSET "ISO-8859-1";
+
+
+#chezYenBar {
+	min-width:600px;
+    width:100%;
+    text-align:center;
+    background-color: #0a0905;
+}
