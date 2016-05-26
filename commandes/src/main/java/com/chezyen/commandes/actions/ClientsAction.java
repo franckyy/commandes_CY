@@ -89,6 +89,7 @@ public class ClientsAction extends ActionSupport {
 		}
 		return true;
 	}
+	
 	public String suppression(){
 		log.info("ClientsAction - suppression - clientID : " + getClientID() + ", nom : " + getClientNom());
 		Client client = new Client();
@@ -97,5 +98,8 @@ public class ClientsAction extends ActionSupport {
 		return SUCCESS;
 	}
 	
-	
+	public String modification() {
+		log.info("ClientsAction - modification");
+		return SUCCESS;
+	}
 }
