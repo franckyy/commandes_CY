@@ -8,6 +8,8 @@ var chezYenApp = angular.module("chezYenApp", []);
 // le scope est automatiquement injecté par angular
 chezYenApp.controller("clientCtrl", function($scope, $http) {
    $scope.clients = [];
+   $scope.clientModif;
+   
    $http.get('../gestClients/repertoire').then(function (response) {
        $scope.clients = response.data.clients;
    });
@@ -30,16 +32,30 @@ chezYenApp.controller("clientCtrl", function($scope, $http) {
    };
    
    $scope.supprimer_client = function(idClient){
-	   console.log("supprimerClient id : " + idClient);
-   $http.post('../gestClients/supprimer', {
-   "clientID":idClient
-   }).then(function successCallback(response) {	  
-	   	console.log("succes suppression client");
-	    $scope.clients = response.data.clients;
-   }, function errorCallback(response) {
-	  	console.log("problème suppression client");
+	   console.log("supprimer_client id : " + idClient);
+	   $http.post('../gestClients/supprimer', {
+	   "clientID":idClient
+	   }).then(function successCallback(response) {	  
+		   	console.log("succes suppression client");
+		    $scope.clients = response.data.clients;
+	   }, function errorCallback(response) {
+		  	console.log("problème suppression client");
 	   });
    };
+   
+   $scope.modifier_client = function(idClient) {
+	   console.log("modifier_client id : " + idClient);
+	   $http.post('../gestClients/modifier', {
+		   "clientID":idClient
+	   }).then(function successCallbak(response){
+		   	$scope.clientModif = response.data.client;
+		   	console.log("succes modification client - nom : " + $scope.clientModif.nom);
+		   	
+	   }, function errorCallback(response){
+		   console.log("problème modification client");
+	   });
+   }
+   
 // $scope.addNewTask2 = function(libelle, category) {
 //    j'envoie une requette POST pour demander au serveur de creer la tache en BDD
 //   $http.post('../rest/savetache2', {"tacheLibelle": libelle, "tacheCategory" : category} 

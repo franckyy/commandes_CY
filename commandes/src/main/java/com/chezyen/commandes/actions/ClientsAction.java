@@ -99,7 +99,8 @@ public class ClientsAction extends ActionSupport {
 	}
 	
 	public String modification() {
-		log.info("ClientsAction - modification");
+		log.info("ClientsAction - modification - clientID : " + getClientID());
+		this.client = getClientDAO().findByID(getClientID());
 		return SUCCESS;
 	}
 }
