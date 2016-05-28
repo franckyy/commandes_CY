@@ -155,14 +155,14 @@ $(document).ready(function(){
 			</div>
 		</div>
 		
-		<div id="popUpModif" class="popup_block" ng-controller="clientCtrl">
+		<div id="popUpModif" class="popup_block" ng-controller="clientCtrl" ng-model="clientModif">
 	        <div style="text-align:center;">
 	        	<label style="color:#c7b988;">Identité</label><br />
 	        </div>
 	        <div>
 	        	<div id="tablesInlineBlock" style="width:49%;">
 	        		<div id="tablesBlock" style="display:none">
-	        			<input type="text" class="form-control" ng-value="clientModif" style="width:200px;"/>
+	        			<input type="text" class="form-control" value="{{nom}}" style="width:200px;"/>
 	       			</div>
 	        		<div id="tablesBlock">
 	        			<label>Nom</label>
