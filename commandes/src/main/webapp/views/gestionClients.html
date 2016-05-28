@@ -156,8 +156,93 @@ $(document).ready(function(){
 		</div>
 	</div>
 	<div id="popUpModif" class="popup_block">
-		<h2>Developpez.com</h2>
-		<p>Soh Tanaka est traduit sur developpez.com.</p>
+        <div style="text-align:center;">
+        	<label style="color:#c7b988;">Identité</label><br />
+        </div>
+        <div>
+        	<div id="tablesInlineBlock" style="width:49%;">
+        		<div id="tablesBlock" style="display:none">
+        			<input type="text" class="form-control" ng-model="client_id" style="width:200px;"/>
+       			</div>
+        		<div id="tablesBlock">
+        			<label>Nom</label>
+       			</div>
+        		<div id="tablesBlock" style="min-width: 270px;">
+        			<input type="text" class="form-control" ng-model="client_nom" style="width:200px;" value="blabla"/>
+       			</div>
+        	</div>
+        	<div id="tablesInlineBlock" style="width:50%;">
+        		<div  id="tablesBlock">
+        			<label>Prénom</label>
+        		</div>
+        		<div id="tablesBlock" style="min-width: 250px;">
+        			<input type="text" class="form-control"  ng-model="client_prenom" style="width:200px;"/>
+       			</div>
+        	</div>
+        </div>
+		<div style="text-align:center;">
+        	<label style="color:#c7b988;">Adresse</label><br />
+        </div>
+        <div>
+        	<div id="tablesInlineBlock" style="width:24%;">
+        		<div id="tablesBlock">
+        			<label>Numéro</label>
+       			</div>
+        		<div id="tablesBlock" style="min-width: 60px;">
+        			<input id="numVoie" type="text" class="form-control"  ng-model="client_numVoie" maxlength="8" style="width:110px;"/>
+       			</div>
+        	</div>
+        	<div id="tablesInlineBlock" style="width:30%;">
+        		<div id="tablesBlock">
+        			<label>Voie</label>
+       			</div>
+        		<div id="tablesBlock" style="min-width: 170px;">
+        			<select id="typeVoie" class="form-control" ng-model="client_typeVoie" style="width:150px;">
+           	<option>Impasse</option>
+           	<option>Route</option>
+           	<option selected="selected">Rue</option>
+           	<option>Autre</option>
+           </select>
+       			</div>
+        	</div>
+        	<div id="tablesInlineBlock" style="width:45%;">
+        		<div  id="tablesBlock">
+        			<label>Nom voie</label>
+        		</div>
+        		<div id="tablesBlock" style="min-width: 250px;">
+        			<input id="nomVoie" type="text" class="form-control" ng-model="client_nomVoie"/>
+       			</div>
+        	</div>
+        </div>
+        <div>
+        	<div id="tablesInlineBlock" style="width:49%;">
+        		<div id="tablesBlock">
+        			<label>Code postal</label>
+       			</div>
+        		<div id="tablesBlock" style="min-width: 90px;">
+        			<input id="codePostal" type="text" class="form-control" ng-model="client_codePostal" maxlength="5" style="width:110px;"/>
+       			</div>
+        	</div>
+        	<div id="tablesInlineBlock" style="width:50%;">
+        		<div  id="tablesBlock">
+        			<label>Ville</label>
+        		</div>
+        		<div id="tablesBlock" style="min-width: 290px;">
+        			<input id="ville" type="text" class="form-control" ng-model="client_ville" style="width:250px;"/>
+       			</div>
+        	</div>
+        </div>
+        <div style="margin-top:15px">
+        	<span class="input-group-btn">
+                <button id="validerModif" class="btn btn-success"
+                        ng-click="valider_modification(client_id, client_nom, client_prenom, client_numVoie, client_typeVoie, client_nomVoie, client_codePostal, client_ville);">
+                        Valider
+                </button>
+                <button id="annulerModif" class="btn btn-warning" style="margin-left:15px">
+                        Annuler
+                </button>
+            </span>
+        </div>
 	</div>
 </body>
 </html>

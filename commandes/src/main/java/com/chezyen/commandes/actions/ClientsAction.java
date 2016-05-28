@@ -103,4 +103,13 @@ public class ClientsAction extends ActionSupport {
 		this.client = getClientDAO().findByID(getClientID());
 		return SUCCESS;
 	}
+	
+	public String valider_modification() {
+		log.info("valider_modification");
+		Adresse adresse = new Adresse(getClientNomVoie(), getClientTypeVoie(), getClientNumeroVoie(), getClientCodePostal(), getClientVille());
+		Client client = new Client(getClientID(), getClientNom(), getClientPrenom(), adresse);
+		this.client = getClientDAO().save(client);
+		this.clients = clientDAO.findAll();
+		return SUCCESS;
+	}
 }

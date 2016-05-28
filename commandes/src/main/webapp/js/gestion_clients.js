@@ -34,7 +34,7 @@ chezYenApp.controller("clientCtrl", function($scope, $http) {
    $scope.supprimer_client = function(idClient){
 	   console.log("supprimer_client id : " + idClient);
 	   $http.post('../gestClients/supprimer', {
-	   "clientID":idClient
+	   "clientID": idClient
 	   }).then(function successCallback(response) {	  
 		   	console.log("succes suppression client");
 		    $scope.clients = response.data.clients;
@@ -53,13 +53,16 @@ chezYenApp.controller("clientCtrl", function($scope, $http) {
 		   	
 		   	var popID = 'popUpModif'; //la pop-up correspondante
 		   	var largeur_fenetre = $(window).width();
-			var popWidth = largeur_fenetre - largeur_fenetre * 0.5; //la largeur
+		   	if(largeur_fenetre < 1500){
+				var popWidth = largeur_fenetre - largeur_fenetre * 0.1; //la largeur
+		   	} else {
+				var popWidth = largeur_fenetre - largeur_fenetre * 0.3; //la largeur
+		   	}
 
 			//Faire apparaitre la pop-up et ajouter le bouton de fermeture
 			$('#' + popID).fadeIn().css({
 				'width': Number(popWidth)
-			})
-			.prepend('<a href="#" class="close"><img src="../images/close_pop.png" class="btn_close" title="Fermer" alt="Fermer" /></a>');
+			});
 
 			//Récupération du margin, qui permettra de centrer la fenêtre - on ajuste de 80px en conformité avec le CSS
 			var popMargTop = ($('#' + popID).height() + 80) / 2;
@@ -77,13 +80,12 @@ chezYenApp.controller("clientCtrl", function($scope, $http) {
 			$('#fade').css({'filter' : 'alpha(opacity=80)'}).fadeIn();
 			
 			//Fermeture de la pop-up et du fond
-			   $('a.close, #fade').on('click', function() { //Au clic sur le bouton ou sur le calque...
-				   console.log("clic");
+			$('a.close, #annulerModif, #validerModif').on('click', function() { //Au clic sur le bouton ou sur le calque...
 			   	$('#fade , .popup_block').fadeOut(function() {
 			   		$('#fade, a.close').remove();  //...ils disparaissent ensemble
 			   	});
 			   	return false;
-			   });
+			});
 			   
 			return false;
 		   	
@@ -92,6 +94,23 @@ chezYenApp.controller("clientCtrl", function($scope, $http) {
 	   });
    }
    
+   $scope.valider_modification = function(id, nom, prenom, numVoie, typeVoie, nomVoie, codePostal, ville) {
+	   console.log("Valider modification");
+	   $http.post('../gestClients/valider_modification', {
+		   	"clientId": id,
+		   	"clientNom": nom,
+		   	"clientPrenom": prenom,
+		   	"clientNumeroVoie": numVoie,
+		   	"clientTypeVoie": typeVoie,
+		   	"clientNomVoie": nomVoie,
+		   	"clientCodePostal": codePostal,
+		   	"clientVille": ville
+		   }).success(function(response) {
+			   $scope.clients = response.data.clients;
+		   }).error(function(response){
+			   $scope.erreurs.push(response.erreurs);
+		   });
+   }
  
 // $scope.addNewTask2 = function(libelle, category) {
 //    j'envoie une requette POST pour demander au serveur de creer la tache en BDD
