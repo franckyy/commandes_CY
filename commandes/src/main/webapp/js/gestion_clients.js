@@ -51,11 +51,48 @@ chezYenApp.controller("clientCtrl", function($scope, $http) {
 		   	$scope.clientModif = response.data.client;
 		   	console.log("succes modification client - nom : " + $scope.clientModif.nom);
 		   	
+		   	var popID = 'popUpModif'; //la pop-up correspondante
+		   	var largeur_fenetre = $(window).width();
+			var popWidth = largeur_fenetre - largeur_fenetre * 0.5; //la largeur
+
+			//Faire apparaitre la pop-up et ajouter le bouton de fermeture
+			$('#' + popID).fadeIn().css({
+				'width': Number(popWidth)
+			})
+			.prepend('<a href="#" class="close"><img src="../images/close_pop.png" class="btn_close" title="Fermer" alt="Fermer" /></a>');
+
+			//Récupération du margin, qui permettra de centrer la fenêtre - on ajuste de 80px en conformité avec le CSS
+			var popMargTop = ($('#' + popID).height() + 80) / 2;
+			var popMargLeft = ($('#' + popID).width() + 80) / 2;
+
+			//On affecte le margin
+			$('#' + popID).css({
+				'margin-top' : -popMargTop,
+				'margin-left' : -popMargLeft
+			});
+
+			//Effet fade-in du fond opaque
+			$('body').append('<div id="fade"></div>'); //Ajout du fond opaque noir
+			//Apparition du fond - .css({'filter' : 'alpha(opacity=80)'}) pour corriger les bogues de IE
+			$('#fade').css({'filter' : 'alpha(opacity=80)'}).fadeIn();
+			
+			//Fermeture de la pop-up et du fond
+			   $('a.close, #fade').on('click', function() { //Au clic sur le bouton ou sur le calque...
+				   console.log("clic");
+			   	$('#fade , .popup_block').fadeOut(function() {
+			   		$('#fade, a.close').remove();  //...ils disparaissent ensemble
+			   	});
+			   	return false;
+			   });
+			   
+			return false;
+		   	
 	   }, function errorCallback(response){
 		   console.log("problème modification client");
 	   });
    }
    
+ 
 // $scope.addNewTask2 = function(libelle, category) {
 //    j'envoie une requette POST pour demander au serveur de creer la tache en BDD
 //   $http.post('../rest/savetache2', {"tacheLibelle": libelle, "tacheCategory" : category} 
