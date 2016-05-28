@@ -59,7 +59,7 @@ chezYenApp.controller("clientCtrl", function($scope, $http) {
 				var popWidth = largeur_fenetre - largeur_fenetre * 0.3; //la largeur
 		   	}
 
-			//Faire apparaitre la pop-up et ajouter le bouton de fermeture
+			//Faire apparaitre la pop-up
 			$('#' + popID).fadeIn().css({
 				'width': Number(popWidth)
 			});
@@ -80,10 +80,8 @@ chezYenApp.controller("clientCtrl", function($scope, $http) {
 			$('#fade').css({'filter' : 'alpha(opacity=80)'}).fadeIn();
 			
 			//Fermeture de la pop-up et du fond
-			$('a.close, #annulerModif, #validerModif').on('click', function() { //Au clic sur le bouton ou sur le calque...
-			   	$('#fade , .popup_block').fadeOut(function() {
-			   		$('#fade, a.close').remove();  //...ils disparaissent ensemble
-			   	});
+			$('a.close, #annulerModif').on('click', function() { //Au clic sur le bouton ou sur le calque...
+			   	fermeturePopUp();
 			   	return false;
 			});
 			   
@@ -95,23 +93,35 @@ chezYenApp.controller("clientCtrl", function($scope, $http) {
    }
    
    $scope.valider_modification = function(id, nom, prenom, numVoie, typeVoie, nomVoie, codePostal, ville) {
-	   console.log("Valider modification");
-	   $http.post('../gestClients/valider_modification', {
-		   	"clientId": id,
-		   	"clientNom": nom,
-		   	"clientPrenom": prenom,
-		   	"clientNumeroVoie": numVoie,
-		   	"clientTypeVoie": typeVoie,
-		   	"clientNomVoie": nomVoie,
-		   	"clientCodePostal": codePostal,
-		   	"clientVille": ville
-		   }).success(function(response) {
-			   $scope.clients = response.data.clients;
-		   }).error(function(response){
-			   $scope.erreurs.push(response.erreurs);
-		   });
+	   console.log("gestion_clients - Valider modification");
+	   if(id != null){
+		   $http.post('../gestClients/valider_modification', {
+			   	"clientId": id,
+			   	"clientNom": nom,
+			   	"clientPrenom": prenom,
+			   	"clientNumeroVoie": numVoie,
+			   	"clientTypeVoie": typeVoie,
+			   	"clientNomVoie": nomVoie,
+			   	"clientCodePostal": codePostal,
+			   	"clientVille": ville
+			   }).success(function(response) {
+				   $scope.clients = response.data.clients;
+			   }).error(function(response){
+				   $scope.erreurs.push(response.erreurs);
+			   });
+	   } else {
+		   console.log("client null");
+	   }
+	   fermeturePopUp();
    }
  
+   
+   function fermeturePopUp(){
+	   console.log("fermeture pop-up");
+	   $('#fade , .popup_block').fadeOut(function() {
+	   		$('#fade, a.close').remove();  //...ils disparaissent ensemble
+	   	});
+   }
 // $scope.addNewTask2 = function(libelle, category) {
 //    j'envoie une requette POST pour demander au serveur de creer la tache en BDD
 //   $http.post('../rest/savetache2', {"tacheLibelle": libelle, "tacheCategory" : category} 

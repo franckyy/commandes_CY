@@ -100,15 +100,17 @@ public class ClientsAction extends ActionSupport {
 	
 	public String modification() {
 		log.info("ClientsAction - modification - clientID : " + getClientID());
-		this.client = getClientDAO().findByID(getClientID());
+		this.client = clientDAO.findByID(getClientID());
+		log.info("ClientsAction - modification - client nom : " + this.clientNom);
 		return SUCCESS;
 	}
 	
 	public String valider_modification() {
-		log.info("valider_modification");
+		log.info("ClientsAction - valider_modification");
 		Adresse adresse = new Adresse(getClientNomVoie(), getClientTypeVoie(), getClientNumeroVoie(), getClientCodePostal(), getClientVille());
 		Client client = new Client(getClientID(), getClientNom(), getClientPrenom(), adresse);
-		this.client = getClientDAO().save(client);
+		this.client = clientDAO.save(client);
+		log.info("ClientsAction - save modified client - nom : " + this.clientNom);
 		this.clients = clientDAO.findAll();
 		return SUCCESS;
 	}
