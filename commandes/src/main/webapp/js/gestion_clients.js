@@ -73,18 +73,14 @@ chezYenApp.controller("clientCtrl", function($scope, $http) {
 				'margin-top' : -popMargTop,
 				'margin-left' : -popMargLeft
 			});
-
+			
 			//Effet fade-in du fond opaque
 			$('body').append('<div id="fade"></div>'); //Ajout du fond opaque noir
 			//Apparition du fond - .css({'filter' : 'alpha(opacity=80)'}) pour corriger les bogues de IE
 			$('#fade').css({'filter' : 'alpha(opacity=80)'}).fadeIn();
 			
-			//Fermeture de la pop-up et du fond
-			$('a.close, #annulerModif').on('click', function() { //Au clic sur le bouton ou sur le calque...
-			   	fermeturePopUp();
-			   	return false;
-			});
-			   
+			$('#' + popID).attr("clientModifID", $scope.clientModif.nom);
+			
 			return false;
 		   	
 	   }, function errorCallback(response){
@@ -114,14 +110,13 @@ chezYenApp.controller("clientCtrl", function($scope, $http) {
 	   }
 	   fermeturePopUp();
    }
- 
    
-   function fermeturePopUp(){
-	   console.log("fermeture pop-up");
-	   $('#fade , .popup_block').fadeOut(function() {
-	   		$('#fade, a.close').remove();  //...ils disparaissent ensemble
-	   	});
-   }
+ //Fermeture de la pop-up et du fond
+ $('a.close, #annulerModif').on('click', function() { //Au clic sur le bouton ou sur le calque...
+    	fermeturePopUp();
+    	return false;
+ });
+  
 // $scope.addNewTask2 = function(libelle, category) {
 //    j'envoie une requette POST pour demander au serveur de creer la tache en BDD
 //   $http.post('../rest/savetache2', {"tacheLibelle": libelle, "tacheCategory" : category} 
@@ -135,6 +130,15 @@ chezYenApp.controller("clientCtrl", function($scope, $http) {
 // };
 
 });
+	   
+
+
+function fermeturePopUp(){
+	   console.log("fermeture pop-up");
+	   $('#fade , .popup_block').fadeOut(function() {
+	   		$('#fade, a.close').remove();  //...ils disparaissent ensemble
+	   	});
+}
 
 //$scope.incompleteCount = function() {
 //var count = 0;

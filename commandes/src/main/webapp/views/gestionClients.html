@@ -11,7 +11,6 @@
 	<script type="text/javascript" src="../js/angular.js"></script>
 	<script type="text/javascript" src="../js/angular-route.js"></script>
 	<script type="text/javascript" src="../js/gestion_clients.js"></script>
-	<script type="text/javascript" src="../js/productController.js"></script>
 	<script type="text/javascript" src="../js/chezYenDirective.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
@@ -35,9 +34,9 @@ $(document).ready(function(){
 		</div>
 		<img id="right" src="../images/logo_stylise.png" class="img-responsive center-block"/>
 	</div>
-	<div class="container">
+	<div class="container" ng-controller="clientCtrl">
 		<div id="firstRow" class="row">
-			<div class="col-sm-12"  ng-controller="clientCtrl" style="padding-right:30px;">
+			<div class="col-sm-12" style="padding-right:30px;">
 				<div id="nouveauClient" style="text-align:center;">
 					Créer un nouveau client
 				</div>
@@ -155,14 +154,14 @@ $(document).ready(function(){
 			</div>
 		</div>
 		
-		<div id="popUpModif" class="popup_block" ng-controller="clientCtrl" ng-model="clientModif">
+		<div id="popUpModif" class="popup_block" ng-model="clientModif">
 	        <div style="text-align:center;">
 	        	<label style="color:#c7b988;">Identité</label><br />
 	        </div>
 	        <div>
 	        	<div id="tablesInlineBlock" style="width:49%;">
 	        		<div id="tablesBlock" style="display:none">
-	        			<input type="text" class="form-control" value="{{nom}}" style="width:200px;"/>
+	        			<input id="nomClientModif" type="text" class="form-control" style="width:200px;"/>
 	       			</div>
 	        		<div id="tablesBlock">
 	        			<label>Nom</label>
