@@ -56,8 +56,8 @@ public class Client implements IGenericEntity {
 	
 	@Override
 	public int fetchPrimaryKey() {
-		log.info("fetchPrimaryKey()");
-		return getIdClient();
+		log.info("Client - fetchPrimaryKey() - id : " + this.getIdClient());
+		return this.getIdClient();
 	}
 
 }

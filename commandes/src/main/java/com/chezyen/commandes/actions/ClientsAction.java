@@ -101,7 +101,7 @@ public class ClientsAction extends ActionSupport {
 	public String modification() {
 		log.info("ClientsAction - modification - clientID : " + getClientID());
 		this.client = clientDAO.findByID(getClientID());
-		log.info("ClientsAction - modification - client nom : " + this.clientNom);
+		log.info("ClientsAction - modification - client nom : " + this.client.getNom());
 		return SUCCESS;
 	}
 	
@@ -110,7 +110,7 @@ public class ClientsAction extends ActionSupport {
 		Adresse adresse = new Adresse(getClientNomVoie(), getClientTypeVoie(), getClientNumeroVoie(), getClientCodePostal(), getClientVille());
 		Client client = new Client(getClientID(), getClientNom(), getClientPrenom(), adresse);
 		this.client = clientDAO.save(client);
-		log.info("ClientsAction - save modified client - nom : " + this.clientNom);
+		log.info("ClientsAction - save modified client - nom : " + this.clientNom + ", id : " + getClientID());
 		this.clients = clientDAO.findAll();
 		return SUCCESS;
 	}
