@@ -59,5 +59,11 @@ public class Client implements IGenericEntity {
 		log.info("Client - fetchPrimaryKey() - id : " + this.getIdClient());
 		return this.getIdClient();
 	}
+	
+	public Client setClient(int id, String nom, String prenom, String nomVoie, String typeVoie, String numeroVoie, int codePostal, String ville) {
+		Adresse adresse = new Adresse(nomVoie, typeVoie, numeroVoie, codePostal, ville);
+		Client client = new Client(id, nom, prenom, adresse);
+		return client;
+	}
 
 }

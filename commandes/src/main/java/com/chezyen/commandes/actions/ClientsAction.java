@@ -107,8 +107,17 @@ public class ClientsAction extends ActionSupport {
 	
 	public String valider_modification() {
 		log.info("ClientsAction - valider_modification");
-		Adresse adresse = new Adresse(getClientNomVoie(), getClientTypeVoie(), getClientNumeroVoie(), getClientCodePostal(), getClientVille());
-		Client client = new Client(getClientID(), getClientNom(), getClientPrenom(), adresse);
+		Client client = new Client();
+		log.info("ClientsAction - valider_modification - client id : " + client.getIdClient() + "attr clientID : " + getClientID());
+		client = client.setClient(getClientID(),
+								getClientNom(), 
+								getClientPrenom(),
+								getClientNomVoie(), 
+								getClientTypeVoie(), 
+								getClientNumeroVoie(), 
+								getClientCodePostal(), 
+								getClientVille());
+		log.info("ClientsAction - valider_modification - nomVoie : " + getClientNomVoie() + "id client : " + client.getIdClient());
 		this.client = clientDAO.save(client);
 		log.info("ClientsAction - save modified client - nom : " + this.clientNom + ", id : " + getClientID());
 		this.clients = clientDAO.findAll();

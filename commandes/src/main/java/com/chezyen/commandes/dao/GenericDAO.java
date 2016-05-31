@@ -34,7 +34,7 @@ public class GenericDAO<T extends IGenericEntity> implements IGenericDAO<T> {
 	@Override
 	@Transactional
 	public T findByID(int id) {
-		log.info("GenericDAO : findByID");
+		log.info("GenericDAO : findByID -> " + id);
 		return em.find(entityType, id);
 	}
 
