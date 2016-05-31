@@ -25,6 +25,8 @@ chezYenApp.controller("clientCtrl", function($scope, $http) {
 		   	"clientCodePostal": codePostal,
 		   	"clientVille": ville
 		   }).success(function(response) {
+			   $('#nouveauClientNom').attr('value', '');
+			   $("#panelNouveauClient").slideToggle(600);
 			   $scope.clients.push(response.client);
 		   }).error(function(response){
 			   $scope.erreurs.push(response.erreurs);
@@ -101,7 +103,7 @@ chezYenApp.controller("clientCtrl", function($scope, $http) {
 			   	"clientCodePostal": codePostal,
 			   	"clientVille": ville
 			   }).success(function(response) {
-				   $scope.clients = response.data.clients;
+				   $scope.clients = response.clients;
 			   }).error(function(response){
 				   $scope.erreurs.push(response.erreurs);
 			   });
