@@ -9,7 +9,7 @@
 	<link type="text/css" rel="stylesheet" href="css/bootstrap.css" />
 	<link type="text/css" rel="stylesheet" href="css/bootstrap-theme" />
 	<link type="text/css" rel="stylesheet" href="css/header.css" />
-	<link type="text/css" rel="stylesheet" href="css/gestion_clients.css" />
+	<link type="text/css" rel="stylesheet" href="css/index.css" />
 	<script type="text/javascript" src="js/jquery-2.2.0.js"></script>
 	<script type="text/javascript" src="js/angular.js"></script>
 	<script type="text/javascript" src="js/angular-route.js"></script>
@@ -32,7 +32,7 @@
 	}
 </style>
 </head>
-<body style="background-color:black;">
+<body id="body">
 	<div id="chezYenBar">
 		<img id="left" src="images/logo_stylise.png" class="img-responsive center-block"/>
 		<div id="center">
@@ -41,10 +41,10 @@
 		<img id="right" src="images/logo_stylise.png" class="img-responsive center-block"/>
 	</div>
 	<div class="container">
-		<%-- <div class="row">
-			<%@include file="commons/navbar.html"%>
+		<div class="row">
+			<div class="col-sm-12">
+			</div>
 		</div>
- --%>
 		<div class="row">
 			<div class="col-sm-2">
 			</div>

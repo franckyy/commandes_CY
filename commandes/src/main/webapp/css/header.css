@@ -7,3 +7,25 @@
     text-align:center;
     background-color: #0a0905;
 }
+
+#left {
+    float:left;
+    width:100px;
+    padding-top:20px;
+    padding-left:20px;
+}
+
+#center {
+    display: inline-block;
+    margin:0 auto;
+  	vertical-align:middle;
+  	margin-top:30px;
+  	color:yellow;
+}
+
+#right {
+    float:right;
+    width:100px;
+    padding-top:20px;
+    padding-right:20px;
+}

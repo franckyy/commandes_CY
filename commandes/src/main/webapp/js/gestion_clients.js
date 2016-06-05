@@ -27,6 +27,8 @@ chezYenApp.controller("clientCtrl", function($scope, $http) {
 		   }).success(function(response) {
 			   $('#nouveauClientNom').attr('value', '');
 			   $("#panelNouveauClient").slideToggle(600);
+			   //the following line must be tried 
+			   //$scope.$apply();
 			   $scope.clients.push(response.client);
 		   }).error(function(response){
 			   $scope.erreurs.push(response.erreurs);
