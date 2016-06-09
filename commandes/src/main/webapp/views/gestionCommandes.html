@@ -3,59 +3,31 @@
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
 <title>Gestion des commandes</title>
-<link type="text/css" rel="stylesheet" href="../css/bootstrap.css" />
-<link type="text/css" rel="stylesheet" href="../css/bootstrap-theme" />
-<link type="text/css" rel="stylesheet" href="../css/chezYenApp.css" />
-<script type="text/javascript" src="../js/jquery-2.2.0.js">
-        </script>
-<script type="text/javascript" src="../js/angular.js">
-        </script>
-<script type="text/javascript" src="js/angular-route.js">
-        </script>
-<script type="text/javascript" src="../js/angularapp.js">
-        </script>
-<script type="text/javascript" src="../js/productController.js">
-        </script>
-<script type="text/javascript" src="../js/chezYenDirective.js">
-        </script>
-
+	<link type="text/css" rel="stylesheet" href="../css/chezYenApp.css" />
+	<link type="text/css" rel="stylesheet" href="../css/bootstrap.css" />
+	<link type="text/css" rel="stylesheet" href="../css/bootstrap-theme" />
+	<link type="text/css" rel="stylesheet" href="../css/gestion_produits.css" />
+	<link type="text/css" rel="stylesheet" href="../css/header.css" />
+	<script type="text/javascript" src="../js/jquery-2.2.0.js"></script>
+	<script type="text/javascript" src="../js/angular.js"></script>
+	<script type="text/javascript" src="../js/angular-route.js"></script>
+	<script type="text/javascript" src="../js/gestion_produits.js"></script>
+	<script type="text/javascript" src="../js/chezYenDirective.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css">
 </head>
 <body ng-controller="StoreCtrl">
-	<nav class="navbar navbar-inverse navbar-fixed-top">
-		<div class="container">
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle collapsed"
-					data-toggle="collapse" data-target="#navbar" aria-expanded="false"
-					aria-controls="navbar">
-					<span class="sr-only">Toggle navigation</span> <span
-						class="icon-bar"></span> <span class="icon-bar"></span> <span
-						class="icon-bar"></span>
-				</button>
-				<a class="navbar-brand" href="#">Chez Yen</a>
-			</div>
-			<div id="navbar" class="navbar-collapse collapse">
-				<ul class="nav navbar-nav">
-					<li class="active"><a href="#/products">produits</a></li>
-					<li><a href="#/admin">Admin</a></li>
-					<li><a href="#/contact">Contact</a></li>
-					<li><a href="#/contact">horaires</a></li>
-					<li class="dropdown"><a href="#" class="dropdown-toggle"
-						data-toggle="dropdown" role="button" aria-haspopup="true"
-						aria-expanded="false">Dropdown <span class="caret"></span></a>
-						<ul class="dropdown-menu">
-							<li><a href="#">Action</a></li>
-							<li><a href="#">Another action</a></li>
-							<li><a href="#">Something else here</a></li>
-							<li role="separator" class="divider"></li>
-							<li class="dropdown-header">Nav header</li>
-							<li><a href="#">Separated link</a></li>
-							<li><a href="#">One more separated link</a></li>
-						</ul></li>
-				</ul>
-			</div>
-			<!--/.nav-collapse -->
+<body id="body">
+	<div id="chezYenBar">
+		<img id="left" src="../images/logo_stylise.png" class="img-responsive center-block"/>
+		<div id="center">
+			<h3 style="color:#fff8d7;"><a style="color:#fff8d7;" href="../index.html">ACCEUIL</a> / GESTION COMMANDES</h3>
 		</div>
-	</nav>
+		<img id="right" src="../images/logo_stylise.png" class="img-responsive center-block"/>
+	</div>
 
 	<div class="page-header" ng-hide="incompleteCount() == 0">
 		<h1>

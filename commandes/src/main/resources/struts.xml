@@ -16,6 +16,7 @@
             <result name="success">/index.jsp</result>
         </action>
         
+        <!-- Gestion des commandes -->
         
 		<action name="gestComm/produits" class="com.chezyen.commandes.actions.ProduitsAction" method="gestionCommandes">
 			<result name="success" type="json">
@@ -41,6 +42,8 @@
 			</result>
 		</action>
 
+		<!-- gestion des clients -->
+
 		<action name="gestClients/nouveau" class="com.chezyen.commandes.actions.ClientsAction" method="nouveauClient">
 			<interceptor-ref name="defaultStack"/>
 			<interceptor-ref name="json"/>
@@ -49,11 +52,16 @@
 					^client\.idClient$,
 					^client\.nom$,
 					^client\.prenom$,
-					^client\.adresse\.numVoie$,
+					^client\.adresse\.numeroVoie$,
 					^client\.adresse\.typeVoie$,
 					^client\.adresse\.nomVoie$,
 					^client\.adresse\.codePostal$,
 					^client\.adresse\.ville$
+				</param>
+			</result>
+			<result name="error" type="json">
+				<param name="includeProperties">
+					^erreurs\.message$
 				</param>
 			</result>
 		</action>
@@ -72,6 +80,75 @@
 				</param>
 			</result>
 		</action>
+		
+		<action name="gestClients/supprimer" class="com.chezyen.commandes.actions.ClientsAction" method="suppression">
+			<interceptor-ref name="defaultStack"/>
+			<interceptor-ref name="json"/>
+			<result name="success" type="json">
+				<param name="includeProperties">
+					^client\.idClient$,
+					^client\.nom$,
+					^client\.prenom$,
+					^client\.adresse\.numeroVoie$,
+					^client\.adresse\.typeVoie$,
+					^client\.adresse\.nomVoie$,
+					^client\.adresse\.codePostal$,
+					^client\.adresse\.ville$
+				</param>
+			</result>
+		</action>
+		
+		<action name="gestClients/valider_suppression" class="com.chezyen.commandes.actions.ClientsAction" method="valider_suppression">
+			<interceptor-ref name="defaultStack"/>
+			<interceptor-ref name="json"/>
+			<result name="success" type="json">
+				<param name="includeProperties">
+					^clients\[\d\]\.idClient$,
+					^clients\[\d\]\.nom$,
+					^clients\[\d\]\.prenom$,
+					^clients\[\d\]\.adresse\.codePostal$,
+					^clients\[\d\]\.adresse\.ville$,
+					^clients\[\d\]\.adresse\.numeroVoie$,
+					^clients\[\d\]\.adresse\.typeVoie$,
+					^clients\[\d\]\.adresse\.nomVoie$
+				</param>
+			</result>
+		</action>
+		
+		<action name="gestClients/modifier" class="com.chezyen.commandes.actions.ClientsAction" method="modification">
+			<interceptor-ref name="defaultStack"/>
+			<interceptor-ref name="json"/>
+			<result name="success" type="json">
+				<param name="includeProperties">
+					^client\.idClient$,
+					^client\.nom$,
+					^client\.prenom$,
+					^client\.adresse\.numeroVoie$,
+					^client\.adresse\.typeVoie$,
+					^client\.adresse\.nomVoie$,
+					^client\.adresse\.codePostal$,
+					^client\.adresse\.ville$
+				</param>
+			</result>
+		</action>
+		
+		<action name="gestClients/valider_modification" class="com.chezyen.commandes.actions.ClientsAction" method="valider_modification">
+			<interceptor-ref name="defaultStack"/>
+			<interceptor-ref name="json"/>
+			<result name="success" type="json">
+				<param name="includeProperties">
+					^clients\[\d\]\.idClient$,
+					^clients\[\d\]\.nom$,
+					^clients\[\d\]\.prenom$,
+					^clients\[\d\]\.adresse\.codePostal$,
+					^clients\[\d\]\.adresse\.ville$,
+					^clients\[\d\]\.adresse\.numeroVoie$,
+					^clients\[\d\]\.adresse\.typeVoie$,
+					^clients\[\d\]\.adresse\.nomVoie$
+				</param>
+			</result>
+		</action>		
+		
     </package>
 
     <!-- Add addition packages and configuration here. -->

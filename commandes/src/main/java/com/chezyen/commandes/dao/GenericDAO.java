@@ -34,16 +34,16 @@ public class GenericDAO<T extends IGenericEntity> implements IGenericDAO<T> {
 	@Override
 	@Transactional
 	public T findByID(int id) {
-		log.info("GenericDAO : findByID");
+		log.info("GenericDAO : findByID -> " + id);
 		return em.find(entityType, id);
 	}
 
 	@Override
 	@Transactional
 	public T save(T entity) {
-		
+		log.info("fetch key : " + entity.fetchPrimaryKey());
 		if(entity.fetchPrimaryKey() == 0){
-			log.info("GenericDAO : save persist");
+			log.info("GenericDAO : save persist - entity : " + entity);
 			em.persist(entity);
 		} else {
 			log.info("GenericDAO : save merge");

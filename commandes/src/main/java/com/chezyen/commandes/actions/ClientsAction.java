@@ -6,6 +6,7 @@ import java.util.Set;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import com.chezyen.commandes.commons.Erreurs;
 import com.chezyen.commandes.dao.IClientDAO;
 import com.chezyen.commandes.metier.Adresse;
 import com.chezyen.commandes.metier.Client;
@@ -57,18 +58,76 @@ public class ClientsAction extends ActionSupport {
 	private List<Client> clients;
 	public List<Client> getClients() {return clients;}
 	
-	public String repertoire() {
-		log.info("ClientsAction - repertoire");
+	public String repertoire() {		
+		log.info("répertoire client");
 		this.clients = clientDAO.findAll();
 		return SUCCESS;
 	}
 	
 	public String nouveauClient() {
-		log.info("ClientsAction - nouveauClient - nom : " + getClientNom());
+		log.info("nouveauClient - nom : " + getClientNom());
 		Adresse adresse = new Adresse(getClientNomVoie(), getClientTypeVoie(), getClientNumeroVoie(), getClientCodePostal(), getClientVille());
-		log.info("numero adresse : " + getClientNumeroVoie());
+		log.info("numero adresse : " + getClientNumeroVoie() + ", " + getClientTypeVoie() + " " + getClientNomVoie() + " " + getClientCodePostal() + " " + getClientVille());
 		Client client = new Client(getClientNom(), getClientPrenom(), adresse, null);
-		this.client = getClientDAO().save(client);
+		if(verificationNouveauClient(adresse, client)){
+			log.info("vérification OK");
+			this.client = getClientDAO().save(client);
+			return SUCCESS;
+		} else {
+			Erreurs err = new Erreurs("NewCliErr", "erreur nouveau client");
+			return ERROR;
+		}
+	}
+	
+	private boolean verificationNouveauClient(Adresse adresse, Client client) {
+		this.clients = clientDAO.findAll();
+		for(Client cl : clients) {
+			if(adresse.getNomVoie().equals(cl.getAdresse().getNomVoie())){
+				log.info("Nom de voie identique trouvé. Nom : " + adresse.getNomVoie());
+				return false;
+			}
+		}
+		return true;
+	}
+	
+	public String suppression() {
+		log.info("ClientsAction - suppression - clientID : " + getClientID());
+		this.client = clientDAO.findByID(getClientID());
+		log.info("ClientsAction - suppression - client nom : " + this.client.getNom());
+		return SUCCESS;
+	}
+	
+	public String valider_suppression(){
+		log.info("ClientsAction - suppression - clientID : " + getClientID() + ", nom : " + getClientNom());
+		Client client = new Client();
+		client = getClientDAO().remove(getClientID());
+		this.clients = clientDAO.findAll();
+		return SUCCESS;
+	}
+	
+	public String modification() {
+		log.info("ClientsAction - modification - clientID : " + getClientID());
+		this.client = clientDAO.findByID(getClientID());
+		log.info("ClientsAction - modification - client nom : " + this.client.getNom());
+		return SUCCESS;
+	}
+	
+	public String valider_modification() {
+		log.info("ClientsAction - valider_modification");
+		Client client = new Client();
+		log.info("ClientsAction - valider_modification - client id : " + client.getIdClient() + "attr clientID : " + getClientID());
+		client = client.setClient(getClientID(),
+								getClientNom(), 
+								getClientPrenom(),
+								getClientNomVoie(), 
+								getClientTypeVoie(), 
+								getClientNumeroVoie(), 
+								getClientCodePostal(), 
+								getClientVille());
+		log.info("ClientsAction - valider_modification - nomVoie : " + getClientNomVoie() + "id client : " + client.getIdClient());
+		this.client = clientDAO.save(client);
+		log.info("ClientsAction - save modified client - nom : " + this.clientNom + ", id : " + getClientID());
+		this.clients = clientDAO.findAll();
 		return SUCCESS;
 	}
 }
