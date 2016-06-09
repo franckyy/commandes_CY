@@ -86,6 +86,23 @@
 			<interceptor-ref name="json"/>
 			<result name="success" type="json">
 				<param name="includeProperties">
+					^client\.idClient$,
+					^client\.nom$,
+					^client\.prenom$,
+					^client\.adresse\.numeroVoie$,
+					^client\.adresse\.typeVoie$,
+					^client\.adresse\.nomVoie$,
+					^client\.adresse\.codePostal$,
+					^client\.adresse\.ville$
+				</param>
+			</result>
+		</action>
+		
+		<action name="gestClients/valider_suppression" class="com.chezyen.commandes.actions.ClientsAction" method="valider_suppression">
+			<interceptor-ref name="defaultStack"/>
+			<interceptor-ref name="json"/>
+			<result name="success" type="json">
+				<param name="includeProperties">
 					^clients\[\d\]\.idClient$,
 					^clients\[\d\]\.nom$,
 					^clients\[\d\]\.prenom$,

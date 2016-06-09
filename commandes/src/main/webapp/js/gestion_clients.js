@@ -35,10 +35,10 @@ chezYenApp.controller("clientCtrl", function($scope, $http) {
 		   });
    };
    
-   $scope.supprimer_client = function(idClient){
+   $scope.valider_suppression = function(idClient){
 	   console.log("supprimer_client id : " + idClient);
-	   $http.post('../gestClients/supprimer', {
-	   "clientID": idClient
+	   $http.post('../gestClients/valider_suppression', {
+		   "clientID": idClient
 	   }).then(function successCallback(response) {	  
 		   	console.log("succes suppression client");
 		    $scope.clients = response.data.clients;
@@ -46,6 +46,49 @@ chezYenApp.controller("clientCtrl", function($scope, $http) {
 		  	console.log("problème suppression client");
 	   });
    };
+   
+   $scope.supprimer_client = function(idClient) {
+	   console.log("PopUpSuppression_client id : " + idClient);
+	   $http.post('../gestClients/supprimer', {
+		   "clientID":idClient
+	   }).then(function successCallbak(response){
+		   	$scope.clientSuppr = response.data.client;
+		   	console.log("succes suppression client - nom : " + $scope.clientSuppr.nom);
+		   	
+		   	var popID = 'popUpSuppr'; //la pop-up correspondante
+		   	var largeur_fenetre = $(window).width();
+		   	if(largeur_fenetre < 1500){
+				var popWidth = largeur_fenetre - largeur_fenetre * 0.1; //la largeur
+		   	} else {
+				var popWidth = largeur_fenetre - largeur_fenetre * 0.3; //la largeur
+		   	}
+
+			//Faire apparaitre la pop-up
+			$('#' + popID).fadeIn().css({
+				'width': Number(popWidth)
+			});
+
+			//Récupération du margin, qui permettra de centrer la fenêtre - on ajuste de 80px en conformité avec le CSS
+			var popMargTop = ($('#' + popID).height() + 80) / 2;
+			var popMargLeft = ($('#' + popID).width() + 80) / 2;
+
+			//On affecte le margin
+			$('#' + popID).css({
+				'margin-top' : -popMargTop,
+				'margin-left' : -popMargLeft
+			});
+			
+			//Effet fade-in du fond opaque
+			$('body').append('<div id="fade"></div>'); //Ajout du fond opaque noir
+			//Apparition du fond - .css({'filter' : 'alpha(opacity=80)'}) pour corriger les bogues de IE
+			$('#fade').css({'filter' : 'alpha(opacity=80)'}).fadeIn();
+						
+			return false;
+		   	
+	   }, function errorCallback(response){
+		   console.log("problème modification client");
+	   });	
+   }
    
    $scope.modifier_client = function(idClient) {
 	   console.log("modifier_client id : " + idClient);
@@ -83,7 +126,6 @@ chezYenApp.controller("clientCtrl", function($scope, $http) {
 			//Apparition du fond - .css({'filter' : 'alpha(opacity=80)'}) pour corriger les bogues de IE
 			$('#fade').css({'filter' : 'alpha(opacity=80)'}).fadeIn();
 			
-			$('#' + popID).attr("clientModifID", $scope.clientModif.nom);
 			
 			return false;
 		   	
@@ -116,7 +158,7 @@ chezYenApp.controller("clientCtrl", function($scope, $http) {
    }
    
  //Fermeture de la pop-up et du fond
- $('a.close, #annulerModif').on('click', function() { //Au clic sur le bouton ou sur le calque...
+ $('a.close, #annulerModif, #annulerSuppr').on('click', function() { //Au clic sur le bouton ou sur le calque...
     	fermeturePopUp();
     	return false;
  });

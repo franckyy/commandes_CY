@@ -90,7 +90,14 @@ public class ClientsAction extends ActionSupport {
 		return true;
 	}
 	
-	public String suppression(){
+	public String suppression() {
+		log.info("ClientsAction - suppression - clientID : " + getClientID());
+		this.client = clientDAO.findByID(getClientID());
+		log.info("ClientsAction - suppression - client nom : " + this.client.getNom());
+		return SUCCESS;
+	}
+	
+	public String valider_suppression(){
 		log.info("ClientsAction - suppression - clientID : " + getClientID() + ", nom : " + getClientNom());
 		Client client = new Client();
 		client = getClientDAO().remove(getClientID());
