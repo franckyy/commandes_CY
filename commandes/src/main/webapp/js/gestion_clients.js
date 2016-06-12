@@ -37,15 +37,22 @@ chezYenApp.controller("clientCtrl", function($scope, $http) {
    };
    
    $scope.valider_suppression = function(idClient){
-	   console.log("supprimer_client id : " + idClient);
-	   $http.post('../gestClients/valider_suppression', {
-		   "clientID": idClient
-	   }).then(function successCallback(response) {	  
-		   	console.log("succes suppression client");
-		    $scope.clients = response.data.clients;
-	   }, function errorCallback(response) {
-		  	console.log("problème suppression client");
-	   });
+	   console.log("valider suppression client id : " + idClient);
+
+	   if(idClient != null){
+		   $http.post('../gestClients/valider_suppression', {
+			   "clientID": idClient
+		   }).then(function successCallback(response) {	  
+			   	console.log("succes suppression client");
+			    $scope.clients = response.data.clients;
+		   }, function errorCallback(response) {
+			  	console.log("problème suppression client");
+		   });
+	   } else {
+
+		   console.log("impossible suppression -> client null");
+	   }
+	   fermeturePopUp();
    };
    
    $scope.supprimer_client = function(idClient) {
@@ -100,7 +107,7 @@ chezYenApp.controller("clientCtrl", function($scope, $http) {
 				   $scope.erreurs.push(response.erreurs);
 			   });
 	   } else {
-		   console.log("client null");
+		   console.log("impossible modification -> client null");
 	   }
 	   fermeturePopUp();
    }
