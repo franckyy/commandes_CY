@@ -9,7 +9,6 @@
 	<link type="text/css" rel="stylesheet" href="css/bootstrap.css" />
 	<link type="text/css" rel="stylesheet" href="css/bootstrap-theme" />
 	<link type="text/css" rel="stylesheet" href="css/header.css" />
-	<link type="text/css" rel="stylesheet" href="css/index.css" />
 	<script type="text/javascript" src="js/jquery-2.2.0.js"></script>
 	<script type="text/javascript" src="js/angular.js"></script>
 	<script type="text/javascript" src="js/angular-route.js"></script>
@@ -18,6 +17,7 @@
 	<script type="text/javascript" src="js/chezYenDirective.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<link type="text/css" rel="stylesheet" href="css/index.css" />
 	
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css">
@@ -32,7 +32,7 @@
 	}
 </style>
 </head>
-<body id="body">
+<body>
 	<div id="chezYenBar">
 		<img id="left" src="images/logo_stylise.png" class="img-responsive center-block"/>
 		<div id="center">
