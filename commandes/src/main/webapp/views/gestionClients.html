@@ -46,7 +46,7 @@ $(document).ready(function(){
 		                	<label style="color:#c7b988;">Identité</label><br />
 		                </div>
 		                <div>
-		                	<div id="tablesInlineBlock" style="width:49%;">
+		                	<div id="tablesInlineBlock" style="width:33%;">
 		                		<div id="tablesBlock">
 		                			<label>Nom</label>
 	                			</div>
@@ -54,12 +54,20 @@ $(document).ready(function(){
 		                			<input id="nouveauClientNom" type="text" class="form-control" ng-model="client_nom" style="width:200px;"/>
 	                			</div>
 		                	</div>
-		                	<div id="tablesInlineBlock" style="width:50%;">
+		                	<div id="tablesInlineBlock" style="width:33%;">
 		                		<div  id="tablesBlock">
 		                			<label>Prénom</label>
 		                		</div>
 		                		<div id="tablesBlock" style="min-width: 250px;">
 		                			<input type="text" class="form-control"  ng-model="client_prenom" style="width:200px;"/>
+	                			</div>
+		                	</div>
+		                	<div id="tablesInlineBlock" style="width:32%;">
+		                		<div  id="tablesBlock">
+		                			<label>Email</label>
+		                		</div>
+		                		<div id="tablesBlock" style="min-width: 250px;">
+		                			<input type="text" class="form-control"  ng-model="client_email" style="width:300px;"/>
 	                			</div>
 		                	</div>
 		                </div>
@@ -95,7 +103,7 @@ $(document).ready(function(){
 		                			<label>Nom voie</label>
 		                		</div>
 		                		<div id="tablesBlock" style="min-width: 250px;">
-		                			<input id="nomVoie" type="text" class="form-control" ng-model="client_nomVoie"/>
+		                			<input id="nomVoie" type="text" class="form-control" ng-model="client_nomVoie" style="width:300px;"/>
 	                			</div>
 		                	</div>
 		                </div>
@@ -120,17 +128,21 @@ $(document).ready(function(){
 	                </div>
 	                <span class="input-group-btn">
 	                    <button class="btn btn-default"
-	                            ng-click="nouveau_client(client_nom, client_prenom, client_numVoie, client_typeVoie, client_nomVoie, client_codePostal, client_ville);">
+	                            ng-click="nouveau_client(client_nom, client_prenom, client_email, client_numVoie, client_typeVoie, client_nomVoie, client_codePostal, client_ville);">
 	                            Ajouter client
 	                    </button>
 	                </span>
 				</div>
+				
+				<!-- Tableau dynamique des clients -->
+				
 				<table id="tableClients" class="table table-striped">
 					<thead>
 						<tr>
 							<th>Nom</th>
 							<th>Prénom</th>
 							<th>Adresse</th>
+							<th>Email</th>
 							<th>Actions</th>
 						</tr>
 					</thead>
@@ -145,12 +157,16 @@ $(document).ready(function(){
 								 client.adresse.codePostal + " " + 
 								 client.adresse.ville}}
 							 </td>
+							 <td>{{client.email}}</td>
 							<td>					
 								<button class="btn btn-default" ng-click="modifier_client(client.idClient)">Modifier</button>
 								<button class="btn btn-danger" ng-click="supprimer_client(client.idClient);">Supprimer</button>
 							</td>
 						</tr>
 				</table>
+				
+				<!-- Fin du tableau dynamique des clients -->
+				
 			</div>
 		</div>
 			
@@ -159,7 +175,7 @@ $(document).ready(function(){
 				<label style="color:#c7b988;">Identité</label><br />
 			</div>
 			<div>
-				<div id="tablesInlineBlock" style="width:49%;">
+				<div id="tablesInlineBlock" style="width:33%;">
 					<div id="tablesBlock" style="display:none">
 						<input type="text" class="form-control"  ng-model="clientModif.idClient" style="width:200px;"/>
 					</div>
@@ -170,12 +186,20 @@ $(document).ready(function(){
 						<input type="text" class="form-control" ng-model="clientModif.nom" style="width:200px;" value=""/>
 					</div>
 				</div>
-				<div id="tablesInlineBlock" style="width:50%;">
+				<div id="tablesInlineBlock" style="width:33%;">
 					<div  id="tablesBlock">
 						<label>Prénom</label>
 					</div>
 					<div id="tablesBlock" style="min-width: 250px;">
 						<input type="text" class="form-control"  ng-model="clientModif.prenom" style="width:200px;"/>
+					</div>
+				</div>
+				<div id="tablesInlineBlock" style="width:33%;">
+					<div  id="tablesBlock">
+						<label>Email</label>
+					</div>
+					<div id="tablesBlock" style="min-width: 250px;">
+						<input type="text" class="form-control"  ng-model="clientModif.email" style="width:300px;"/>
 					</div>
 				</div>
 			</div>
@@ -237,7 +261,8 @@ $(document).ready(function(){
 					        ng-click="valider_modification(
 					        				clientModif.idClient, 
 					        				clientModif.nom, 
-					        				clientModif.prenom, 
+					        				clientModif.prenom,
+					        				clientModif.email,
 					        				clientModif.adresse.numeroVoie, 
 					        				clientModif.adresse.typeVoie, 
 					        				clientModif.adresse.nomVoie, 
@@ -260,7 +285,7 @@ $(document).ready(function(){
 				<label style="color:#c7b988;">Identité</label><br />
 			</div>
 			<div>
-				<div id="tablesInlineBlock" style="width:49%;">
+				<div id="tablesInlineBlock" style="width:33%;">
 					<div id="tablesBlock" style="display:none">
 						<input type="text" class="form-control"  ng-model="clientSuppr.idClient" style="width:200px;" readonly/>
 					</div>
@@ -271,12 +296,20 @@ $(document).ready(function(){
 						<input type="text" class="form-control" ng-model="clientSuppr.nom" style="width:200px;" readonly/>
 					</div>
 				</div>
-				<div id="tablesInlineBlock" style="width:50%;">
+				<div id="tablesInlineBlock" style="width:33%;">
 					<div  id="tablesBlock">
 						<label>Prénom</label>
 					</div>
 					<div id="tablesBlock" style="min-width: 250px;">
 						<input type="text" class="form-control"  ng-model="clientSuppr.prenom" style="width:200px;" readonly/>
+					</div>
+			   	</div>
+				<div id="tablesInlineBlock" style="width:33%;">
+					<div  id="tablesBlock">
+						<label>Email</label>
+					</div>
+					<div id="tablesBlock" style="min-width: 250px;">
+						<input type="text" class="form-control"  ng-model="clientSuppr.email" style="width:300px;" readonly/>
 					</div>
 			   	</div>
 			</div>

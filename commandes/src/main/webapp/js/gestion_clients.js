@@ -90,7 +90,7 @@ chezYenApp.controller("clientCtrl", function($scope, $http) {
 	   });
    }
    
-   $scope.valider_modification = function(id, nom, prenom, numVoie, typeVoie, nomVoie, codePostal, ville) {
+   $scope.valider_modification = function(id, nom, prenom, email, numVoie, typeVoie, nomVoie, codePostal, ville) {
 	   console.log("gestion_clients - Valider modification - id : " + id);
 	   if(id != null){
 		   $http.post('../gestClients/valider_modification', {
