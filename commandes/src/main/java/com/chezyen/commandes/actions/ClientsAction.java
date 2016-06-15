@@ -26,6 +26,7 @@ public class ClientsAction extends ActionSupport {
 	private int clientID;
 	private String clientNom;
 	private String clientPrenom;
+	private String clientEmail;
 	private int clientCodePostal;
 	private String clientNomVoie;
 	private String clientTypeVoie;
@@ -39,6 +40,8 @@ public class ClientsAction extends ActionSupport {
 	public void setClientNom(String clientNom) {this.clientNom = clientNom;}
 	public String getClientPrenom() {return clientPrenom;}
 	public void setClientPrenom(String clientPrenom) {this.clientPrenom = clientPrenom;}
+	public String getClientEmail() {return clientEmail;}
+	public void setClientEmail(String clientEmail) {this.clientEmail = clientEmail;}
 	public int getClientCodePostal() {return clientCodePostal;}
 	public void setClientCodePostal(int clientCodePostal) {this.clientCodePostal = clientCodePostal;}
 	public String getClientNomVoie() {return clientNomVoie;}
@@ -68,7 +71,7 @@ public class ClientsAction extends ActionSupport {
 		log.info("nouveauClient - nom : " + getClientNom());
 		Adresse adresse = new Adresse(getClientNomVoie(), getClientTypeVoie(), getClientNumeroVoie(), getClientCodePostal(), getClientVille());
 		log.info("numero adresse : " + getClientNumeroVoie() + ", " + getClientTypeVoie() + " " + getClientNomVoie() + " " + getClientCodePostal() + " " + getClientVille());
-		Client client = new Client(getClientNom(), getClientPrenom(), adresse, null);
+		Client client = new Client(getClientNom(), getClientPrenom(), getClientEmail(), adresse, null);
 		if(verificationNouveauClient(adresse, client)){
 			log.info("vérification OK");
 			this.client = getClientDAO().save(client);
@@ -119,6 +122,7 @@ public class ClientsAction extends ActionSupport {
 		client = client.setClient(getClientID(),
 								getClientNom(), 
 								getClientPrenom(),
+								getClientEmail(),
 								getClientNomVoie(), 
 								getClientTypeVoie(), 
 								getClientNumeroVoie(), 
