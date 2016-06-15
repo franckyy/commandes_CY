@@ -20,6 +20,15 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css">
 	<link type="text/css" rel="stylesheet" href="../css/gestion_produits.css" />
+	
+<script>
+$(document).ready(function(){
+	$("#nouveauProduit").on('click', function() {
+		console.log("clicked");
+		$("#panelNouveauClient").slideToggle(600);
+	});
+});
+</script>
 </head>
 <body>
 	<div id="chezYenBar">
@@ -30,5 +39,20 @@
 		<img id="right" src="../images/logo_stylise.png" class="img-responsive center-block"/>
 	</div>
 
+	<!-- Ajout nouveau produit -->
+	
+	<div class="container" ng-controller="produitCtrl">
+		<div id="firstRow" class="row">
+			<div class="col-sm-12" style="padding-right:30px;">
+				<div id="nouveauProduit" style="text-align:center;">
+					Créer un nouveau produit
+				</div>
+				<div id="panelNouveauProduit">
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<!-- Fin ajout nouveau produit -->
 </body>
 </html>

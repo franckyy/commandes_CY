@@ -137,33 +137,33 @@ chezYenApp.controller("clientCtrl", function($scope, $http) {
 //Ouverture popup
 function openPopUp(popID){
 	console.log('ouverture popUp ' + popID);
-	 var largeur_fenetre = $(window).width();
-	   	if(largeur_fenetre < 1500){
-			var popWidth = largeur_fenetre - largeur_fenetre * 0.1; //la largeur
-	   	} else {
-			var popWidth = largeur_fenetre - largeur_fenetre * 0.3; //la largeur
-	   	}
+	var largeur_fenetre = $(window).width();
+   	
+	if(largeur_fenetre < 1500){
+		var popWidth = largeur_fenetre - largeur_fenetre * 0.1; //la largeur
+   	} else {
+		var popWidth = largeur_fenetre - largeur_fenetre * 0.3; //la largeur
+   	}
 
-		//Faire apparaitre la pop-up
-		$('#' + popID).fadeIn().css({
-			'width': Number(popWidth)
-		});
+	//Faire apparaitre la pop-up
+	$('#' + popID).fadeIn().css({
+		'width': Number(popWidth)
+	});
 
-		//Récupération du margin, qui permettra de centrer la fenêtre - on ajuste de 80px en conformité avec le CSS
-		var popMargTop = ($('#' + popID).height() + 80) / 2;
-		var popMargLeft = ($('#' + popID).width() + 80) / 2;
+	//Récupération du margin, qui permettra de centrer la fenêtre - on ajuste de 80px en conformité avec le CSS
+	var popMargTop = ($('#' + popID).height() + 80) / 2;
+	var popMargLeft = ($('#' + popID).width() + 80) / 2;
 
-		//On affecte le margin
-		$('#' + popID).css({
-			'margin-top' : -popMargTop,
-			'margin-left' : -popMargLeft
-		});
-		
-		//Effet fade-in du fond opaque
-		$('body').append('<div id="fade"></div>'); //Ajout du fond opaque noir
-		//Apparition du fond - .css({'filter' : 'alpha(opacity=80)'}) pour corriger les bogues de IE
-		$('#fade').css({'filter' : 'alpha(opacity=80)'}).fadeIn();
-		
+	//On affecte le margin
+	$('#' + popID).css({
+		'margin-top' : -popMargTop,
+		'margin-left' : -popMargLeft
+	});
+	
+	//Effet fade-in du fond opaque
+	$('body').append('<div id="fade"></div>'); //Ajout du fond opaque noir
+	//Apparition du fond - .css({'filter' : 'alpha(opacity=80)'}) pour corriger les bogues de IE
+	$('#fade').css({'filter' : 'alpha(opacity=80)'}).fadeIn();
 }
 
 function fermeturePopUp(){

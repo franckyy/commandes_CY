@@ -4,3 +4,13 @@
 body {
 	background-color: #0a0905;
 }
+
+#panelNouveauProduit{
+	display:none;
+	margin-top:10px;
+	color:#fff8d7;
+}
+
+#firstRow {
+	margin-top:50px;
+}
