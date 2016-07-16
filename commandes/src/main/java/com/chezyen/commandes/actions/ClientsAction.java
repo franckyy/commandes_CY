@@ -62,7 +62,7 @@ public class ClientsAction extends ActionSupport {
 	public List<Client> getClients() {return clients;}
 	
 	public String repertoire() {		
-		log.info("répertoire client");
+		log.info("ClientsAction - répertoire client");
 		this.clients = clientDAO.findAll();
 		return SUCCESS;
 	}
@@ -71,7 +71,7 @@ public class ClientsAction extends ActionSupport {
 		log.info("nouveauClient - nom : " + getClientNom());
 		Adresse adresse = new Adresse(getClientNomVoie(), getClientTypeVoie(), getClientNumeroVoie(), getClientCodePostal(), getClientVille());
 		log.info("numero adresse : " + getClientNumeroVoie() + ", " + getClientTypeVoie() + " " + getClientNomVoie() + " " + getClientCodePostal() + " " + getClientVille());
-		Client client = new Client(getClientNom(), getClientPrenom(), getClientEmail(), adresse, null);
+		Client client = new Client(getClientNom(), getClientPrenom(), null, adresse, null);
 		if(verificationNouveauClient(adresse, client)){
 			log.info("vérification OK");
 			this.client = getClientDAO().save(client);

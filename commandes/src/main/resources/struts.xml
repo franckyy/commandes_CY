@@ -43,7 +43,6 @@
 		</action>
 
 		<!-- gestion des clients -->
-
 		<action name="gestClients/nouveau" class="com.chezyen.commandes.actions.ClientsAction" method="nouveauClient">
 			<interceptor-ref name="defaultStack"/>
 			<interceptor-ref name="json"/>
