@@ -164,7 +164,7 @@
       				<container>
 	        			<containerId>tomcat8x</containerId>
 	        			<type>installed</type>
-	    				<home>${catalina.home}</home>
+	    				<home>/opt/tomcat/</home>
     				</container>
     				<configuration>
     					<type>existing</type>
