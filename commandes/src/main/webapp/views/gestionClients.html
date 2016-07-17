@@ -142,20 +142,20 @@
 						<div>
 							<div id="tablesInlineBlock" style="width: 49%;">
 								<div id="tablesBlock">
-									<label>Téléphone</label>
+									<label>Email</label>
 								</div>
 								<div id="tablesBlock" style="min-width: 270px;">
 									<input id="nouveauClientEmail" type="text" class="form-control"
-										ng-model="client_telephone" style="width: 200px;" />
+										ng-model="client_email" style="width: 200px;" />
 								</div>
 							</div>
 							<div id="tablesInlineBlock" style="width: 50%;">
 								<div id="tablesBlock">
-									<label>Email</label>
+									<label>Téléphone</label>
 								</div>
 								<div id="tablesBlock" style="min-width: 250px;">
 									<input type="text" class="form-control"
-										ng-model="client_email" style="width: 200px;" />
+										ng-model="client_telephone" style="width: 200px;" />
 								</div>
 							</div>
 						</div>
@@ -282,13 +282,40 @@
 					</div>
 				</div>
 			</div>
+			<div style="text-align: center;">
+				<label style="color: #c7b988;">Contacts</label><br />
+			</div>
+			<div>
+				<div id="tablesInlineBlock" style="width: 49%;">
+					<div id="tablesBlock">
+						<label>Email</label>
+					</div>
+					<div id="tablesBlock" style="min-width: 60px;">
+						<input id="email" type="text" class="form-control"
+							ng-model="clientModif.email"
+							style="width: 110px;" />
+					</div>
+				</div>
+				<div id="tablesInlineBlock" style="width: 50%;">
+					<div id="tablesBlock">
+						<label>Téléphone</label>
+					</div>
+					<div id="tablesBlock" style="min-width: 60px;">
+						<input id="telephone" type="text" class="form-control"
+							ng-model="clientModif.telephone"
+							style="width: 110px;" />
+					</div>
+				</div>
+			</div>
 			<div style="margin-top: 15px">
 				<span class="input-group-btn">
 					<button id="validerModif" class="btn btn-success"
 						ng-click="valider_modification(
 					        				clientModif.idClient, 
 					        				clientModif.nom, 
-					        				clientModif.prenom, 
+					        				clientModif.prenom,  
+					        				clientModif.email, 
+					        				clientModif.telephone,
 					        				clientModif.adresse.numeroVoie, 
 					        				clientModif.adresse.typeVoie, 
 					        				clientModif.adresse.nomVoie, 

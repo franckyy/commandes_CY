@@ -71,7 +71,7 @@ public class Client implements IGenericEntity {
 		return this.getIdClient();
 	}
 	
-	public Client setClient(int id, String nom, String prenom, String telephone, String email, String nomVoie, String typeVoie, String numeroVoie, int codePostal, String ville) {
+	public Client setClient(int id, String nom, String prenom, String email, String telephone, String nomVoie, String typeVoie, String numeroVoie, int codePostal, String ville) {
 		Adresse adresse = new Adresse(nomVoie, typeVoie, numeroVoie, codePostal, ville);
 		Client client = new Client(id, nom, prenom, email, telephone, adresse);
 		return client;
