@@ -93,7 +93,8 @@ chezYenApp.controller("clientCtrl", function($scope, $http) {
    
    $scope.valider_modification = function(id, nom, prenom, email, telephone, numVoie, typeVoie, nomVoie, codePostal, ville) {
 	   console.log("gestion_clients - Valider modification - id : " + id);
-	   if(id != null){
+	 //vérification id différent de null ou nom différent de vide ou prénom différent de vide
+	   if(id != null && nom != "" && prenom != ""){ 
 		   $http.post('../gestClients/valider_modification', {
 			   	"clientID": id,
 			   	"clientNom": nom,

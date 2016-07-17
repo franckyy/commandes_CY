@@ -6,6 +6,7 @@ import java.util.Set;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import com.chezyen.commandes.commons.Erreurs;
 import com.chezyen.commandes.dao.IProduitDAO;
 import com.chezyen.commandes.metier.Produit;
 import com.chezyen.commandes.metier.ProduitConditionne;
@@ -45,16 +46,30 @@ public class ProduitsAction extends ActionSupport {
 	private List<Produit> produits;
 	public List<Produit> getProduits() {return produits;}
 	
-	public String index() {
-		log.info("Appel de index");
-		
+	public String repertoire() {
+		log.info("ProduitsAction - repertoire");
+		this.produits = produitDAO.findAll();
 		return SUCCESS;
 	}
 	
-	public String gestionCommandes() {
-		log.info("IndexAction - gestionCommandes");
-		this.produits = produitDAO.findAll();
-		return SUCCESS;
+	public String nouveauProduit() {
+		log.info("ProduitsAction - nouveauProduit");
+		Produit produit = new Produit(getProduitDesignation(), getProduitPrix(), getProduitStock());
+		if(verificationNouveauProduit(getProduitDesignation())){
+			this.produit = produitDAO.save(produit);
+			return SUCCESS;
+		} else {
+			Erreurs err = new Erreurs("NewProdErr", "erreur nouveau produit");
+			return ERROR;
+		}
+	}
+	
+	private boolean verificationNouveauProduit(String designation) {
+		if("".equals(designation)){
+			return false;
+		}
+		
+		return true;
 	}
 	
 	public String save() {

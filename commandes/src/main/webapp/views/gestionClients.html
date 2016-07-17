@@ -43,11 +43,10 @@
 		<img id="right" src="../images/logo_stylise.png"
 			class="img-responsive center-block" />
 	</div>
-	<div class="container" ng-controller="clientCtrl">
-		<div id="firstRow" class="row">
-			<div class="col-sm-12" style="padding-right: 30px;">
-				<div id="nouveauClient" style="text-align: center;">Créer un
-					nouveau client</div>
+		<div class="container" ng-controller="clientCtrl">
+			<div id="firstRow" class="row">
+				<div class="col-sm-12" style="padding-right: 30px;">
+				<div id="nouveauClient" style="text-align: center;">Créer un nouveau client</div>
 				<div id="panelNouveauClient">
 					<div class="encadre" style="height: 130px; min-width: 600px;">
 						<div style="text-align: center;">
@@ -92,7 +91,7 @@
 								<div id="tablesBlock">
 									<label>Voie</label>
 								</div>
-								<div id="tablesBlock" style="min-width: 170px;">
+								<div id="tablesBlock" style="min-width: 150px;">
 									<select id="typeVoie" class="form-control"
 										ng-model="client_typeVoie" style="width: 150px;">
 										<option>Impasse</option>
@@ -145,7 +144,7 @@
 									<label>Email</label>
 								</div>
 								<div id="tablesBlock" style="min-width: 270px;">
-									<input id="nouveauClientEmail" type="text" class="form-control"
+									<input id="nouveauClientEmail" type="email" class="form-control"
 										ng-model="client_email" style="width: 200px;" />
 								</div>
 							</div>
@@ -155,7 +154,7 @@
 								</div>
 								<div id="tablesBlock" style="min-width: 250px;">
 									<input type="text" class="form-control"
-										ng-model="client_telephone" style="width: 200px;" />
+										ng-model="client_telephone" maxlength="10" style="width: 200px;" />
 								</div>
 							</div>
 						</div>
@@ -291,7 +290,7 @@
 						<label>Email</label>
 					</div>
 					<div id="tablesBlock" style="min-width: 60px;">
-						<input id="email" type="text" class="form-control"
+						<input id="email" type="email" class="form-control"
 							ng-model="clientModif.email"
 							style="width: 110px;" />
 					</div>

@@ -24,6 +24,10 @@ public class Produit implements IGenericEntity{
 	private int stock;	
 	
 	public Produit() {}
+	public Produit(String designation, double prix, int stock) {
+		this(null, designation, prix, stock);
+		log.info("Creation produit : " + getDesignation());
+	}
 	public Produit(Set<ProduitConditionne> produitsConditionnes, String designation, double prix, int stock) {
 		super();
 		this.produitsConditionnes = produitsConditionnes;

@@ -4,3 +4,51 @@
 body {
 	background-color: #0a0905;
 }
+
+#firstRow {
+	margin-top:50px;
+}
+#panelNouveauProduit{
+	display:none;
+	margin-top:10px;
+	color:#fff8d7;
+}
+#nouveauProduit {
+	min-width:600px;
+	background-color: #c7b988;
+	color:#0a0905;
+	-webkit-border-radius:25px;
+    border-radius: 25px;
+    border: 2px solid #c90016; 
+}
+.encadre {
+	-webkit-border-radius:25px;
+    border-radius: 25px;
+    border: 2px solid #fff8d7;
+    padding: 20px;
+    margin-bottom:10px;
+}
+
+#tablesInlineBlock {
+	display:inline-block;
+}
+
+#tablesBlock {
+	display:block;
+}
+
+.table-striped>tbody>tr:nth-child(even)>td, 
+.table-striped>tbody>tr:nth-child(even)>th {
+   background-color: #fff8d7;
+ }
+ 
+ #tableProduits {	
+ 	min-width:600px;
+ 	-webkit-border-radius:25px;
+    margin-top:10px;
+ }
+ 
+ thead {
+ 	color:#c7b988;
+    border: 2px solid #fff8d7; 
+ }

@@ -1,8 +1,6 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="chezYenApp">
 <head>
-<meta charset="ISO-8859-1">
-<title>Gestion produits</title>
 	<meta charset="ISO-8859-1">
 	<title>Gestion des produits</title>
 	<link type="text/css" rel="stylesheet" href="../css/bootstrap.css" />
@@ -20,6 +18,14 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css">
 	<link type="text/css" rel="stylesheet" href="../css/gestion_produits.css" />
+	
+	<script>
+		$(document).ready(function() {
+			$("#nouveauProduit").on('click', function() {
+				$("#panelNouveauProduit").slideToggle(600);
+			});
+		});
+	</script>
 </head>
 <body>
 	<div id="chezYenBar">
@@ -29,6 +35,75 @@
 		</div>
 		<img id="right" src="../images/logo_stylise.png" class="img-responsive center-block"/>
 	</div>
-
+	<div class="container" ng-controller="produitCtrl">
+		<div id="fisrtRow" class="row">
+			<div class="col-sm-12" style="padding-right: 30px;">
+				<div id="nouveauProduit" style="text-align: center;">Créer un nouveau produit</div>
+				<div id="panelNouveauProduit">
+					<div class="encadre" style="height: 180px; min-width: 600px;">
+						<div style="text-align: center;">
+							<label style="color: #c7b988;">Produit</label><br />
+						</div>
+						<div>
+							<div id="tablesInlineBlock" style="width: 40%;">
+								<div id="tablesBlock">
+									<label>Désignation</label>
+								</div>
+								<div id="tablesBlock" style="min-width: 270px;">
+									<input id="nouveauProduitDesignation" type="text" class="form-control"
+										ng-model="produit_designation" style="width: 300px;" />
+								</div>
+							</div>
+							<div id="tablesInlineBlock" style="width: 30%;">
+								<div id="tablesBlock">
+									<label>Prix</label>
+								</div>
+								<div id="tablesBlock" style="min-width: 270px;">
+									<input id="nouveauProduitPrix" type="number" class="form-control"
+										ng-model="produit_prix" style="width: 200px;" />
+								</div>
+							</div>
+							<div id="tablesInlineBlock" style="width: 29%;">
+								<div id="tablesBlock">
+									<label>Stock</label>
+								</div>
+								<div id="tablesBlock" style="min-width: 270px;">
+									<input id="nouveauProduitStock" type="number" class="form-control"
+										ng-model="produit_stock" maxlength=4 style="width: 100px;" />
+								</div>
+							</div>
+							<span class="input-group-btn">
+								<button class="btn btn-default"
+									ng-click="nouveau_produit(produit_designation, produit_prix, produit_stock);">
+									Ajouter produit</button>
+							</span>
+						</div>
+					</div>
+				</div>
+				<table id="tableProduits" class="table table-striped">
+					<thead>
+						<tr>
+							<th>Désignation</th>
+							<th>Prix</th>
+							<th>Stock</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr ng-repeat="produit in produits">
+							<td style="display: none;" ng-model="idProduit">{{produit.idProduit}}</td>
+							<td>{{erreurs.message}}{{produit.designation}}</td>
+							<td>{{produit.prix}}</td>
+							<td>{{produit.stock}}</td>
+							<td>
+								<button class="btn btn-default"
+									ng-click="modifier_produit(produit.idProduit)">Modifier</button>
+								<button class="btn btn-danger"
+									ng-click="supprimer_produit(produit.idProduit);">Supprimer</button>
+							</td>
+						</tr>
+				</table>
+			</div>
+		</div>
+	</div>
 </body>
 </html>

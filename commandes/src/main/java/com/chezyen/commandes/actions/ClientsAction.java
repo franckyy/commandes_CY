@@ -76,7 +76,7 @@ public class ClientsAction extends ActionSupport {
 		Adresse adresse = new Adresse(getClientNomVoie(), getClientTypeVoie(), getClientNumeroVoie(), getClientCodePostal(), getClientVille());
 		log.info("numero adresse : " + getClientNumeroVoie() + ", " + getClientTypeVoie() + " " + getClientNomVoie() + " " + getClientCodePostal() + " " + getClientVille());
 		Client client = new Client(getClientNom(), getClientPrenom(), getClientEmail(), getClientTelephone(), adresse, null);
-		if(verificationNouveauClient(adresse, client)){
+		if(verificationNouveauClient(client)){
 			log.info("vérification OK");
 			this.client = getClientDAO().save(client);
 			return SUCCESS;
@@ -86,11 +86,15 @@ public class ClientsAction extends ActionSupport {
 		}
 	}
 	
-	private boolean verificationNouveauClient(Adresse adresse, Client client) {
+	private boolean verificationNouveauClient(Client client) {
 		this.clients = clientDAO.findAll();
 		for(Client cl : clients) {
-			if(adresse.getNomVoie().equals(cl.getAdresse().getNomVoie())){
-				log.info("Nom de voie identique trouvé. Nom : " + adresse.getNomVoie());
+			//cas de clients ayant même nom et même prénom
+			if(client.getNom().equals(cl.getNom()) && client.getPrenom().equals(cl.getPrenom())){
+				log.info("client déjà en base. Nom : " + client.getNom() + ", prénom : " + client.getPrenom());
+				return false;
+			} else if ("".equals(client.getNom()) && "".equals(client.getPrenom())) {
+				log.info("Nom et prénom vides. Nom : " + client.getNom() + ", prénom : " + client.getPrenom());
 				return false;
 			}
 		}
