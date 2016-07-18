@@ -16,7 +16,7 @@ public class Client implements IGenericEntity {
 
 	private static Logger log = LogManager.getLogger(Client.class);
 
-	@Id@GeneratedValue
+	@Id @GeneratedValue
 	private int idClient;
 	private String nom;
 	private String prenom;

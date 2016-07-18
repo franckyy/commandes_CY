@@ -4,7 +4,6 @@
 	<meta charset="ISO-8859-1">
 	<title>Gestion des produits</title>
 	<link type="text/css" rel="stylesheet" href="../css/bootstrap.css" />
-	<link type="text/css" rel="stylesheet" href="../css/chezYenApp.css" />
 	<link type="text/css" rel="stylesheet" href="../css/bootstrap-theme" />
 	<link type="text/css" rel="stylesheet" href="../css/header.css" />
 	<script type="text/javascript" src="../js/jquery-2.2.0.js"></script>
@@ -40,7 +39,7 @@
 			<div class="col-sm-12" style="padding-right: 30px;">
 				<div id="nouveauProduit" style="text-align: center;">Créer un nouveau produit</div>
 				<div id="panelNouveauProduit">
-					<div class="encadre" style="height: 180px; min-width: 600px;">
+					<div class="encadre" style="height: 120px; min-width: 600px;">
 						<div style="text-align: center;">
 							<label style="color: #c7b988;">Produit</label><br />
 						</div>
@@ -72,13 +71,13 @@
 										ng-model="produit_stock" maxlength=4 style="width: 100px;" />
 								</div>
 							</div>
-							<span class="input-group-btn">
-								<button class="btn btn-default"
-									ng-click="nouveau_produit(produit_designation, produit_prix, produit_stock);">
-									Ajouter produit</button>
-							</span>
 						</div>
 					</div>
+					<span class="input-group-btn">
+						<button class="btn btn-default"
+							ng-click="nouveau_produit(produit_designation, produit_prix, produit_stock);">
+							Ajouter produit</button>
+					</span>
 				</div>
 				<table id="tableProduits" class="table table-striped">
 					<thead>
@@ -104,6 +103,49 @@
 				</table>
 			</div>
 		</div>
+		
+		<div id="popUpModif" class="popup_block" ng-model="produitModif">
+			<div style="text-align: center;">
+				<label style="color: #c7b988;">Produit</label><br />
+			</div>
+			<div>
+				<div id="tablesInlineBlock" style="width: 49%;">
+					<div id="tablesBlock" style="display: none">
+						<input type="text" class="form-control"
+							ng-model="produitModif.idProduit" style="width: 200px;" />
+					</div>
+					<div id="tablesBlock">
+						<label>Désignation</label>
+					</div>
+					<div id="tablesBlock" style="min-width: 270px;">
+						<input type="text" class="form-control" ng-model="produitModif.designation"
+							style="width: 200px;" value="" />
+					</div>
+				</div>
+				<div id="tablesInlineBlock" style="width: 50%;">
+					<div id="tablesBlock">
+						<label>Prix</label>
+					</div>
+					<div id="tablesBlock" style="min-width: 250px;">
+						<input type="text" class="form-control"
+							ng-model="produitModif.prix" style="width: 200px;" />
+					</div>
+				</div>
+			</div>
+			
+			<div style="margin-top: 15px">
+				<span class="input-group-btn">
+					<button id="validerModifProduit" class="btn btn-success"
+						ng-click="valider_modification(
+					        				produitModif.idProduit,
+					        				produitModif.designation,
+					        				produitModif.prix, 
+					        				produitModif.stock);">
+						Valider</button>
+					<button id="annulerModif" class="btn btn-warning"
+						style="margin-left: 15px">Annuler</button>
+				</span>
+			</div>
 	</div>
 </body>
 </html>

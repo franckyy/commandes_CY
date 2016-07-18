@@ -16,7 +16,7 @@ public class Produit implements IGenericEntity{
 	private static Logger log = LogManager.getLogger(Produit.class);
 	
 	@Id @GeneratedValue
-	private int id;
+	private int idProduit;
 	@OneToMany(mappedBy="produit")
 	private Set<ProduitConditionne> produitsConditionnes;
 	private String designation;
@@ -26,6 +26,11 @@ public class Produit implements IGenericEntity{
 	public Produit() {}
 	public Produit(String designation, double prix, int stock) {
 		this(null, designation, prix, stock);
+		log.info("Creation produit : " + getDesignation());
+	}
+	public Produit(int id, String designation, double prix, int stock) {
+		this(null, designation, prix, stock);
+		this.idProduit = id;
 		log.info("Creation produit : " + getDesignation());
 	}
 	public Produit(Set<ProduitConditionne> produitsConditionnes, String designation, double prix, int stock) {
@@ -38,8 +43,8 @@ public class Produit implements IGenericEntity{
 		log.info("Creation produit : " + getDesignation());
 	}
 	
-	public int getId() {return id;}
-	public void setId(int id) {this.id = id;}
+	public int getIdProduit() {return idProduit;}
+	public void setIdProduit(int idProduit) {this.idProduit = idProduit;}
 	public String getDesignation() {return designation;}
 	public void setDesignation(String designation) {this.designation = designation;}
 	public double getPrix() {return prix;}
@@ -52,6 +57,11 @@ public class Produit implements IGenericEntity{
 	@Override
 	public int fetchPrimaryKey() {
 		log.info("Produit : fetchPrimaryKey");
-		return getId();
+		return getIdProduit();
+	}
+	
+	public Produit setProduit(int id, String designation, double prix, int stock) {
+		Produit produit = new Produit(id, designation, prix, stock);
+		return produit;
 	}
 }

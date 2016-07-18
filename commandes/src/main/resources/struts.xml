@@ -21,7 +21,7 @@
 		<action name="gestProduits/repertoire" class="com.chezyen.commandes.actions.ProduitsAction" method="repertoire">
 			<result name="success" type="json">
 				<param name="includeProperties">
-					^produits\[\d\]\.id$,
+					^produits\[\d\]\.idProduit$,
 					^produits\[\d\]\.designation$,
 					^produits\[\d\]\.prix$,
 					^produits\[\d\]\.stock
@@ -41,6 +41,32 @@
 				</param>
 			</result>
 		</action>		
+		
+		<action name="gestProduits/modifier" class="com.chezyen.commandes.actions.ProduitsAction" method="modification">
+			<interceptor-ref name="defaultStack"/>
+			<interceptor-ref name="json"/>
+			<result name="success" type="json">
+				<param name="includeProperties">
+					^produit\.idProduit$,
+					^produit\.designation$,
+					^produit\.prix$,
+					^produit\.stock$
+				</param>
+			</result>
+ 		</action>
+ 		
+ 		<action name="gestProduits/valider_modification" class="com.chezyen.commandes.actions.ProduitsAction" method="valider_modification">
+ 			<interceptor-ref name="defaultStack"/>
+ 			<interceptor-ref name="json"/>
+ 			<result name="success" type="json">
+ 				<param name="includeProperties">
+ 					^produits\[\d\]\.idProduit$,
+ 					^produits\[\d\]\.designation$,
+ 					^produits\[\d\]\.prix$,
+ 					^produits\[\d\]\.stock$
+ 				</param>
+ 			</result>
+ 		</action>
 		
 		<!-- gestion des clients -->
 		<action name="gestClients/nouveau" class="com.chezyen.commandes.actions.ClientsAction" method="nouveauClient">

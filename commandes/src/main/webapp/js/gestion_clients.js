@@ -78,7 +78,7 @@ chezYenApp.controller("clientCtrl", function($scope, $http) {
 	   console.log("modifier_client id : " + idClient);
 	   $http.post('../gestClients/modifier', {
 		   "clientID":idClient
-	   }).then(function successCallbak(response){
+	   }).then(function successCallback(response){
 		   	$scope.clientModif = response.data.client;
 		   	console.log("succes modification client - nom : " + $scope.clientModif.nom);
 		   	

@@ -72,6 +72,25 @@ public class ProduitsAction extends ActionSupport {
 		return true;
 	}
 	
+	public String modification() {
+		log.info("ProduitsAction - modification - produitID : " + getProduitID());
+		this.produit = produitDAO.findByID(getProduitID());
+		log.info("ProduitsAction - modification - désignation  : " + this.produit.getDesignation());
+		return SUCCESS;
+	}
+	
+	public String valider_modification() {
+		log.info("ProduitsAction - valider_modification - produitID : " + getProduitID());
+		Produit produit = new Produit();
+		log.info("ProduitsAction - valider_modification - produit id : " + produit.getIdProduit() + ", attr produitID : " + getProduitID());
+		produit = produit.setProduit(getProduitID(), getProduitDesignation(), getProduitPrix(), getProduitStock());
+		log.info("ProduitsAction - valider_modification - désignation : " + getProduitDesignation() + "id produit : " + produit.getIdProduit());
+		this.produit = produitDAO.save(produit);
+		log.info("ProduitsAction - save modified produit - désignation : " + this.produitDesignation + ", id : " + getProduitID());
+		this.produits = produitDAO.findAll();
+		return SUCCESS;
+	}
+	
 	public String save() {
 		log.info("IndexAction - save");
 		this.produit = produitDAO.save(new Produit(

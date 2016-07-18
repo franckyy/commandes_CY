@@ -126,7 +126,7 @@ public class ClientsAction extends ActionSupport {
 	public String valider_modification() {
 		log.info("ClientsAction - valider_modification");
 		Client client = new Client();
-		log.info("ClientsAction - valider_modification - client id : " + client.getIdClient() + "attr clientID : " + getClientID());
+		log.info("ClientsAction - valider_modification - client id : " + client.getIdClient() + ", attr clientID : " + getClientID());
 		client = client.setClient(getClientID(),
 								getClientNom(), 
 								getClientPrenom(),
