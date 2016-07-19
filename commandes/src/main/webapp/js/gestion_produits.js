@@ -64,6 +64,38 @@ chezYenApp.controller("produitCtrl", function($scope, $http) {
 	   fermeturePopUp();
    }
    
+   $scope.supprimer_produit = function(id){
+	   console.log("gestion_produits - supprimer_produit - id : " + id);
+	   $http.post('../gestProduits/supprimer_produit', {
+		   "produitID": id
+	   }).then(function successCallback(response) {
+		   	console.log("gestion_produits - suppression du produit");
+		   	$scope.produitSuppr = response.data.produit;
+			console.log("succes suppression produit - designation : " + $scope.produitSuppr.designation);
+			
+			openPopUp('popUpSuppr');
+						
+			return false;
+	   });
+   }
+   
+   $scope.valider_suppression = function(id) {
+	   console.log("gestion_produits - valider_suppression - id : " + id);
+	   
+	   if(id != null){
+		   $http.post('../gestProduits/valider_suppression', {
+			   "produitID": id
+		   }).then(function successCallback(response){
+			   console.log("gestion_produits - validation de la suppression du produit");
+			   $scope.produits = response.data.produits;
+		   });
+   		} else {
+
+ 		   console.log("impossible suppression -> produit null");
+ 	   }
+	   fermeturePopUp();
+   }
+   
 	//Fermeture de la pop-up et du fond
 	$('a.close, #annulerModif, #annulerSuppr').on('click', function() { //Au clic sur le bouton ou sur le calque...
 	   	fermeturePopUp();

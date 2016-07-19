@@ -8,6 +8,7 @@ import org.apache.logging.log4j.Logger;
 
 import com.chezyen.commandes.commons.Erreurs;
 import com.chezyen.commandes.dao.IProduitDAO;
+import com.chezyen.commandes.metier.Client;
 import com.chezyen.commandes.metier.Produit;
 import com.chezyen.commandes.metier.ProduitConditionne;
 import com.opensymphony.xwork2.ActionSupport;
@@ -88,6 +89,22 @@ public class ProduitsAction extends ActionSupport {
 		this.produit = produitDAO.save(produit);
 		log.info("ProduitsAction - save modified produit - désignation : " + this.produitDesignation + ", id : " + getProduitID());
 		this.produits = produitDAO.findAll();
+		return SUCCESS;
+	}
+	
+	public String suppression(){
+		log.info("ProduitsActions - suppression - idProduit : " + getProduitID());
+		this.produit = produitDAO.findByID(getProduitID());
+		log.info("ProduitsActions - suppression - désignation : " + getProduitDesignation());		
+		
+		return SUCCESS;
+	}
+	
+	public String valider_suppression(){
+ 		log.info("ProduitsAction - valider_suppression - id : " + getProduitID());
+ 		Produit produit = new Produit();
+ 		produit = produitDAO.remove(getProduitID());
+ 		this.produits = produitDAO.findAll();
 		return SUCCESS;
 	}
 	
