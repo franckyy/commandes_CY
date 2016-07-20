@@ -93,10 +93,11 @@ public class ClientsAction extends ActionSupport {
 			if(client.getNom().equals(cl.getNom()) && client.getPrenom().equals(cl.getPrenom())){
 				log.info("client déjà en base. Nom : " + client.getNom() + ", prénom : " + client.getPrenom());
 				return false;
-			} else if ("".equals(client.getNom()) && "".equals(client.getPrenom())) {
-				log.info("Nom et prénom vides. Nom : " + client.getNom() + ", prénom : " + client.getPrenom());
-				return false;
 			}
+		}
+		if ("".equals(client.getNom()) && "".equals(client.getPrenom())) {
+			log.info("Nom et prénom vides. Nom : " + client.getNom() + ", prénom : " + client.getPrenom());
+			return false;
 		}
 		return true;
 	}

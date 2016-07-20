@@ -66,4 +66,30 @@ public class ConditionnementsAction extends ActionSupport{
 		this.conditionnements = conditionnementDAO.findAll();
 		return SUCCESS;
 	}
+	
+	public String nouveauConditionnement() {
+		log.info("ConditionnementsAction - nouveauConditionnement - désignation : " + getConditionnementDesignation());
+		Conditionnement conditionnement = new Conditionnement(getConditionnementDesignation(), getConditionnementQuantite());
+		if (verification_nouveau_conditionnement(conditionnement)){
+			this.conditionnement = conditionnementDAO.save(conditionnement);
+		}
+		return SUCCESS;
+	}
+	
+	private boolean verification_nouveau_conditionnement(Conditionnement conditionnement){
+		this.conditionnements = conditionnementDAO.findAll();
+		//cas de conditionnements ayant même désignation
+		for(Conditionnement cond : conditionnements){
+			if(conditionnement.getDesignation().equals(cond.getDesignation())){
+				log.info("la désignation de ce conditionnement est déjà en base de données");
+				return false;
+			} 
+		}
+		if ("".equals(conditionnement.getDesignation()) && "".equals(conditionnement.getQuantite())) {
+			log.info("Ce coditionnement possède une désignation ou une quatité vide.");
+			return false;
+		}
+		//si tous les tests sont OK
+		return true;
+	}
 }
