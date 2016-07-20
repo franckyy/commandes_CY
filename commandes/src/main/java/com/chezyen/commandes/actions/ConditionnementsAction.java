@@ -92,4 +92,18 @@ public class ConditionnementsAction extends ActionSupport{
 		//si tous les tests sont OK
 		return true;
 	}
+	
+	public String suppression() {
+		log.info("ConditionnementsAction - suppression - id : " + getConditionnementID());
+		this.conditionnement = conditionnementDAO.findByID(getConditionnementID());
+		
+		return SUCCESS;
+	}
+	
+	public String valider_suppression() {
+		log.info("ConditionnementsAction - valider_suppression - id : " + getConditionnementID());
+		Conditionnement conditionnement = conditionnementDAO.remove(getConditionnementID());
+		this.conditionnements = conditionnementDAO.findAll();
+		return SUCCESS;
+	}
 }

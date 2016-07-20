@@ -64,6 +64,30 @@
         	</result>
         </action>
         
+        <action name="gestConditionnements/supprimer" class="com.chezyen.commandes.actions.ConditionnementsAction" method="suppression">
+        	<interceptor-ref name="defaultStack"/>
+        	<interceptor-ref name="json"/>
+        	<result name="success" type="json">
+        		<param name="includeProperties">
+        			^conditionnement\.idConditionnement$,
+        			^conditionnement\.designation$,
+        			^conditionnement\.quantite$
+        		</param>
+        	</result>
+        </action>
+        
+        <action name="gestConditionnements/valider_suppression" class="com.chezyen.commandes.actions.ConditionnementsAction" method="valider_suppression">
+        	<interceptor-ref name="defaultStack"/>
+        	<interceptor-ref name="json"/>
+        	<result name="success" type="json">
+        		<param name="includeProperties">
+        			^conditionnements\[\d\]\.idConditionnement$,
+        			^conditionnements\[\d\]\.designation$,
+        			^conditionnements\[\d\]\.quantite$
+        		</param>
+        	</result>
+        </action>
+        
         <!-- Gestion des produits -->
         
 		<action name="gestProduits/repertoire" class="com.chezyen.commandes.actions.ProduitsAction" method="repertoire">
