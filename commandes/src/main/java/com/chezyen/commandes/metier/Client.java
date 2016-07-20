@@ -28,7 +28,7 @@ public class Client implements IGenericEntity {
 	private Set<Commande> commandes;
 	
 	public Client() {super();}
-	//Constructeur sans la commande
+	//Constructeur sans la commande et sans id
 	public Client(String nom, String prenom, String email, String telephone, Adresse adresse) {
 		this(nom, prenom, email, telephone, adresse, null);
 	}

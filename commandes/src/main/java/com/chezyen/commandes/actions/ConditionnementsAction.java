@@ -24,16 +24,16 @@ public class ConditionnementsAction extends ActionSupport{
 	public void setConditionnementDAO(IConditionnementDAO conditionnementDAO) {this.conditionnementDAO = conditionnementDAO;}
 
 	private int conditionnementID;
-	private String designation;
-	private int quantite;
+	private String conditionnementDesignation;
+	private int conditionnementQuantite;
 	private Set<ProduitConditionne> produitsConditionnes;
 	
 	public int getConditionnementID() {return conditionnementID;}
 	public void setConditionnementID(int conditionnementID) {this.conditionnementID = conditionnementID;}
-	public String getDesignation() {return designation;}
-	public void setDesignation(String designation) {this.designation = designation;}
-	public int getQuantite() {return quantite;}
-	public void setQuantite(int quantite) {this.quantite = quantite;}
+	public String getConditionnementDesignation() {return conditionnementDesignation;}
+	public void setConditionnementDesignation(String conditionnementDesignation) {this.conditionnementDesignation = conditionnementDesignation;}
+	public int getConditionnementQuantite() {return conditionnementQuantite;}
+	public void setConditionnementQuantite(int conditionnementQuantite) {this.conditionnementQuantite = conditionnementQuantite;}
 	public Set<ProduitConditionne> getProduitsConditionnes() {return produitsConditionnes;}
 	public void setProduitsConditionnes(Set<ProduitConditionne> produitsConditionnes) {this.produitsConditionnes = produitsConditionnes;}
 
@@ -54,6 +54,16 @@ public class ConditionnementsAction extends ActionSupport{
 		log.info("ConditionnementsAction - modification - id : " + getConditionnementID());
 		this.conditionnement = conditionnementDAO.findByID(getConditionnementID());
 		log.info("ConditionnementsAction - modification - désignation : " + this.conditionnement.getDesignation());
+		return SUCCESS;
+	}
+	
+	public String valider_modification() {
+		log.info("ConditionnementsAction - valider_modification - id : " + getConditionnementID());
+		Conditionnement conditionnement = new Conditionnement(getConditionnementID(), getConditionnementDesignation(), getConditionnementQuantite());
+		log.info("ConditionnementsAction- valider_modification - nouveau conditonnement - id " + getConditionnementID() + ", désignation : " + getConditionnementDesignation() + ", quantité : " + getConditionnementQuantite());
+		this.conditionnement = conditionnementDAO.save(conditionnement);
+		log.info("ConditionnementsAction - valider_modification - designation du conditonnement modifié : " + this.conditionnement.getDesignation());
+		this.conditionnements = conditionnementDAO.findAll();
 		return SUCCESS;
 	}
 }

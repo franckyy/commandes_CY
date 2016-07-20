@@ -22,7 +22,18 @@ public class Conditionnement implements IGenericEntity {
 	@OneToMany(mappedBy="conditionnement")
 	private Set<ProduitConditionne> produitsConditionnes;
 	
-	public Conditionnement() {}
+	public Conditionnement() {super();}
+	//Constructeur sans ProduitConditionné et sans id
+	public Conditionnement(String designation, int quantite) {
+		this(designation, quantite, null);
+	}
+	//Constructeur sans ProduitConditionné mais avec un identifiant
+	public Conditionnement(int idConditionnement, String designation, int quantite) {
+		this(designation, quantite, null);
+		log.info("Conditionnement.java - constructeur - id : " +idConditionnement + ", désignation : " + designation + ", quantité : " + quantite);
+		this.idConditionnement = idConditionnement;
+	}
+	//Constructeur complet mais sans identifiant
 	public Conditionnement(String designation, int quantite, Set<ProduitConditionne> produitsConditionnes) {
 		super();
 		this.designation = designation;
