@@ -16,7 +16,7 @@ public class Conditionnement implements IGenericEntity {
 	private static Logger log = LogManager.getLogger(Conditionnement.class);
 	
 	@Id@GeneratedValue
-	private int id;
+	private int idConditionnement;
 	private String designation;
 	private int quantite;
 	@OneToMany(mappedBy="conditionnement")
@@ -30,8 +30,8 @@ public class Conditionnement implements IGenericEntity {
 		this.produitsConditionnes = produitsConditionnes;
 	}
 
-	public int getId() {return id;}
-	public void setId(int id) {this.id = id;}
+	public int getIdConditionnement() {return idConditionnement;}
+	public void setIdConditionnement(int idConditionnement) {this.idConditionnement = idConditionnement;}
 	public String getDesignation() {return designation;}
 	public void setDesignation(String designation) {this.designation = designation;}
 	public int getQuantite() {return quantite;}
@@ -42,7 +42,7 @@ public class Conditionnement implements IGenericEntity {
 	@Override
 	public int fetchPrimaryKey() {
 		log.info("Conditionnement - fetchPrimaryKey()");
-		return getId();
+		return getIdConditionnement();
 	}
 
 }

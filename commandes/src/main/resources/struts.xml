@@ -16,6 +16,18 @@
             <result name="success">/index.jsp</result>
         </action>
         
+        <!-- Gestion des conditionnements -->
+        
+        <action name="gestConditionnements/repertoire" class="com.chezyen.commandes.actions.ConditionnementsAction" method="repertoire">
+        <result name="success" type="json">
+        	<param name="includeProperties">
+        		^conditionnements\[\d\]\.idConditionnement$,
+        		^conditionnements\[\d\]\.designation$,
+        		^conditionnements\[\d\]\.quantite$
+        	</param>
+        </result>
+        </action>
+        
         <!-- Gestion des produits -->
         
 		<action name="gestProduits/repertoire" class="com.chezyen.commandes.actions.ProduitsAction" method="repertoire">
@@ -24,7 +36,7 @@
 					^produits\[\d\]\.idProduit$,
 					^produits\[\d\]\.designation$,
 					^produits\[\d\]\.prix$,
-					^produits\[\d\]\.stock
+					^produits\[\d\]\.stock$
 				</param>
 			</result>
 		</action>

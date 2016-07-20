@@ -6,113 +6,99 @@ var chezYenApp = angular.module("chezYenApp", []);
 
 // Création d'un controlleur "StoreCtrl" dans notre module
 // le scope est automatiquement injecté par angular
-chezYenApp.controller("clientCtrl", function($scope, $http) {
-   $scope.clients = [];
-   $scope.clientModif;
+chezYenApp.controller("conditionnementCtrl", function($scope, $http) {
+   $scope.conditionnements = [];
+   $scope.conditionnementModif;
    
-   $http.get('../gestClients/repertoire').then(function (response) {
-       $scope.clients = response.data.clients;
+   $http.get('../gestConditionnements/repertoire').then(function (response) {
+       $scope.conditionnements = response.data.conditionnements;
    });
   
-   $scope.nouveau_client = function(nom, prenom, email, tel, numVoie, typeVoie, nomVoie, codePostal, ville){
+   $scope.nouveau_conditionnement = function(designation, quantite){
 
-	   console.log("nouveauClient nom : " + nom);
-	   $http.post('../gestClients/nouveau', {
-		   	"clientNom": nom,
-		   	"clientPrenom": prenom,
-		   	"clientEmail": email,
-		   	"clientTelephone": tel,
-		   	"clientNumeroVoie": numVoie,
-		   	"clientTypeVoie": typeVoie,
-		   	"clientNomVoie": nomVoie,
-		   	"clientCodePostal": codePostal,
-		   	"clientVille": ville
+	   console.log("nouveauConditionnement désignation : " + designation);
+	   $http.post('../gestConditionnements/nouveau', {
+		   	"conditionnementDesignation": designation,
+		   	"conditionnementQuantite": quantite
 		   }).success(function(response) {
-			   $('#nouveauClientNom').attr('value', '');
-			   $("#panelNouveauClient").slideToggle(600);
+			   $('#nouveauConditionnementDesignation').attr('value', '');
+			   $("#panelNouveauConditionnement").slideToggle(600);
 			   //the following line must be tried 
 			   //$scope.$apply();
-			   $scope.clients.push(response.client);
+			   $scope.conditionnements.push(response.conditionnement);
 		   }).error(function(response){
 			   $scope.erreurs.push(response.erreurs);
 		   });
    };
    
-   $scope.valider_suppression = function(idClient){
-	   console.log("valider suppression client id : " + idClient);
+   $scope.valider_suppression = function(idConditionnement){
+	   console.log("valider suppression conditionnement id : " + idConditionnement);
 
-	   if(idClient != null){
-		   $http.post('../gestClients/valider_suppression', {
-			   "clientID": idClient
+	   if(idConditionnement != null){
+		   $http.post('../gestConditionnements/valider_suppression', {
+			   "conditionnementID": idConditionnement
 		   }).then(function successCallback(response) {	  
-			   	console.log("succes suppression client");
-			    $scope.clients = response.data.clients;
+			   	console.log("succes suppression conditionnement");
+			    $scope.conditionnements = response.data.conditionnements;
 		   }, function errorCallback(response) {
-			  	console.log("problème suppression client");
+			  	console.log("problème suppression conditionnement");
 		   });
 	   } else {
 
-		   console.log("impossible suppression -> client null");
+		   console.log("impossible suppression -> conditionnement null");
 	   }
 	   fermeturePopUp();
    };
    
-   $scope.supprimer_client = function(idClient) {
-	   console.log("PopUpSuppression_client id : " + idClient);
-	   $http.post('../gestClients/supprimer', {
-		   "clientID":idClient
+   $scope.supprimer_conditionnement = function(idConditionnement) {
+	   console.log("PopUpSuppression_conditionnement id : " + idConditionnement);
+	   $http.post('../gestConditionnements/supprimer', {
+		   "conditionnementID":idConditionnement
 	   }).then(function successCallbak(response){
-		   	$scope.clientSuppr = response.data.client;
-		   	console.log("succes suppression client - nom : " + $scope.clientSuppr.nom);
+		   	$scope.conditionnementSuppr = response.data.conditionnement;
+		   	console.log("succes suppression conditionnement - désignation : " + $scope.conditionnementSuppr.designation);
 		   	
 		   	openPopUp('popUpSuppr');
 						
 			return false;
 		   	
 	   }, function errorCallback(response){
-		   console.log("problème modification client");
+		   console.log("problème modification conditionnement");
 	   });	
    }
    
-   $scope.modifier_client = function(idClient) {
-	   console.log("modifier_client id : " + idClient);
-	   $http.post('../gestClients/modifier', {
-		   "clientID":idClient
+   $scope.modifier_conditionnement = function(idConditionnement) {
+	   console.log("modifier_conditionnement id : " + idConditionnement);
+	   $http.post('../gestConditionnements/modifier', {
+		   "conditionnementID":idConditionnement
 	   }).then(function successCallback(response){
-		   	$scope.clientModif = response.data.client;
-		   	console.log("succes modification client - nom : " + $scope.clientModif.nom);
+		   	$scope.conditionnementModif = response.data.conditionnement;
+		   	console.log("succes modification conditionnement - désignation : " + $scope.conditionnementModif.designation);
 		   	
 		   	openPopUp('popUpModif');
 			
 			return false;
 		   	
 	   }, function errorCallback(response){
-		   console.log("problème modification client");
+		   console.log("problème modification conditionnement");
 	   });
    }
    
-   $scope.valider_modification = function(id, nom, prenom, email, telephone, numVoie, typeVoie, nomVoie, codePostal, ville) {
-	   console.log("gestion_clients - Valider modification - id : " + id);
+   $scope.valider_modification = function(id, designation, quantite) {
+	   console.log("gestion_conditionnements - Valider modification - id : " + id);
 	 //vérification id différent de null ou nom différent de vide ou prénom différent de vide
-	   if(id != null && nom != "" && prenom != ""){ 
-		   $http.post('../gestClients/valider_modification', {
-			   	"clientID": id,
-			   	"clientNom": nom,
-			   	"clientPrenom": prenom,
-			   	"clientEmail": email,
-			   	"clientTelephone": telephone,
-			   	"clientNumeroVoie": numVoie,
-			   	"clientTypeVoie": typeVoie,
-			   	"clientNomVoie": nomVoie,
-			   	"clientCodePostal": codePostal,
-			   	"clientVille": ville
+	   if(id != null && designation != "" && quantite != ""){ 
+		   $http.post('../gestConditionnements/valider_modification', {
+			   	"conditionnementID": id,
+			   	"conditionnementDesignation": designation,
+			   	"conditionnementQuantite": quantite
 			   }).success(function(response) {
-				   $scope.clients = response.clients;
+				   $scope.conditionnements = response.conditionnements;
 			   }).error(function(response){
 				   $scope.erreurs.push(response.erreurs);
 			   });
 	   } else {
-		   console.log("impossible modification -> client null");
+		   console.log("impossible modification -> conditionnement null");
 	   }
 	   fermeturePopUp();
    }

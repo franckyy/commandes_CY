@@ -45,7 +45,7 @@
 		<div class="container" ng-controller="conditionnementCtrl">
 			<div id="firstRow" class="row">
 				<div class="col-sm-12" style="padding-right: 30px;">
-				<div id="nouveauConditionnement" style="text-align: center;">Créer un nouveau conditionnement
+				<div id="nouveauConditionnement" style="text-align: center;">Créer un nouveau conditionnement</div>
 				<div id="panelNouveauConditionnement">
 					<div class="encadre" style="height: 130px; min-width: 600px;">
 						<div style="text-align: center;">
@@ -67,15 +67,14 @@
 								</div>
 								<div id="tablesBlock" style="min-width: 250px;">
 									<input type="text" class="form-control"
-										ng-model="conditionnement_quantité" style="width: 200px;" />
+										ng-model="conditionnement_quantite" style="width: 200px;" />
 								</div>
 							</div>
 						</div>
 					</div>
-					
 					<span class="input-group-btn">
 						<button class="btn btn-default"
-							ng-click="nouveau_conditionnement(conditionnement_designation, conditionnement_quantité);">
+							ng-click="nouveau_conditionnement(conditionnement_designation, conditionnement_quantite);">
 							Ajouter conditionnement</button>
 					</span>
 				</div>
@@ -87,8 +86,8 @@
 						</tr>
 					</thead>
 					<tbody>
-						<tr ng-repeat="client in clients">
-							<td style="display: none;" ng-model="idClient">{{conditionnement.idConditionnement}}</td>
+						<tr ng-repeat="conditionnement in conditionnements">
+							<td style="display: none;" ng-model="idConditionnement">{{conditionnement.idConditionnement}}</td>
 							<td>{{erreurs.message}}{{conditionnement.designation}}</td>
 							<td>{{conditionnement.quantite}}</td>
 							<td>

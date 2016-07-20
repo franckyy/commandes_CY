@@ -50,4 +50,5 @@
 
 <bean id="produitDAO" class="com.chezyen.commandes.dao.ProduitDAO" />
 <bean id="clientDAO" class="com.chezyen.commandes.dao.ClientDAO" />
+<bean id="conditionnementDAO" class="com.chezyen.commandes.dao.ConditionnementDAO"/>
 </beans>
