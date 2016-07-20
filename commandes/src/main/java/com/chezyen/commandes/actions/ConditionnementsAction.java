@@ -23,13 +23,13 @@ public class ConditionnementsAction extends ActionSupport{
 	public IConditionnementDAO getConditionnementDAO() {return conditionnementDAO;}
 	public void setConditionnementDAO(IConditionnementDAO conditionnementDAO) {this.conditionnementDAO = conditionnementDAO;}
 
-	private int id;
+	private int conditionnementID;
 	private String designation;
 	private int quantite;
 	private Set<ProduitConditionne> produitsConditionnes;
 	
-	public int getId() {return id;}
-	public void setId(int id) {this.id = id;}
+	public int getConditionnementID() {return conditionnementID;}
+	public void setConditionnementID(int conditionnementID) {this.conditionnementID = conditionnementID;}
 	public String getDesignation() {return designation;}
 	public void setDesignation(String designation) {this.designation = designation;}
 	public int getQuantite() {return quantite;}
@@ -50,4 +50,10 @@ public class ConditionnementsAction extends ActionSupport{
 		return SUCCESS;
 	}
 	
+	public String modification() {
+		log.info("ConditionnementsAction - modification - id : " + getConditionnementID());
+		this.conditionnement = conditionnementDAO.findByID(getConditionnementID());
+		log.info("ConditionnementsAction - modification - désignation : " + this.conditionnement.getDesignation());
+		return SUCCESS;
+	}
 }

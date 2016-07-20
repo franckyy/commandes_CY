@@ -28,6 +28,18 @@
         </result>
         </action>
         
+        <action name="gestConditionnements/modifier" class="com.chezyen.commandes.actions.ConditionnementsAction" method="modification">
+        	<interceptor-ref name="defaultStack"/>
+        	<interceptor-ref name="json"/>
+        	<result name="success" type="json">
+        		<param name="includeProperties">
+        			^conditionnement\.idConditionnement$,
+        			^conditionnement\.designation$,
+        			^conditionnement\.quantite$
+        		</param>
+        	</result>
+        </action>
+        
         <!-- Gestion des produits -->
         
 		<action name="gestProduits/repertoire" class="com.chezyen.commandes.actions.ProduitsAction" method="repertoire">
