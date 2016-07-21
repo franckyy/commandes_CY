@@ -53,6 +53,10 @@
 					onclick="location.href='views/gestionCommandes.html'">Gestion
 					des commandes</button>
 				<br />
+				<button id="boutonProduitsConditionnes" type="button" class="btn btn-lg btn-primary"
+					onclick="location.href='views/gestionProduitsConditionnes.html'">Gestion
+					des produits conditionnes</button>
+				<br />
 				<button id="boutonConditionnements" type="button" class="btn btn-lg btn-primary"
 					onclick="location.href='views/gestionConditionnements.html'">Gestion
 					des conditionnements</button>
