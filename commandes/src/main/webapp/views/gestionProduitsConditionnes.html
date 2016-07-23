@@ -40,34 +40,36 @@
 		</div>
 		<img id="right" src="../images/logo_stylise.png" class="img-responsive center-block"/>
 	</div>
-	<div class="col-sm-12" style="padding-right: 30px;">
-		<table id="tableProduitsConditionnes" class="table table-stripped">
-			<thead>
-				<tr>
-					<th>Désignation</th>
-					<th>Produit</th>
-					<th>Conditionnement</th>
-					<th>Prix</th>
-					<th>en carte ?</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr ng-repeat="produitConditionne in produitsConditionnes">
-					<td style="display:none;" ng-model="idProduitConditionne">{{produitConditionne.idProduitConditionne}}</td>
-					<td>{{produitConditionne.designation}}</td>
-					<td>{{produitConditionne.produit}}</td>				
-					<td>{{produitConditionne.conditionnement}}</td>				
-					<td>{{produitConditionne.prixProdCond}}</td>				
-					<td>{{produitConditionne.enCarte}}</td>		
-					<td>
-						<button class="btn btn-default"
-							ng-click="modifier_produit_conditionne(produitConditionne.idProduitConditionne)">Modifier</button>
-						<button class="btn btn-danger"
-							ng-click="supprimer_produit_conditionne(produitConditionne.idProduitConditionne)">Supprimer</button>
-					</td>						
-				</tr>
-			</tbody>
-		</table>
+	<div class="container" ng-controller="produitsConditionnesCtrl">
+		<div class="col-sm-12" style="padding-right: 30px;">
+			<table id="tableProduitsConditionnes" class="table table-striped">
+				<thead>
+					<tr>
+						<th>Désignation</th>
+						<th>Produit</th>
+						<th>Conditionnement</th>
+						<th>Prix</th>
+						<th>en carte ?</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="produitConditionne in produitsConditionnes">
+						<td style="display:none;" ng-model="idProduitConditionne">{{produitConditionne.idProduitConditionne}}</td>
+						<td>{{produitConditionne.designation}}</td>
+						<td>{{produitConditionne.produit}}</td>				
+						<td>{{produitConditionne.conditionnement}}</td>				
+						<td>{{produitConditionne.prixProdCond}}</td>				
+						<td>{{produitConditionne.enCarte}}</td>		
+						<td>
+							<button class="btn btn-default"
+								ng-click="modifier_produit_conditionne(produitConditionne.idProduitConditionne)">Modifier</button>
+							<button class="btn btn-danger"
+								ng-click="supprimer_produit_conditionne(produitConditionne.idProduitConditionne)">Supprimer</button>
+						</td>						
+					</tr>
+				</tbody>
+			</table>
+		</div>
 	</div>
 </body>
 </html>

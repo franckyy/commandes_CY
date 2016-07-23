@@ -48,6 +48,7 @@
 
 <tx:annotation-driven transaction-manager="transactionManager" />
 
+<bean id="produitConditionneDAO" class="com.chezyen.commandes.dao.ProduitConditionneDAO" />
 <bean id="produitDAO" class="com.chezyen.commandes.dao.ProduitDAO" />
 <bean id="clientDAO" class="com.chezyen.commandes.dao.ClientDAO" />
 <bean id="conditionnementDAO" class="com.chezyen.commandes.dao.ConditionnementDAO"/>
