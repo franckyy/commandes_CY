@@ -17,7 +17,6 @@ public class ProduitConditionne implements IGenericEntity {
 	
 	@Id@GeneratedValue
 	private int idProduitConditionne;
-	private String designation;
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name="idProduit")
 	private Produit produit;
@@ -28,15 +27,14 @@ public class ProduitConditionne implements IGenericEntity {
 	private boolean enCarte;
 
 	public ProduitConditionne() {}
-	public ProduitConditionne(int idProduitConditionne, String designation, Produit produit, Conditionnement conditionnement, double prixProdCond,
+	public ProduitConditionne(int idProduitConditionne, Produit produit, Conditionnement conditionnement, double prixProdCond,
 			boolean enCarte) {
-		this(designation, produit, conditionnement, prixProdCond, enCarte);
+		this(produit, conditionnement, prixProdCond, enCarte);
 		this.idProduitConditionne = idProduitConditionne;
 	}
-	public ProduitConditionne(String designation, Produit produit, Conditionnement conditionnement, double prixProdCond,
+	public ProduitConditionne(Produit produit, Conditionnement conditionnement, double prixProdCond,
 			boolean enCarte) {
 		super();
-		this.designation = designation;
 		this.produit = produit;
 		this.conditionnement = conditionnement;
 		this.prixProdCond = prixProdCond;
@@ -45,8 +43,6 @@ public class ProduitConditionne implements IGenericEntity {
 
 	public int getIdProduitConditionne() {return idProduitConditionne;}
 	public void setIdProduitConditionne(int idProduitConditionne) {this.idProduitConditionne = idProduitConditionne;}
-	public String getDesignation() {return designation;}
-	public void setDesignation(String designation) {this.designation = designation;}
 	public Produit getProduit() {return produit;}
 	public void setProduit(Produit produit) {this.produit = produit;}
 	public Conditionnement getConditionnement() {return conditionnement;}

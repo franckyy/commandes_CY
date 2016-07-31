@@ -42,23 +42,60 @@
 	</div>
 	<div class="container" ng-controller="produitsConditionnesCtrl">
 		<div class="col-sm-12" style="padding-right: 30px;">
+			<div id="firstRow" class="row">
+				<div id="nouveauProduitConditionne" style="text-align:center;">Créer nouveau produit conditionné</div>
+				<div id="panelNouveauProduitConditionne">
+					<div class="encadre" style="height: 130px; min-width: 600px;">
+						<div style="text-align: center;">
+							<label style="color: #c7b988;">Produit</label>
+						</div>
+						<div class="tablesInLineBlock" style="width: 33%;">
+							<div class="tablesBlock">
+								<label>Désignation</label>
+							</div>
+							<!-- voir ce lien https://docs.angularjs.org/api/ng/directive/ngOptions -->
+							<div class="tablesBlock">
+								<select class="form-control" ng-model="prodCond_Prod_Desi" style="width: 100px;"
+										ng-options="produit.designation for produit in produits">
+								</select>
+							</div>
+						</div>
+					</div>
+					<div class="encadre" style="height: 130px; min-width: 600px;">
+						<div style="text-align: center;">
+							<label style="color: #c7b988;">Conditionnement</label>
+						</div>
+					</div>
+					<div class="encadre" style="height: 130px; min-width: 600px;">
+						<div style="text-align: center;">
+							<label style="color: #c7b988;">Produit conditionné</label>
+						</div>
+					</div>
+					<span class="input-group-btn">
+						<button class="btn btn-default"
+								ng-click=nouveauProduitConditionne();>
+								AJOUTER PRODUIT CONDITIONNE						
+						</button>
+					</span>
+				</div>
+			</div>
 			<table id="tableProduitsConditionnes" class="table table-striped">
 				<thead>
 					<tr>
-						<th>Désignation</th>
 						<th>Produit</th>
+						<th>Prix produit</th>
 						<th>Conditionnement</th>
-						<th>Prix</th>
+						<th>Prix total</th>
 						<th>en carte ?</th>
 					</tr>
 				</thead>
 				<tbody>
 					<tr ng-repeat="pc in produitsConditionnes">
 						<td style="display:none;" ng-model="idProduitConditionne">{{pc.idProduitConditionne}}</td>
-						<td>{{pc.designation}}</td>
-						<td>{{pc.produit.designation}}</td>				
+						<td>{{pc.produit.designation}}</td>						
+						<td>{{pc.produit.prix}}</td>			
 						<td>{{pc.conditionnement.designation}}</td>				
-						<td>{{pc.produit.prix}}</td>				
+						<td>{{pc.prixProdCond}}</td>				
 						<td>{{pc.enCarte}}</td>		
 						<td>
 							<button class="btn btn-default"

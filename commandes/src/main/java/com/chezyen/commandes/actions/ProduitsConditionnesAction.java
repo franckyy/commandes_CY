@@ -27,7 +27,6 @@ public class ProduitsConditionnesAction extends ActionSupport{
 	public void setProduitConditionneDAO(IProduitConditionneDAO produitConditionneDAO) {this.produitConditionneDAO = produitConditionneDAO;}
 	
 	private int produitConditionneID;
-	private String produitConditionneDesignation;
 	private Produit produitConditionneProduit;
 	private Conditionnement produitConditionneConditionnement;
 	private double produitConditionnePrixProdCond;
@@ -35,8 +34,6 @@ public class ProduitsConditionnesAction extends ActionSupport{
 
 	public int getProduitConditionneID() {return produitConditionneID;}
 	public void setProduitConditionneID(int produitConditionneID) {this.produitConditionneID = produitConditionneID;}
-	public String getProduitConditionneDesignation() {return produitConditionneDesignation;}
-	public void setProduitConditionneDesignation(String produitConditionneDesignation) {this.produitConditionneDesignation = produitConditionneDesignation;}
 	public Produit getProduitConditionneProduit() {return produitConditionneProduit;}
 	public void setProduitConditionneProduit(Produit produitConditionneProduit) {this.produitConditionneProduit = produitConditionneProduit;}
 	public Conditionnement getProduitConditionneConditionnement() {return produitConditionneConditionnement;}
@@ -51,9 +48,6 @@ public class ProduitsConditionnesAction extends ActionSupport{
 	
 	private List<ProduitConditionne> produitsConditionnes;
 	public List<ProduitConditionne> getProduitsConditionnes() {return produitsConditionnes;}
-		
-	private IProduitDAO prodDao;
-	private IConditionnementDAO condDAO;
 	
 	public String repertoire() {
 		log.info("ProduitsConditionnesAction - repertoire");
