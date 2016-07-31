@@ -5,8 +5,9 @@ import java.util.List;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import com.chezyen.commandes.beans.ProduitsConditionnesBean;
+import com.chezyen.commandes.dao.IConditionnementDAO;
 import com.chezyen.commandes.dao.IProduitConditionneDAO;
+import com.chezyen.commandes.dao.IProduitDAO;
 import com.chezyen.commandes.metier.Conditionnement;
 import com.chezyen.commandes.metier.Produit;
 import com.chezyen.commandes.metier.ProduitConditionne;
@@ -51,14 +52,12 @@ public class ProduitsConditionnesAction extends ActionSupport{
 	private List<ProduitConditionne> produitsConditionnes;
 	public List<ProduitConditionne> getProduitsConditionnes() {return produitsConditionnes;}
 		
+	private IProduitDAO prodDao;
+	private IConditionnementDAO condDAO;
+	
 	public String repertoire() {
 		log.info("ProduitsConditionnesAction - repertoire");
 		this.produitsConditionnes = produitConditionneDAO.findAll();
-
-		for(ProduitConditionne pc : this.produitsConditionnes){
-			pc.setProduit(pc.getProduit());
-			produitsConditionnes.set(produitsConditionnes.indexOf(pc), pc);
-		}
 		return SUCCESS;
 	}
 }
