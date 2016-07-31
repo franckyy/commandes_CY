@@ -30,11 +30,12 @@ body {
     margin-bottom:10px;
 }
 
-#tablesInlineBlock {
+.tablesInlineBlock {
 	display:inline-block;
+	vertical-align:top;
 }
 
-#tablesBlock {
+.tablesBlock {
 	display:block;
 }
 

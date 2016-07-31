@@ -53,13 +53,13 @@
 					</tr>
 				</thead>
 				<tbody>
-					<tr ng-repeat="produitConditionne in produitsConditionnes">
-						<td style="display:none;" ng-model="idProduitConditionne">{{produitConditionne.idProduitConditionne}}</td>
-						<td>{{produitConditionne.designation}}</td>
-						<td>{{produitConditionne.produit}}</td>				
-						<td>{{produitConditionne.conditionnement}}</td>				
-						<td>{{produitConditionne.prixProdCond}}</td>				
-						<td>{{produitConditionne.enCarte}}</td>		
+					<tr ng-repeat="pc in produitsConditionnes">
+						<td style="display:none;" ng-model="idProduitConditionne">{{pc.idProduitConditionne}}</td>
+						<td>{{pc}}</td>
+						<td>{{pc.produit.designation}}</td>				
+						<td>{{pc.conditionnement.designation}}</td>				
+						<td>{{pc.produit.prix}}</td>				
+						<td>{{pc.enCarte}}</td>		
 						<td>
 							<button class="btn btn-default"
 								ng-click="modifier_produit_conditionne(produitConditionne.idProduitConditionne)">Modifier</button>

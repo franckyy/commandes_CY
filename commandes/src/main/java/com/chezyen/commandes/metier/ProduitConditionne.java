@@ -28,6 +28,11 @@ public class ProduitConditionne implements IGenericEntity {
 	private boolean enCarte;
 
 	public ProduitConditionne() {}
+	public ProduitConditionne(int idProduitConditionne, String designation, Produit produit, Conditionnement conditionnement, double prixProdCond,
+			boolean enCarte) {
+		this(designation, produit, conditionnement, prixProdCond, enCarte);
+		this.idProduitConditionne = idProduitConditionne;
+	}
 	public ProduitConditionne(String designation, Produit produit, Conditionnement conditionnement, double prixProdCond,
 			boolean enCarte) {
 		super();
