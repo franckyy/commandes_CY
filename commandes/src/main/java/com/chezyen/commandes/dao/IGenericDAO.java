@@ -1,5 +1,6 @@
 package com.chezyen.commandes.dao;
 
+import java.util.HashMap;
 import java.util.List;
 
 import com.chezyen.commandes.metier.IGenericEntity;

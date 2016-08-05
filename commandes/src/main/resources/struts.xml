@@ -32,6 +32,15 @@
 			</result>
 		</action>
         
+        <action name="gestProduitsConditionnes/listeProduits" class="com.chezyen.commandes.actions.ProduitsConditionnesAction" method="listeProduits">
+        	<result name="success" type="json">
+        		<param name="includeProperties">
+        			^listeProduits\[\d\]\.designation$,
+        			^listeProduits\[\d\]\.idProduit$
+        		</param>
+        	</result>
+        </action>
+        
         <!-- Gestion des conditionnements -->
         
         <action name="gestConditionnements/repertoire" class="com.chezyen.commandes.actions.ConditionnementsAction" method="repertoire">

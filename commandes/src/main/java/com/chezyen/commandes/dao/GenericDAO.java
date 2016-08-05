@@ -1,6 +1,8 @@
 package com.chezyen.commandes.dao;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.ListIterator;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;

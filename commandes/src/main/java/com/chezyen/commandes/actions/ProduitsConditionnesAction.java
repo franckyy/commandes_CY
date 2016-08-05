@@ -1,5 +1,6 @@
 package com.chezyen.commandes.actions;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.apache.logging.log4j.LogManager;
@@ -8,9 +9,11 @@ import org.apache.logging.log4j.Logger;
 import com.chezyen.commandes.dao.IConditionnementDAO;
 import com.chezyen.commandes.dao.IProduitConditionneDAO;
 import com.chezyen.commandes.dao.IProduitDAO;
+import com.chezyen.commandes.dao.ProduitDAO;
 import com.chezyen.commandes.metier.Conditionnement;
 import com.chezyen.commandes.metier.Produit;
 import com.chezyen.commandes.metier.ProduitConditionne;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class ProduitsConditionnesAction extends ActionSupport{
@@ -49,9 +52,28 @@ public class ProduitsConditionnesAction extends ActionSupport{
 	private List<ProduitConditionne> produitsConditionnes;
 	public List<ProduitConditionne> getProduitsConditionnes() {return produitsConditionnes;}
 	
+	
+	private IProduitDAO produitDAO;	
+	public IProduitDAO getProduitDAO() {return produitDAO;}
+	public void setProduitDAO(IProduitDAO produitDAO) {this.produitDAO = produitDAO;}
+	
+	private IConditionnementDAO conditionnementDAO;
+	public IConditionnementDAO getConditionnementDAO() {return conditionnementDAO;}
+	public void setConditionnementDAO(IConditionnementDAO conditionnementDAO) {this.conditionnementDAO = conditionnementDAO;}
+
+	private List<Produit> listeProduits;
+	public List<Produit> getListeProduits() {return listeProduits;}
+	
+	private List<Conditionnement> listeConditionnements;
+	public List<Conditionnement> getListeConditionnements() {return listeConditionnements;}
+	
 	public String repertoire() {
 		log.info("ProduitsConditionnesAction - repertoire");
+		
 		this.produitsConditionnes = produitConditionneDAO.findAll();
+		this.listeProduits = produitDAO.findAll();
+		this.listeConditionnements = conditionnementDAO.findAll();
+		
 		return SUCCESS;
 	}
 }
