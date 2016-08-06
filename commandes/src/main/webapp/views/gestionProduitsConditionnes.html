@@ -49,25 +49,33 @@
 						<div style="text-align: center;">
 							<label style="color: #c7b988;">Produit</label>
 						</div>
-						<div class="tablesInLineBlock" style="width: 33%;">
+						<div class="tablesInlineBlock" style="width: 33%;">
 							<div class="tablesBlock">
 								<label>Désignation</label>
 							</div>
 							<!-- voir ce lien https://docs.angularjs.org/api/ng/directive/ngOptions -->
 							<div class="tablesBlock">
-								<select class="form-control" ng-model="prodCond_Prod_Desi" style="width: 300px;"
+								<select class="form-control" ng-model="myProduit" style="width: 250px;"
 										ng-options="produit.designation for produit in listeProduits">
 								</select>
 							</div>
 						</div>
-						<div class="tablesInLineBlock" style="width: 33%;">
+						<div class="tablesInlineBlock" style="width: 33%;">
 							<div class="tablesBlock">
-								<label>test</label>
+								<label>Prix</label>
 							</div>
-							<div class="tablesBlock">
-								
+							<div class="tablesBlock" style="min-width: 33%;">
+								<input type="text" class="form-control" ng-model="myProduit.prix" disabled="disabled" style="width:150px;"/>
 							</div>
 						</div>
+						<div class="tablesInlineBlock" style="width: 33%;">
+							<div class="tablesBlock">
+								<label>Stock</label>
+							</div>
+							<div class="tablesBlock" style="min-width:100px;">
+								<input type="text" class="form-control" ng-model="myProduit.stock" disabled="disabled" style="width:150px;"/>
+							</div>
+						</div>  
 					</div>
 					<div class="encadre" style="height: 130px; min-width: 600px;">
 						<div style="text-align: center;">
