@@ -15,4 +15,12 @@ chezYenApp.controller("produitsConditionnesCtrl", function($scope, $http){
 		$scope.listeConditionnements = response.data.listeConditionnements;
 		$scope.myConditionnement = $scope.listeConditionnements[0];
 	});
+	
+	
+	//gestion des cases à cocher
+	$scope.types = [];
+	
+	$scope.availableTypes = {
+			'enCarte': 'en carte ?'
+	}
 });

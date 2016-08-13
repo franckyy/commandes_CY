@@ -59,30 +59,42 @@
 							</div>
 						</div>
 						<div class="tablesInlineBlock" style="width: 33%;">
-							<div class="tablesBlock">
-								<label>Prix</label>
-							</div>
-							<div class="tablesBlock" style="min-width: 33%;">
-								<input type="text" class="form-control" ng-model="myProduit.prix" disabled="disabled" style="width:150px;"/>
-							</div>
+							<label class="tablesBlock">Prix</label>
+							<input type="text" class="form-control tablesBlock" ng-model="myProduit.prix" disabled="disabled" style="width:150px; min-width: 33%;"/>
 						</div>
 						<div class="tablesInlineBlock" style="width: 33%;">
-							<div class="tablesBlock">
-								<label>Stock</label>
-							</div>
-							<div class="tablesBlock" style="min-width:100px;">
-								<input type="text" class="form-control" ng-model="myProduit.stock" disabled="disabled" style="width:150px;"/>
-							</div>
+							<label class="tablesBlock">Stock</label>
+							<input type="text" class="form-control tablesBlock" ng-model="myProduit.stock" disabled="disabled" style="width:150px; min-width:100px;"/>
 						</div>  
 					</div>
 					<div class="encadre" style="height: 130px; min-width: 600px;">
 						<div style="text-align: center;">
 							<label style="color: #c7b988;">Conditionnement</label>
 						</div>
+						<div class="tablesInlineBlock" style="width:49%;">
+							<label class="tablesBlock">Désignation</label>
+							<div class="tablesBlock">
+								<select class="form-control" ng-model="myConditionnement" style="width:250px;"
+										ng-options="conditionnement.designation for conditionnement in listeConditionnements">
+								</select>
+							</div>
+						</div>
+						<div class="tablesInlineBlock" style="width:50%;">
+							<label class="tablesBlock">Quantité</label>
+							<input type="text" class="form-control tablesBlock" ng-model="myConditionnement.quantite" disabled="disabled" style="width:150px; min-width:100px;"/>
+						</div>
 					</div>
 					<div class="encadre" style="height: 130px; min-width: 600px;">
 						<div style="text-align: center;">
 							<label style="color: #c7b988;">Produit conditionné</label>
+						</div>
+						<div class="tablesInlineBlock" style="width:49%;">
+							<label class="tablesBlock">Prix</label>
+							<input type="text" class="form-control tablesBlock" ng-model="prix" style="width:150px; min-width:100px;"/>
+						</div>
+						<div class="tablesInlineBlock" style="width:50%;" ng-repeat="(key, text) in availableTypes">
+							<label class="tablesBlock">{{text}}</label>
+							<input class="tablesBlock" type="checkbox" checklist-model="types" checklist-value="key"/>
 						</div>
 					</div>
 					<span class="input-group-btn">
