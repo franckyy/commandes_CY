@@ -82,13 +82,19 @@
 				<table id="tableProduits" class="table table-striped">
 					<thead>
 						<tr>
-							<th>Désignation</th>
-							<th>Prix</th>
+							<th ng-click="sortData('designation')">
+								Désignation
+								<div ng-class="getSortClass('designation')"></div>
+							</th>
+							<th ng-click="sortData('prix')">
+								Prix
+								<div ng-class="getSortClass('prix')"></div>
+							</th>
 							<th>Stock</th>
 						</tr>
 					</thead>
 					<tbody>
-						<tr ng-repeat="produit in produits">
+						<tr ng-repeat="produit in produits | orderBy:sortColumn:reverseSort">
 							<td style="display: none;" ng-model="idProduit">{{produit.idProduit}}</td>
 							<td>{{erreurs.message}}{{produit.designation}}</td>
 							<td>{{produit.prix}}</td>
