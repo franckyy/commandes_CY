@@ -90,7 +90,7 @@
 						</div>
 						<div class="tablesInlineBlock" style="width:49%;">
 							<label class="tablesBlock">Prix</label>
-							<input type="text" class="form-control tablesBlock" ng-model="prix" style="width:150px; min-width:100px;"/>
+							<input type="text" class="form-control tablesBlock" ng-model="conditionnement_prix" style="width:150px; min-width:100px;" value="10"/>
 						</div>
 						<div class="tablesInlineBlock" style="width:50%;" ng-repeat="(key, text) in availableTypes">
 							<label class="tablesBlock">{{text}}</label>
@@ -99,7 +99,7 @@
 					</div>
 					<span class="input-group-btn">
 						<button class="btn btn-default"
-								ng-click=nouveauProduitConditionne();>
+								ng-click=nouveauProduitConditionne(myProduit,myConditionnement,conditionnement_prix,types);>
 								AJOUTER PRODUIT CONDITIONNE						
 						</button>
 					</span>

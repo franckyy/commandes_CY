@@ -16,6 +16,9 @@ chezYenApp.controller("produitsConditionnesCtrl", function($scope, $http){
 		$scope.myConditionnement = $scope.listeConditionnements[0];
 	});
 	
+	$scope.nouveauProduitConditionne = function(myProduit,myConditionnement,conditionnement_prix, types){
+		console.log("myProduit : " + myProduit.idProduit + ", myConditi : " + myConditionnement.idConditionnement + ", prix condi : " + conditionnement_prix + "in carte ? " + types);
+	}
 	
 	//gestion des cases à cocher
 	$scope.types = [];

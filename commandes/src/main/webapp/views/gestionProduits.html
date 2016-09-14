@@ -155,56 +155,57 @@
 						style="margin-left: 15px">Annuler</button>
 				</span>
 			</div>
-	</div>
-	
-	<div id="popUpSuppr" class="popup_block" ng-model="produitSuppr">
-		<div>
-			<H1 style="color: red; text-align: center;">Attention !
-				Suppression du produit suivant :</H1>
 		</div>
-		<div style="text-align: center;">
-			<label style="color: #c7b988;">Produit</label><br />
-		</div>
-		<div>
-			<div id="tablesInlineBlock" style="width: 39%;">
-				<div id="tablesBlock" style="display: none">
-					<input type="text" class="form-control"
-						ng-model="produitSuppr.idProduit" style="width: 200px;" readonly />
+		
+		<div id="popUpSuppr" class="popup_block" ng-model="produitSuppr">
+			<div>
+				<H1 style="color: red; text-align: center;">Attention !
+					Suppression du produit suivant :</H1>
+			</div>
+			<div style="text-align: center;">
+				<label style="color: #c7b988;">Produit</label><br />
+			</div>
+			<div>
+				<div id="tablesInlineBlock" style="width: 39%;">
+					<div id="tablesBlock" style="display: none">
+						<input type="text" class="form-control"
+							ng-model="produitSuppr.idProduit" style="width: 200px;" readonly />
+					</div>
+					<div id="tablesBlock">
+						<label>Désignation</label>
+					</div>
+					<div id="tablesBlock" style="min-width: 270px;">
+						<input type="text" class="form-control" ng-model="produitSuppr.designation"
+							style="width: 200px;" readonly />
+					</div>
 				</div>
-				<div id="tablesBlock">
-					<label>Désignation</label>
+				<div id="tablesInlineBlock" style="width: 30%;">
+					<div id="tablesBlock">
+						<label>Prix</label>
+					</div>
+					<div id="tablesBlock" style="min-width: 250px;">
+						<input type="text" class="form-control"
+							ng-model="produitSuppr.prix" style="width: 200px;" readonly />
+					</div>
 				</div>
-				<div id="tablesBlock" style="min-width: 270px;">
-					<input type="text" class="form-control" ng-model="produitSuppr.designation"
-						style="width: 200px;" readonly />
+				<div id="tablesInlineBlock" style="width: 30%;">
+					<div id="tablesBlock">
+						<label>Stock</label>
+					</div>
+					<div id="tablesBlock" style="min-width: 250px;">
+						<input type="text" class="form-control"
+							ng-model="produitSuppr.stock" style="width: 200px;" readonly />
+					</div>
 				</div>
 			</div>
-			<div id="tablesInlineBlock" style="width: 30%;">
-				<div id="tablesBlock">
-					<label>Prix</label>
-				</div>
-				<div id="tablesBlock" style="min-width: 250px;">
-					<input type="text" class="form-control"
-						ng-model="produitSuppr.prix" style="width: 200px;" readonly />
-				</div>
+			<div style="margin-top: 15px">
+				<span class="input-group-btn">
+					<button class="btn btn-danger"
+						ng-click="valider_suppression(produitSuppr.idProduit);">Supprimer</button>
+					<button id="annulerSuppr" class="btn btn-warning"
+						style="margin-left: 15px">Annuler</button>
+				</span>
 			</div>
-			<div id="tablesInlineBlock" style="width: 30%;">
-				<div id="tablesBlock">
-					<label>Stock</label>
-				</div>
-				<div id="tablesBlock" style="min-width: 250px;">
-					<input type="text" class="form-control"
-						ng-model="produitSuppr.stock" style="width: 200px;" readonly />
-				</div>
-			</div>
-		</div>
-		<div style="margin-top: 15px">
-			<span class="input-group-btn">
-				<button class="btn btn-danger"
-					ng-click="valider_suppression(produitSuppr.idProduit);">Supprimer</button>
-				<button id="annulerSuppr" class="btn btn-warning"
-					style="margin-left: 15px">Annuler</button>
-			</span>
 		</div>
 	</div>
 </body>

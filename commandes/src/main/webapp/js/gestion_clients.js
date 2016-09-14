@@ -117,6 +117,22 @@ chezYenApp.controller("clientCtrl", function($scope, $http) {
 	   fermeturePopUp();
    }
    
+   $scope.sortColumn = "nom";
+   $scope.reverseSort = false;  
+
+   $scope.sortData = function (column) {  
+	   $scope.reverseSort = ($scope.sortColumn==column) ? !$scope.reverseSort :false;  
+	   $scope.sortColumn = column;   
+   }  
+
+   $scope.getSortClass = function (column)  {  
+	   if ($scope.sortColumn == column) {  
+		   return $scope.reverseSort ? 'arrow-down' : 'arrow-up';
+	   }  
+	   
+	   return "";
+   }  
+
  //Fermeture de la pop-up et du fond
  $('a.close, #annulerModif, #annulerSuppr').on('click', function() { //Au clic sur le bouton ou sur le calque...
     	fermeturePopUp();
