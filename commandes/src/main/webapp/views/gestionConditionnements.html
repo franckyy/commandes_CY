@@ -81,12 +81,15 @@
 				<table id="tableConditionnements" class="table table-striped">
 					<thead>
 						<tr>
-							<th>Désignation</th>
+							<th ng-click="sortData('designation')">
+								Désignation
+								<div ng-class="getSortClass('designation')"></div>
+							</th>
 							<th>Quantité</th>
 						</tr>
 					</thead>
 					<tbody>
-						<tr ng-repeat="conditionnement in conditionnements">
+						<tr ng-repeat="conditionnement in conditionnements | orderBy:sortColumn:reverseSort">
 							<td style="display: none;" ng-model="idConditionnement">{{conditionnement.idConditionnement}}</td>
 							<td>{{erreurs.message}}{{conditionnement.designation}}</td>
 							<td>{{conditionnement.quantite}}</td>

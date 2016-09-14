@@ -103,6 +103,23 @@ chezYenApp.controller("conditionnementCtrl", function($scope, $http) {
 	   fermeturePopUp();
    }
    
+   $scope.reverseSort = false;
+   $scope.sortColumn = "designation";
+   
+   $scope.sortData = function(column) {
+	   $scope.reverseSort = ($scope.sortColumn == column)? !$scope.reverseSort : false;
+	   $scope.sortColumn = column;
+   }
+   
+   $scope.getSortClass = function(column) {
+	   if($scope.sortColumn == column) {
+		   console.log($scope.reverseSort ? 'class = arrow-down' : 'arrow-up');
+		   return $scope.reverseSort ? 'arrow-down' : 'arrow-up';
+	   }
+	   
+	   return '';
+   }
+   
  //Fermeture de la pop-up et du fond
  $('a.close, #annulerModif, #annulerSuppr').on('click', function() { //Au clic sur le bouton ou sur le calque...
     	fermeturePopUp();

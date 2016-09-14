@@ -97,3 +97,21 @@ position: absolute;
 *html .popup_block {
 position: absolute;
 }
+
+.arrow-up {
+	width:0;
+	height:0;
+	border-left:5px solid transparent;
+	border-right:5px solid transparent;
+	border-bottom:10px solid #c90016;
+	display:inline-block;
+}
+
+.arrow-down{
+	width:0;
+	height:0;
+	border-left:5px solid transparent;
+	border-right:5px solid transparent;
+	border-top:10px solid #c90016;
+	display:inline-block;
+}
