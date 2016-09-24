@@ -108,20 +108,26 @@
 			<table id="tableProduitsConditionnes" class="table table-striped">
 				<thead>
 					<tr>
-						<th>Produit</th>
-						<th>Prix produit</th>
+						<th ng-click="sortData('pc.produitDesignation')">
+							Produit
+							<div ng-class="getSortClass('pc.produitDesignation')"></div>
+						</th>
+						<th ng-click="sortData('pc.produitPrix')">
+							Prix produit
+							<div ng-class="getSortClass('pc.produitPrix')"></div>
+						</th>
 						<th>Conditionnement</th>
 						<th>Prix total</th>
 						<th>en carte ?</th>
 					</tr>
 				</thead>
 				<tbody>
-					<tr ng-repeat="pc in produitsConditionnes">
+					<tr ng-repeat="pc in listeTable | orderBy:sortColumn:reverseSort">
 						<td style="display:none;" ng-model="idProduitConditionne">{{pc.idProduitConditionne}}</td>
-						<td>{{pc.produit.designation}}</td>						
-						<td>{{pc.produit.prix}}</td>			
-						<td>{{pc.conditionnement.designation}}</td>				
-						<td>{{pc.prixProdCond}}</td>				
+						<td>{{pc.produitDesignation}}</td>						
+						<td>{{pc.produitPrix}}</td>			
+						<td>{{pc.conditionnementDesignation}}</td>				
+						<td>{{pc.prixTotal}}</td>				
 						<td>{{pc.enCarte}}</td>		
 						<td>
 							<button class="btn btn-default"

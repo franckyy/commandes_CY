@@ -1,19 +1,18 @@
 package com.chezyen.commandes.actions;
 
-import java.util.HashMap;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import com.chezyen.commandes.beans.PCBean;
 import com.chezyen.commandes.dao.IConditionnementDAO;
 import com.chezyen.commandes.dao.IProduitConditionneDAO;
 import com.chezyen.commandes.dao.IProduitDAO;
-import com.chezyen.commandes.dao.ProduitDAO;
 import com.chezyen.commandes.metier.Conditionnement;
 import com.chezyen.commandes.metier.Produit;
 import com.chezyen.commandes.metier.ProduitConditionne;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class ProduitsConditionnesAction extends ActionSupport{
@@ -67,12 +66,27 @@ public class ProduitsConditionnesAction extends ActionSupport{
 	private List<Conditionnement> listeConditionnements;
 	public List<Conditionnement> getListeConditionnements() {return listeConditionnements;}
 	
+	private List<PCBean> listeTable;
+	public List<PCBean> getListeTable() {return listeTable;}
+	
 	public String repertoire() {
 		log.info("ProduitsConditionnesAction - repertoire");
 		
 		this.produitsConditionnes = produitConditionneDAO.findAll();
 		this.listeProduits = produitDAO.findAll();
 		this.listeConditionnements = conditionnementDAO.findAll();
+		
+		this.listeTable = new ArrayList<PCBean>();
+		
+		//Creation of the table view
+		for(ProduitConditionne pc : this.produitsConditionnes){
+			PCBean pcBean = new PCBean(pc.getProduit().getDesignation(),
+										pc.getProduit().getPrix(),
+										pc.getConditionnement().getDesignation(),
+										pc.getPrixProdCond(),
+										pc.isEnCarte());
+			listeTable.add(pcBean);
+		}
 		
 		return SUCCESS;
 	}

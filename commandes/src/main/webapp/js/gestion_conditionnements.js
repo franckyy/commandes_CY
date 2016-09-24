@@ -104,7 +104,7 @@ chezYenApp.controller("conditionnementCtrl", function($scope, $http) {
    }
    
    $scope.reverseSort = false;
-   $scope.sortColumn = "designation";
+   $scope.sortColumn = "pc.produitDesignation";
    
    $scope.sortData = function(column) {
 	   $scope.reverseSort = ($scope.sortColumn == column)? !$scope.reverseSort : false;
@@ -113,7 +113,6 @@ chezYenApp.controller("conditionnementCtrl", function($scope, $http) {
    
    $scope.getSortClass = function(column) {
 	   if($scope.sortColumn == column) {
-		   console.log($scope.reverseSort ? 'class = arrow-down' : 'arrow-up');
 		   return $scope.reverseSort ? 'arrow-down' : 'arrow-up';
 	   }
 	   

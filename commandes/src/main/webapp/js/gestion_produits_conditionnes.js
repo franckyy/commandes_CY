@@ -7,6 +7,7 @@ chezYenApp.controller("produitsConditionnesCtrl", function($scope, $http){
 	$scope.listeConditionnements = [];
 	$scope.myConditionnement = [];	//par défaut, le premier conditionnement sera affiché.
 	$scope.produitConditionneModif;
+	$scope.listeTable = [];
 	
 	$http.get('../gestProduitsConditionnes/repertoire').then (function(response) {
 		$scope.produitsConditionnes = response.data.produitsConditionnes;
@@ -14,10 +15,27 @@ chezYenApp.controller("produitsConditionnesCtrl", function($scope, $http){
 		$scope.myProduit = $scope.listeProduits[0];
 		$scope.listeConditionnements = response.data.listeConditionnements;
 		$scope.myConditionnement = $scope.listeConditionnements[0];
+		$scope.listeTable = response.data.listeTable;
 	});
 	
 	$scope.nouveauProduitConditionne = function(myProduit,myConditionnement,conditionnement_prix, types){
 		console.log("myProduit : " + myProduit.idProduit + ", myConditi : " + myConditionnement.idConditionnement + ", prix condi : " + conditionnement_prix + "in carte ? " + types);
+	}
+	
+	//gestion des orderBy
+	$scope.reverseSort = false;
+	$scope.sortColumn = "pc.produitDesignation";
+	console.log("produitsConditionnes : " + $scope.produitsConditionnes);
+	$scope.sortData = function(column) {
+			$scope.reverseSort = ($scope.sortColumn == column)? !$scope.reverseSort : false;
+			$scope.sortColumn = column;
+	}
+	
+	$scope.getSortClass = function(column) {
+		if($scope.sortColumn == column) {
+			return $scope.reverseSort ? 'arrow-down' : 'arrow-up';
+		}
+		return '';
 	}
 	
 	//gestion des cases à cocher
