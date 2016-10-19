@@ -19,9 +19,23 @@ chezYenApp.controller("produitsConditionnesCtrl", function($scope, $http){
 	});
 	
 	$scope.nouveauProduitConditionne = function(myProduit,myConditionnement,conditionnement_prix, types){
-		console.log("myProduit : " + myProduit.idProduit + ", myConditi : " + myConditionnement.idConditionnement + ", prix condi : " + conditionnement_prix + "in carte ? " + types);
+		console.log("myProduit : " + myProduit.idProduit + ", myConditi : " + myConditionnement.idConditionnement + ", prix condi : " + conditionnement_prix + ", in carte ? " + types);
+		if(myProduit != null && myConditionnement != null && conditionnement_prix != null) {
+			$http.post('../gestProduitsConditionnes/nouveauProduitConditionne', {
+				"conditionnementID":myConditionnement,
+				"produitID":myProduit,
+				"conditionnementPrix":conditionnement_prix,
+				"enCarte":types
+			}).success(function(response){
+				console.log("my reponse");
+				$scope.produitConditionneModif = response.data.pc;
+				$scope.listeTable.push($scope.produitConditionneModif);
+			})
+		} else {
+			console.log("ajout de produit conditionné impossible !");
+		}
 	}
-	
+
 	//gestion des orderBy
 	$scope.reverseSort = false;
 	$scope.sortColumn = "pc.produitDesignation";

@@ -29,19 +29,19 @@ public class ProduitsConditionnesAction extends ActionSupport{
 	public void setProduitConditionneDAO(IProduitConditionneDAO produitConditionneDAO) {this.produitConditionneDAO = produitConditionneDAO;}
 	
 	private int produitConditionneID;
-	private Produit produitConditionneProduit;
-	private Conditionnement produitConditionneConditionnement;
-	private double produitConditionnePrixProdCond;
+	private int produitID;
+	private int conditionnementID;
+	private double produitConditionnePrix;
 	private boolean produitConditionneEnCarte;
 
 	public int getProduitConditionneID() {return produitConditionneID;}
 	public void setProduitConditionneID(int produitConditionneID) {this.produitConditionneID = produitConditionneID;}
-	public Produit getProduitConditionneProduit() {return produitConditionneProduit;}
-	public void setProduitConditionneProduit(Produit produitConditionneProduit) {this.produitConditionneProduit = produitConditionneProduit;}
-	public Conditionnement getProduitConditionneConditionnement() {return produitConditionneConditionnement;}
-	public void setProduitConditionneConditionnement(Conditionnement produitConditionneConditionnement) {this.produitConditionneConditionnement = produitConditionneConditionnement;}
-	public double getProduitConditionnePrixProdCond() {return produitConditionnePrixProdCond;}
-	public void setProduitConditionnePrixProdCond(double produitConditionnePrixProdCond) {this.produitConditionnePrixProdCond = produitConditionnePrixProdCond;}
+	public int getProduitID() {return produitID;}
+	public void setProduitID(int produitID) {this.produitID = produitID;}
+	public int getConditionnementID() {return conditionnementID;}
+	public void setConditionnementID(int conditionnementID) {this.conditionnementID = conditionnementID;}
+	public double getProduitConditionnePrix() {return produitConditionnePrix;}
+	public void setProduitConditionnePrix(double produitConditionnePrix) {this.produitConditionnePrix = produitConditionnePrix;}
 	public boolean isProduitConditionneEnCarte() {return produitConditionneEnCarte;}
 	public void setProduitConditionneEnCarte(boolean produitConditionneEnCarte) {this.produitConditionneEnCarte = produitConditionneEnCarte;}
 	
@@ -77,6 +77,7 @@ public class ProduitsConditionnesAction extends ActionSupport{
 		this.listeConditionnements = conditionnementDAO.findAll();
 		
 		this.listeTable = new ArrayList<PCBean>();
+
 		
 		//Creation of the table view
 		for(ProduitConditionne pc : this.produitsConditionnes){
@@ -87,6 +88,22 @@ public class ProduitsConditionnesAction extends ActionSupport{
 										pc.isEnCarte());
 			listeTable.add(pcBean);
 		}
+
+		return SUCCESS;
+	}
+	
+	public String nouveau(){
+		log.info("ProduitsConditionnesAction - nouveau");
+		log.info("prix : " + getProduitConditionnePrix());
+		log.info("produitId : " + getProduitID());
+		log.info("conditionnementId : " + getConditionnementID());
+		
+		ProduitConditionne pc = new ProduitConditionne(produitDAO.findByID(getProduitID()), 
+														conditionnementDAO.findByID(getConditionnementID()), 
+														getProduitConditionnePrix(), 
+														isProduitConditionneEnCarte());
+		pc = produitConditionneDAO.save(pc);
+
 		
 		return SUCCESS;
 	}
