@@ -18,6 +18,20 @@
         
 		<!-- Gestion des produitsConditionnes -->
 		
+		<action name="gestProduitsConditionnes/nouveau" class="com.chezyen.commandes.actions.ProduitsConditionnesAction" method="nouveau">
+			<result name="success" type="json">
+				<param name="includeProperties">
+					^produitsConditionnes\.idProduitConditionne$,
+					^produitsConditionnes\.designation$,
+					^produitsConditionnes\.produit.\designation$,
+					^produitsConditionnes\.produit.\prix$,
+					^produitsConditionnes\.conditionnement\.designation$,
+					^produitsConditionnes\.prixProdCond$,
+					^produitsConditionnes\.enCarte$
+				</param>
+			</result>
+		</action>
+		
 		<action name="gestProduitsConditionnes/repertoire" class="com.chezyen.commandes.actions.ProduitsConditionnesAction" method="repertoire">
 			<result name="success" type="json">
 				<param name="includeProperties">

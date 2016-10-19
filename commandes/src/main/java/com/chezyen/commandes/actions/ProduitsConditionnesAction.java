@@ -32,7 +32,7 @@ public class ProduitsConditionnesAction extends ActionSupport{
 	private int produitConditionneID;
 	private Produit produitConditionneProduit;
 	private Conditionnement produitConditionneConditionnement;
-	private double produitConditionnePrixProdCond;
+	private double produitConditionnePrix;
 	private boolean produitConditionneEnCarte;
 
 	public int getProduitConditionneID() {return produitConditionneID;}
@@ -41,8 +41,8 @@ public class ProduitsConditionnesAction extends ActionSupport{
 	public void setProduitConditionneProduit(Produit produitConditionneProduit) {this.produitConditionneProduit = produitConditionneProduit;}
 	public Conditionnement getProduitConditionneConditionnement() {return produitConditionneConditionnement;}
 	public void setProduitConditionneConditionnement(Conditionnement produitConditionneConditionnement) {this.produitConditionneConditionnement = produitConditionneConditionnement;}
-	public double getProduitConditionnePrixProdCond() {return produitConditionnePrixProdCond;}
-	public void setProduitConditionnePrixProdCond(double produitConditionnePrixProdCond) {this.produitConditionnePrixProdCond = produitConditionnePrixProdCond;}
+	public double getProduitConditionnePrix() {return produitConditionnePrix;}
+	public void setProduitConditionnePrix(double produitConditionnePrixProdCond) {this.produitConditionnePrix = produitConditionnePrixProdCond;}
 	public boolean isProduitConditionneEnCarte() {return produitConditionneEnCarte;}
 	public void setProduitConditionneEnCarte(boolean produitConditionneEnCarte) {this.produitConditionneEnCarte = produitConditionneEnCarte;}
 	
@@ -76,4 +76,21 @@ public class ProduitsConditionnesAction extends ActionSupport{
 		
 		return SUCCESS;
 	}
+	
+
+	public String nouveau(){
+		log.info("ProduitsConditionnesAction - nouveau");
+		log.info("prix : " + getProduitConditionnePrix());
+//		log.info("produitId : " + getProduitID());
+//		log.info("conditionnementId : " + getConditionnementID());
+//		
+//		ProduitConditionne pc = new ProduitConditionne(produitDAO.findByID(getProduitID()), 
+//														conditionnementDAO.findByID(getConditionnementID()), 
+//														getProduitConditionnePrix(), 
+//														isProduitConditionneEnCarte());
+//		pc = produitConditionneDAO.save(pc);
+//
+//		
+		return SUCCESS;
+}
 }
