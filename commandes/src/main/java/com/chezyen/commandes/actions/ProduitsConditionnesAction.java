@@ -37,7 +37,7 @@ public class ProduitsConditionnesAction extends ActionSupport{
 	public int getProduitId() {return produitID;}
 	public void setProduitID(int produitID) {this.produitID = produitID;}
 	public int getConditionnementID() {return conditionnementID;}
-	public void setConditionnement(int conditionnementID) {this.conditionnementID = conditionnementID;}
+	public void setConditionnementID(int conditionnementID) {this.conditionnementID = conditionnementID;}
 	public double getProduitConditionnePrix() {return produitConditionnePrix;}
 	public void setProduitConditionnePrix(double produitConditionnePrixProdCond) {this.produitConditionnePrix = produitConditionnePrixProdCond;}
 	public boolean isProduitConditionneEnCarte() {return produitConditionneEnCarte;}
@@ -81,18 +81,24 @@ public class ProduitsConditionnesAction extends ActionSupport{
 
 	public String nouveau(){
 		log.info("ProduitsConditionnesAction - nouveau");
-		log.info("prix : " + getProduitConditionnePrix());
-		log.info("produitID : " + getProduitId());
-//		log.info("produitId : " + getProduitID());
-//		log.info("conditionnementId : " + getConditionnementID());
-//		
-//		ProduitConditionne pc = new ProduitConditionne(produitDAO.findByID(getProduitID()), 
-//														conditionnementDAO.findByID(getConditionnementID()), 
-//														getProduitConditionnePrix(), 
-//														isProduitConditionneEnCarte());
-//		pc = produitConditionneDAO.save(pc);
-//
-//		
+		log.info("prix : " + getProduitConditionnePrix() + ", produitID : " + getProduitId() + ", condiID : " + getConditionnementID());
+		
+		boolean existingPC = false;
+		
+		ProduitConditionne pc = new ProduitConditionne(produitDAO.findByID(getProduitId()), conditionnementDAO.findByID(getConditionnementID()), getProduitConditionnePrix(), true);
+		
+		for(ProduitConditionne prodCond : produitConditionneDAO.findAll()) {
+			if(prodCond.getProduit().getIdProduit() == getProduitId() && prodCond.getConditionnement().getIdConditionnement() == getConditionnementID()) {
+				existingPC = true;
+			}
+		}
+		
+		if(!existingPC) {
+			pc = produitConditionneDAO.save(pc);
+		} else {
+			log.info("produitConditionné " + pc.getProduit().getDesignation() + " en conditionnement " + pc.getConditionnement().getDesignation() + " non sauvé car déjà en base");
+		}
+		
 		return SUCCESS;
 	}
 }
