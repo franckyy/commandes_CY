@@ -17,9 +17,13 @@ chezYenApp.controller("produitsConditionnesCtrl", function($scope, $http){
 	});
 	
 	$scope.nouveauProduitConditionne = function(myProduit,myConditionnement,conditionnement_prix, types){
-		console.log("myProduit : " + myProduit.idProduit + ", myConditi : " + myConditionnement.idConditionnement + ", prix condi : " + conditionnement_prix + "in carte ? " + types);
+		console.log("myProduit : " + myProduit.idProduit + ", myConditi : " + myConditionnement.idConditionnement + ", prix condi : " + conditionnement_prix + ", in carte ? " + types);
 		
-		$http.get('../gestProduitsConditionnes/nouveau').then (function(response) {
+		$http.post('../gestProduitsConditionnes/nouveau', {
+			"produitID":myProduit.idProduit,
+			"conditionnementID":myConditionnement.idConditionnement,
+			"produitConditionnePrix":conditionnement_prix
+		}).success(function(response) {
 			console.log("response : " + response);
 		});
 	}

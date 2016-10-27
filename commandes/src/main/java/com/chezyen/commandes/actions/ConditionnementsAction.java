@@ -3,8 +3,6 @@ package com.chezyen.commandes.actions;
 import java.util.List;
 import java.util.Set;
 
-import javax.persistence.OneToMany;
-
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
