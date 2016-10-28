@@ -94,7 +94,7 @@ public class ProduitsConditionnesAction extends ActionSupport{
 		}
 		
 		if(!existingPC) {
-			pc = produitConditionneDAO.save(pc);
+			produitConditionne = produitConditionneDAO.save(pc);
 		} else {
 			log.info("produitConditionné " + pc.getProduit().getDesignation() + " en conditionnement " + pc.getConditionnement().getDesignation() + " non sauvé car déjà en base");
 		}

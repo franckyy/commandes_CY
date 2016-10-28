@@ -25,6 +25,7 @@ chezYenApp.controller("produitsConditionnesCtrl", function($scope, $http){
 			"produitConditionnePrix":conditionnement_prix
 		}).success(function(response) {
 			$('#panelNouveauProduitConditionne').slideToggle(600);
+			console.log("prodCond a pousser : " + response.produitConditionne);
 			$scope.produitsConditionnes.push(response.produitConditionne);
 		});
 	}
