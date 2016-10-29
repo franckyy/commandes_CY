@@ -3,11 +3,12 @@ var chezYenApp = angular.module("chezYenApp", []);
 chezYenApp.controller("produitsConditionnesCtrl", function($scope, $http){
 	$scope.produitsConditionnes = [];
 	$scope.listeProduits  = [];
-	$scope.myProduit = [];	//par défaut, le premier produit sera affiché.
+	$scope.myProduit = [];	//par défaut, le premier produit sera affiché dans le select du nouveau ProdCond.
 	$scope.listeConditionnements = [];
-	$scope.myConditionnement = [];	//par défaut, le premier conditionnement sera affiché.
+	$scope.myConditionnement = [];	//par défaut, le premier conditionnement sera affiché dans le select du nouveau ProdCond.
 	$scope.produitConditionneModif;
-
+	$scope.readonly = true;
+	
 	$http.get('../gestProduitsConditionnes/repertoire').then (function(response) {
 		$scope.produitsConditionnes = response.data.produitsConditionnes;
 		$scope.listeProduits = response.data.listeProduits;
@@ -41,8 +42,12 @@ chezYenApp.controller("produitsConditionnesCtrl", function($scope, $http){
 			"produitConditionneID":idProduitConditionne
 		}).then(function successCallback(response){
 			console.log('popup modif');
+			$scope.produitConditionneModif = response.data.produitConditionne;
+			console.log("produitConditionne à modifier : " + $scope.produitConditionneModif.idProduitConditionne);
 			openPopUp('popUpModif');
-		})
+			
+			return false;
+		});
 	}
 	
 	//gestion des cases à cocher

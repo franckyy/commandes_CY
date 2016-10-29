@@ -80,6 +80,7 @@ public class ProduitsConditionnesAction extends ActionSupport{
 	
 	public String modification() {
 		log.info("ProduitsConditionnesAction - modifier ProduitConditionneID : " + getProduitConditionneID());
+		this.produitConditionne = produitConditionneDAO.findByID(getProduitConditionneID());
 		return SUCCESS;
 	}
 	

@@ -133,25 +133,38 @@
 				</tbody>
 			</table>
 		</div>
-	</div>
 	
-	<div id="popUpModif" class="popup_block" ng-model="produitConditionneModif">
-		<div style="text-align: center;">
-			<label style="color: #c7b988;">Produit conditionné</label>
-		</div>
-		<div>
-			<div id="tablesInLineBlock" style="width= 49%;">
-				<div id="tablesBlock" style="display:none;">
-					<input type="text" class="form-control"
-							ng-model="produitConditionneModif.idProduitConditionne" 
-							style="width: 200px;"/>
+		<div id="popUpModif" class="popup_block" ng-model="produitConditionneModif">
+			<div style="text-align: center;">
+				<label style="color: #c7b988;">Produit conditionné</label>
+			</div>
+			<div>
+				<div id="tablesInLineBlock" style="width= 49%;">
+					<div id="tablesBlock" style="display:none;">
+						<input type="text" class="form-control"
+								ng-model="produitConditionneModif.idProduitConditionne" 
+								style="width: 200px;" disabled/>
+					</div>
+					<div id="tablesBlock">
+						<label>Produit - désignation</label>
+					</div>
+					<div id="tablesBlock" style="min-width:270px;">
+						<input type="text" class="form-control" 
+								ng-model="produitConditionneModif.produit.designation"
+								style="width:200px;" 
+								ng-readonly="true"/>
+					</div>
 				</div>
-				<div id="tablesBlock">
-					<label>Produit - désignation</label>
-				</div>
-				<div id="tablesBlock" style="min-width:270px;">
-					<input type="text" class="form-control" ng-model="produitConditionneModif.designation"
-							style="width:200px;" value="">
+				<div id="tablesInLineBlock" style="width= 50%;">
+					<div id="tablesBlock">
+						<label>Conditionnement - désignation</label>
+					</div>
+					<div id="tablesBlock" style="min-width:270px;">
+						<input type="text" class="form-control" 
+								ng-model="produitConditionneModif.conditionnement.designation"
+								style="width:200px;" 
+								ng-readonly="true"/>
+					</div>
 				</div>
 			</div>
 		</div>
