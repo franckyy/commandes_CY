@@ -93,7 +93,7 @@
 							<input type="text" class="form-control tablesBlock" ng-model="conditionnement_prix" style="width:150px; min-width:100px;" value="10"/>
 						</div>
 						<div class="tablesInlineBlock" style="width:50%;" ng-repeat="(key, text) in availableTypes">
-							<label class="tablesBlock">{{text}}</label>
+							<label class="tablesBlock">en carte ?</label>
 							<input class="tablesBlock" type="checkbox" checklist-model="types" checklist-value="key"/>
 						</div>
 					</div>
@@ -125,13 +125,35 @@
 						<td>{{pc.enCarte}}</td>		
 						<td>
 							<button class="btn btn-default"
-								ng-click="modifier_produit_conditionne(produitConditionne.idProduitConditionne)">Modifier</button>
+								ng-click="modifier_produit_conditionne(pc.idProduitConditionne)">Modifier</button>
 							<button class="btn btn-danger"
 								ng-click="supprimer_produit_conditionne(produitConditionne.idProduitConditionne)">Supprimer</button>
 						</td>						
 					</tr>
 				</tbody>
 			</table>
+		</div>
+	</div>
+	
+	<div id="popUpModif" class="popup_block" ng-model="produitConditionneModif">
+		<div style="text-align: center;">
+			<label style="color: #c7b988;">Produit conditionné</label>
+		</div>
+		<div>
+			<div id="tablesInLineBlock" style="width= 49%;">
+				<div id="tablesBlock" style="display:none;">
+					<input type="text" class="form-control"
+							ng-model="produitConditionneModif.idProduitConditionne" 
+							style="width: 200px;"/>
+				</div>
+				<div id="tablesBlock">
+					<label>Produit - désignation</label>
+				</div>
+				<div id="tablesBlock" style="min-width:270px;">
+					<input type="text" class="form-control" ng-model="produitConditionneModif.designation"
+							style="width:200px;" value="">
+				</div>
+			</div>
 		</div>
 	</div>
 </body>
