@@ -50,6 +50,19 @@ chezYenApp.controller("produitsConditionnesCtrl", function($scope, $http){
 		});
 	}
 	
+	$scope.validerModif = function(idProduitConditionne, prixTotal) {
+		console.log("validerModif de prodCondId : " + idProduitConditionne + " et prix total : " + prixTotal);
+		if(idProduitConditionne != null && idProduitConditionne > 0 && prixTotal!= "" && prixTotal >= 0 && prixTotal != null) {
+			$http.post('../gestProduitsConditionnes/validerModif', {
+				"produitConditionneID": idProduitConditionne,
+				"produitConditionnePrix": prixTotal
+			}).success(function(response){
+				$scope.produitsConditionnes = response.data.produitsConditionnes;
+			});
+			fermeturePopUp();
+		}
+	}
+	
 	//gestion des cases à cocher
 	$scope.types = [];
 	

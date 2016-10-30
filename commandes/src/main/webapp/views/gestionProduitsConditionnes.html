@@ -166,6 +166,39 @@
 								ng-readonly="true"/>
 					</div>
 				</div>
+				<br />
+				<div class="tablesInlineBlock" style="width: 49%;">
+					<div class="tablesBlock">
+						<label>Produit Conditionné - prix total</label>
+					</div>
+					<div class="tablesBlock" style="min-width: 270px;">
+						<input type="text" class="form-control"
+								ng-model="produitConditionneModif.prixProdCond"
+								style="width: 200px;"/>
+					</div>
+				</div>
+				<div class="tablesInlineBlock" style="width: 50%;">
+					<div class="tablesBlock" style="min-width=200px;">
+						<label>Produit Conditionné - En carte ?</label>
+					</div>
+					<div class="tablesBlock" style="min-width:200px;">
+						<input type="checkBox" class="form-control"
+								ng-model="produitConditionne.enCarte"
+								style="width:200px;"/>
+					</div>
+				</div>
+				<div style="margin-top: 15px;">
+					<span class="input-group-btn">
+						<button id="validerModif" class="btn btn-success"
+							ng-click="validerModif(
+									produitConditionneModif.idProduitConditionne,
+									produitConditionneModif.prixProdCond);">
+							Valider</button>
+						<button id="annulerModif" class="btn btn-warning"
+							style="margin-left:15px;">
+							Annuler</button>
+					</span>
+				</div>
 			</div>
 		</div>
 	</div>

@@ -84,6 +84,17 @@ public class ProduitsConditionnesAction extends ActionSupport{
 		return SUCCESS;
 	}
 	
+	public String validerModif() {
+		log.info("ProduitsConsitionnesAction - validerModif - ProduitConditionneID : " + getProduitConditionneID());
+		
+		ProduitConditionne prodCondModif = produitConditionneDAO.findByID(getProduitConditionneID());
+		prodCondModif.setPrixProdCond(getProduitConditionnePrix());
+		prodCondModif = produitConditionneDAO.save(prodCondModif);
+		
+		this.produitsConditionnes = produitConditionneDAO.findAll();
+		return SUCCESS;
+	}
+	
 	public String nouveau(){
 		log.info("ProduitsConditionnesAction - nouveau");
 		log.info("prix : " + getProduitConditionnePrix() + ", produitID : " + getProduitId() + ", condiID : " + getConditionnementID());
