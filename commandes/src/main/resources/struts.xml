@@ -26,8 +26,7 @@
 					^produitsConditionnes\[\d\]\.produit.\designation$,
 					^produitsConditionnes\[\d\]\.produit.\prix$,
 					^produitsConditionnes\[\d\]\.conditionnement\.designation$,
-					^produitsConditionnes\[\d\]\.prixProdCond$,
-					^produitsConditionnes\[\d\]\.enCarte$
+					^produitsConditionnes\[\d\]\.prixProdCond$
 				</param>
 			</result>
 		</action>
@@ -41,8 +40,7 @@
 					^produitsConditionnes\.produit.\designation$,
 					^produitsConditionnes\.produit.\prix$,
 					^produitsConditionnes\.conditionnement\.designation$,
-					^produitsConditionnes\.prixProdCond$,
-					^produitsConditionnes\.enCarte$
+					^produitsConditionnes\.prixProdCond$
 				</param>
 			</result>
 		</action>
@@ -56,8 +54,7 @@
 					^produitsConditionnes\.produit.\designation$,
 					^produitsConditionnes\.produit.\prix$,
 					^produitsConditionnes\.conditionnement\.designation$,
-					^produitsConditionnes\.prixProdCond$,
-					^produitsConditionnes\.enCarte$
+					^produitsConditionnes\.prixProdCond$
 				</param>
 			</result>
 		</action>		
@@ -69,8 +66,7 @@
 					^produitsConditionnes\[\d\]\.produit.\designation$,
 					^produitsConditionnes\[\d\]\.produit.\prix$,
 					^produitsConditionnes\[\d\]\.conditionnement\.designation$,
-					^produitsConditionnes\[\d\]\.prixProdCond$,
-					^produitsConditionnes\[\d\]\.enCarte$
+					^produitsConditionnes\[\d\]\.prixProdCond$
 				</param>
 			</result>
 		</action>
