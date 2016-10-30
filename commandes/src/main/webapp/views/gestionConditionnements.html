@@ -52,20 +52,20 @@
 							<label style="color: #c7b988;">Conditionnement</label><br />
 						</div>
 						<div>
-							<div id="tablesInlineBlock" style="width: 49%;">
-								<div id="tablesBlock">
+							<div class="tablesInlineLineBlock" style="width: 49%;">
+								<div class="tablesBlock">
 									<label>Désignation</label>
 								</div>
-								<div id="tablesBlock" style="min-width: 270px;">
+								<div class="tablesBlock" style="min-width: 270px;">
 									<input id="nouveauConditionnementDesignation" type="text" class="form-control"
 										ng-model="conditionnement_designation" style="width: 200px;" />
 								</div>
 							</div>
-							<div id="tablesInlineBlock" style="width: 50%;">
-								<div id="tablesBlock">
+							<div class="tablesInlineBlock" style="width: 50%;">
+								<div class="tablesBlock">
 									<label>Quantité</label>
 								</div>
-								<div id="tablesBlock" style="min-width: 250px;">
+								<div class="tablesBlock" style="min-width: 250px;">
 									<input type="text" class="form-control"
 										ng-model="conditionnement_quantite" style="width: 200px;" />
 								</div>
@@ -78,30 +78,30 @@
 							Ajouter conditionnement</button>
 					</span>
 				</div>
-				<table id="tableConditionnements" class="table table-striped">
-					<thead>
-						<tr>
-							<th ng-click="sortData('designation')">
-								Désignation
-								<div ng-class="getSortClass('designation')"></div>
-							</th>
-							<th>Quantité</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr ng-repeat="conditionnement in conditionnements | orderBy:sortColumn:reverseSort">
-							<td style="display: none;" ng-model="idConditionnement">{{conditionnement.idConditionnement}}</td>
-							<td>{{erreurs.message}}{{conditionnement.designation}}</td>
-							<td>{{conditionnement.quantite}}</td>
-							<td>
-								<button class="btn btn-default"
-									ng-click="modifier_conditionnement(conditionnement.idConditionnement)">Modifier</button>
-								<button class="btn btn-danger"
-									ng-click="supprimer_conditionnement(conditionnement.idConditionnement);">Supprimer</button>
-							</td>
-						</tr>
-				</table>
 			</div>
+			<table id="tableConditionnements" class="table table-striped">
+				<thead>
+					<tr>
+						<th ng-click="sortData('designation')">
+							Désignation
+							<div ng-class="getSortClass('designation')"></div>
+						</th>
+						<th>Quantité</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="conditionnement in conditionnements | orderBy:sortColumn:reverseSort">
+						<td style="display: none;" ng-model="idConditionnement">{{conditionnement.idConditionnement}}</td>
+						<td>{{erreurs.message}}{{conditionnement.designation}}</td>
+						<td>{{conditionnement.quantite}}</td>
+						<td>
+							<button class="btn btn-default"
+								ng-click="modifier_conditionnement(conditionnement.idConditionnement)">Modifier</button>
+							<button class="btn btn-danger"
+								ng-click="supprimer_conditionnement(conditionnement.idConditionnement);">Supprimer</button>
+						</td>
+					</tr>
+			</table>
 		</div>
 
 		<div id="popUpModif" class="popup_block" ng-model="conditionnementModif">
@@ -109,25 +109,25 @@
 				<label style="color: #c7b988;">Conditionnement</label><br />
 			</div>
 			<div>
-				<div id="tablesInlineBlock" style="width: 49%;">
-					<div id="tablesBlock" style="display: none">
+				<div class="tablesInlineBlock" style="width: 49%;">
+					<div class="tablesBlock" style="display: none">
 						<input type="text" class="form-control"
 							ng-model="conditionnementModif.idConditionnement" 
 							style="width: 200px;" />
 					</div>
-					<div id="tablesBlock">
+					<div class="tablesBlock">
 						<label>Désignation</label>
 					</div>
-					<div id="tablesBlock" style="min-width: 270px;">
+					<div class="tablesBlock" style="min-width: 270px;">
 						<input type="text" class="form-control" ng-model="conditionnementModif.designation"
 							style="width: 200px;" value="" />
 					</div>
 				</div>
-				<div id="tablesInlineBlock" style="width: 50%;">
-					<div id="tablesBlock">
+				<div class="tablesInlineBlock" style="width: 50%;">
+					<div class="tablesBlock">
 						<label>Quantité</label>
 					</div>
-					<div id="tablesBlock" style="min-width: 250px;">
+					<div class="tablesBlock" style="min-width: 250px;">
 						<input type="text" class="form-control"
 							ng-model="conditionnementModif.quantite" style="width: 200px;" />
 					</div>
@@ -157,24 +157,24 @@
 				<label style="color: #c7b988;">Conditionnement</label><br />
 			</div>
 			<div>
-				<div id="tablesInlineBlock" style="width: 49%;">
-					<div id="tablesBlock" style="display: none">
+				<div class="tablesInlineBlock" style="width: 49%;">
+					<div class="tablesBlock" style="display: none">
 						<input type="text" class="form-control"
 							ng-model="conditionnementSuppr.idConditionnement" style="width: 200px;" readonly />
 					</div>
-					<div id="tablesBlock">
+					<div class="tablesBlock">
 						<label>Désignation</label>
 					</div>
-					<div id="tablesBlock" style="min-width: 270px;">
+					<div class="tablesBlock" style="min-width: 270px;">
 						<input type="text" class="form-control" ng-model="conditionnementSuppr.designation"
 							style="width: 200px;" readonly />
 					</div>
 				</div>
-				<div id="tablesInlineBlock" style="width: 50%;">
-					<div id="tablesBlock">
+				<div class="tablesInlineBlock" style="width: 50%;">
+					<div class="tablesBlock">
 						<label>Quantité</label>
 					</div>
-					<div id="tablesBlock" style="min-width: 250px;">
+					<div class="tablesBlock" style="min-width: 250px;">
 						<input type="text" class="form-control"
 							ng-model="conditionnementSuppr.quantite" style="width: 200px;" readonly />
 					</div>
