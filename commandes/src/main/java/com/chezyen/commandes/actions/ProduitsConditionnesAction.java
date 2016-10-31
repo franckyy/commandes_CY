@@ -35,6 +35,7 @@ public class ProduitsConditionnesAction extends ActionSupport{
 	private int produitConditionneModifID;
 	private double produitConditionneModifPrix;
 	private boolean produitConditionneModifEnCarte;
+	private int produitConditionneSupprID;
 
 	public int getProduitConditionneID() {return produitConditionneID;}
 	public void setProduitConditionneID(int produitConditionneID) {this.produitConditionneID = produitConditionneID;}
@@ -58,6 +59,8 @@ public class ProduitsConditionnesAction extends ActionSupport{
 	public void setProduitConditionneModifPrix(double produitConditionneModifPrix) {this.produitConditionneModifPrix = produitConditionneModifPrix;}
 	public boolean isProduitConditionneModifEnCarte() {return produitConditionneModifEnCarte;}
 	public void setProduitConditionneModifEnCarte(boolean produitConditionneModifEnCarte) {this.produitConditionneModifEnCarte = produitConditionneModifEnCarte;}
+	public int getProduitConditionneSupprID() {return produitConditionneSupprID;}
+	public void setProduitConditionneSupprID(int produitConditionneSupprID) {this.produitConditionneSupprID = produitConditionneSupprID;}
 	
 	private ProduitConditionne produitConditionne;
 	public ProduitConditionne getProduitConditionne() {return produitConditionne;}
@@ -105,6 +108,12 @@ public class ProduitsConditionnesAction extends ActionSupport{
 		prodCondModif = produitConditionneDAO.save(prodCondModif);
 		
 		this.produitsConditionnes = produitConditionneDAO.findAll();
+		return SUCCESS;
+	}
+	
+	public String suppression() {
+		log.info("ProduitsConsitionnesAction - suppression - ProduitConditionneSupprID : " + getProduitConditionneSupprID());
+		produitConditionne = produitConditionneDAO.findByID(getProduitConditionneSupprID());
 		return SUCCESS;
 	}
 	

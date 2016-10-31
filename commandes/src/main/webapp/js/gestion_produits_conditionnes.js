@@ -9,6 +9,8 @@ chezYenApp.controller("produitsConditionnesCtrl", function($scope, $http){
 	$scope.produitConditionneModif;
 	$scope.readonly = true;
 	$scope.enCarte;
+	$scope.produitConditionneSupprId;
+	$scope.produitConditionneSuppr;
 	
 	$http.get('../gestProduitsConditionnes/repertoire').then (function(response) {
 		$scope.produitsConditionnes = response.data.produitsConditionnes;
@@ -67,6 +69,15 @@ chezYenApp.controller("produitsConditionnesCtrl", function($scope, $http){
 		}
 	}
 	
+	$scope.supprimer_produit_conditionne = function(idProduitConditionneSuppr) {
+		console.log("supprimer_produit_conditionne id : " + idProduitConditionneSuppr);
+		$http.post('../gestProduitsConditionnes/suppr', {
+			"produitConditionneSupprID": idProduitConditionneSuppr
+		}).success(function(response) {
+			$scope.produitConditionneSuppr = response.data.produitConditionneSuppr;
+		});
+		openPopUp('popUpSuppr');
+	}
 	//gestion des cases à cocher
 	$scope.types = [];
 	

@@ -17,6 +17,21 @@
         </action>
         
 		<!-- Gestion des produitsConditionnes -->
+		<action name="gestProduitsConditionnes/suppr" class="com.chezyen.commandes.actions.ProduitsConditionnesAction" method="suppression">
+			<interceptor-ref name="defaultStack"/>
+			<interceptor-ref name="json"/>
+			<result name="success" type="json">
+				<param name="includeProperties">
+					^produitsConditionnes\.idProduitConditionne$,
+					^produitsConditionnes\.produit\.designation$,
+					^produitsCnditionnes\.produit\.prix$,
+					^produitsConditionnes\.conditionnement\.designation$,
+					^produitsConditionnes\.prixProdCond$,
+					^produitsConditionnes\.enCarte$
+				</param>
+			</result>
+		</action>
+		
 		<action name="gestProduitsConditionnes/validerModif" class="com.chezyen.commandes.actions.ProduitsConditionnesAction" method="validerModif">
 			<interceptor-ref name="defaultStack"/>
 			<interceptor-ref name="json"/>

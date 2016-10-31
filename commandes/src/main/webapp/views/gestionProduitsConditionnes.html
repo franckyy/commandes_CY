@@ -128,8 +128,8 @@
 							<button class="btn btn-default"
 								ng-click="modifier_produit_conditionne(pc.idProduitConditionne)">Modifier</button>
 							<button class="btn btn-danger"
-								ng-click="supprimer_produit_conditionne(produitConditionne.idProduitConditionne)">Supprimer</button>
-						</td>						
+								ng-click="supprimer_produit_conditionne(pc.idProduitConditionne)">Supprimer</button>
+						</td>
 					</tr>
 				</tbody>
 			</table>
@@ -200,6 +200,29 @@
 							style="margin-left:15px;">
 							Annuler</button>
 					</span>
+				</div>
+			</div>
+		</div>
+		
+		<div id="popUpSuppr" class="popup_block" ng-model="produitConditionneSuppr">
+			<H1 style="color:red; text-align:center;">
+				ATTENTION ! Suppression du produit conditionné suivant :
+			</H1>
+			<div style="text-align:center;">
+				<label style="color: #c7b988;">Produit conditionné</label><br />
+			</div>
+			<div class="tablesInlineBlock" style="width:49%;">
+				<div class="tablesBlock" style="display: none;">
+					<input type="text" class="form-control"
+						ng-model="produitConditionneSuppr.idProduitConditionne"/>
+				</div>
+				<div class="tablesBlock">
+					<label>Produit - désignation</label>
+				</div>
+				<div class="tablesBlock" style="min-width:270px;">
+					<input type="text" class="form-control" 
+						ng-model="produitConditionneSuppr.produit.designation"
+						style="width:200px;" readonly/>
 				</div>
 			</div>
 		</div>
