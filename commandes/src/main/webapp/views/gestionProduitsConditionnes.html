@@ -92,14 +92,15 @@
 							<label class="tablesBlock">Prix</label>
 							<input type="text" class="form-control tablesBlock" ng-model="conditionnement_prix" style="width:150px; min-width:100px;" value="10"/>
 						</div>
-						<div class="tablesInlineBlock" style="width:50%;" ng-repeat="(key, text) in availableTypes">
-							<label class="tablesBlock">en carte ?</label>
-							<input class="tablesBlock" type="checkbox" checklist-model="types" checklist-value="key"/>
+						<div class="tablesInlineBlock" style="width:50%;">
+							<label class="tablesBlock">en carte ?
+								<input class="tablesBlock" type="checkbox" ng-model="enCarte"/>
+							</label>
 						</div>
 					</div>
 					<span class="input-group-btn">
 						<button class="btn btn-default"
-								ng-click=nouveauProduitConditionne(myProduit,myConditionnement,conditionnement_prix,types);>
+								ng-click=nouveauProduitConditionne(myProduit,myConditionnement,conditionnement_prix,enCarte);>
 								AJOUTER PRODUIT CONDITIONNE						
 						</button>
 					</span>

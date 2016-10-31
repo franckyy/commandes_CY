@@ -8,6 +8,7 @@ chezYenApp.controller("produitsConditionnesCtrl", function($scope, $http){
 	$scope.myConditionnement = [];	//par défaut, le premier conditionnement sera affiché dans le select du nouveau ProdCond.
 	$scope.produitConditionneModif;
 	$scope.readonly = true;
+	$scope.enCarte;
 	
 	$http.get('../gestProduitsConditionnes/repertoire').then (function(response) {
 		$scope.produitsConditionnes = response.data.produitsConditionnes;
@@ -17,9 +18,9 @@ chezYenApp.controller("produitsConditionnesCtrl", function($scope, $http){
 		$scope.myConditionnement = $scope.listeConditionnements[0];
 	});
 	
-	$scope.nouveauProduitConditionne = function(myProduit,myConditionnement,conditionnement_prix){
-		console.log("myProduit : " + myProduit.idProduit + ", myConditi : " + myConditionnement.idConditionnement + ", prix condi : " + conditionnement_prix + ", in carte ? " + $scope.types);
-		
+	$scope.nouveauProduitConditionne = function(myProduit,myConditionnement,conditionnement_prix, enCarte){
+		console.log("myProduit : " + myProduit.idProduit + ", myConditi : " + myConditionnement.idConditionnement + ", prix condi : " + conditionnement_prix + ", in carte ? " + enCarte);
+		console.log("en carte ? : " + $scope.enCarte);
 		$http.post('../gestProduitsConditionnes/nouveau', {
 			"produitID":myProduit.idProduit,
 			"conditionnementID":myConditionnement.idConditionnement,
@@ -52,6 +53,7 @@ chezYenApp.controller("produitsConditionnesCtrl", function($scope, $http){
 	
 	$scope.validerModif = function(idProduitConditionne, prixTotal) {
 		console.log("validerModif de prodCondId : " + idProduitConditionne + " et prix total : " + prixTotal);
+		
 		if(idProduitConditionne != null && idProduitConditionne > 0 && prixTotal!= "" && prixTotal >= 0 && prixTotal != null) {
 			$http.post('../gestProduitsConditionnes/validerModif', {
 				"produitConditionneID": idProduitConditionne,
