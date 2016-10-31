@@ -44,7 +44,7 @@ chezYenApp.controller("produitsConditionnesCtrl", function($scope, $http){
 			"produitConditionneID":idProduitConditionne
 		}).then(function successCallback(response){
 			console.log('popup modif');
-			$scope.produitConditionneModif = response.data.produitConditionne;
+			$scope.produitConditionneModif = response.data.produitConditionneModif;
 			console.log("produitConditionne à modifier : " + $scope.produitConditionneModif.idProduitConditionne);
 			openPopUp('popUpModif');
 			

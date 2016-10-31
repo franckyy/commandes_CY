@@ -31,6 +31,7 @@ public class ProduitsConditionnesAction extends ActionSupport{
 	//peut-être pas besoin des deux suivants
 	private Produit produitConditionneProduit;
 	private Conditionnement produitConditionneConditionnement;
+	private ProduitConditionne produitConditionneModif;
 
 	public int getProduitConditionneID() {return produitConditionneID;}
 	public void setProduitConditionneID(int produitConditionneID) {this.produitConditionneID = produitConditionneID;}
@@ -46,6 +47,8 @@ public class ProduitsConditionnesAction extends ActionSupport{
 	public void setProduitConditionneProduit(Produit produitConditionneProduit) {this.produitConditionneProduit = produitConditionneProduit;}
 	public Conditionnement getProduitConditionneConditionnement() {return produitConditionneConditionnement;}
 	public void setProduitConditionneConditionnement(Conditionnement produitConditionneConditionnement) {this.produitConditionneConditionnement = produitConditionneConditionnement;}
+	public ProduitConditionne getProduitConditionneModif () {return this.produitConditionneModif;}
+	public void setProduitConditionneModif(ProduitConditionne produitConditionneModif) {this.produitConditionneModif = produitConditionneModif;}
 	
 	private ProduitConditionne produitConditionne;
 	public ProduitConditionne getProduitConditionne() {return produitConditionne;}
@@ -80,7 +83,7 @@ public class ProduitsConditionnesAction extends ActionSupport{
 	
 	public String modification() {
 		log.info("ProduitsConditionnesAction - modifier ProduitConditionneID : " + getProduitConditionneID());
-		this.produitConditionne = produitConditionneDAO.findByID(getProduitConditionneID());
+		this.produitConditionneModif = produitConditionneDAO.findByID(getProduitConditionneID());
 		return SUCCESS;
 	}
 	
