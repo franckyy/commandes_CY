@@ -32,6 +32,9 @@ public class ProduitsConditionnesAction extends ActionSupport{
 	private Produit produitConditionneProduit;
 	private Conditionnement produitConditionneConditionnement;
 	private ProduitConditionne produitConditionneModif;
+	private int produitConditionneModifID;
+	private double produitConditionneModifPrix;
+	private boolean produitConditionneModifEnCarte;
 
 	public int getProduitConditionneID() {return produitConditionneID;}
 	public void setProduitConditionneID(int produitConditionneID) {this.produitConditionneID = produitConditionneID;}
@@ -49,6 +52,12 @@ public class ProduitsConditionnesAction extends ActionSupport{
 	public void setProduitConditionneConditionnement(Conditionnement produitConditionneConditionnement) {this.produitConditionneConditionnement = produitConditionneConditionnement;}
 	public ProduitConditionne getProduitConditionneModif () {return this.produitConditionneModif;}
 	public void setProduitConditionneModif(ProduitConditionne produitConditionneModif) {this.produitConditionneModif = produitConditionneModif;}
+	public int getProduitConditionneModifID() {return produitConditionneModifID;}
+	public void setProduitConditionneModifID(int produitConditionneModifID) {this.produitConditionneModifID = produitConditionneModifID;}
+	public double getProduitConditionneModifPrix() {return produitConditionneModifPrix;}
+	public void setProduitConditionneModifPrix(double produitConditionneModifPrix) {this.produitConditionneModifPrix = produitConditionneModifPrix;}
+	public boolean isProduitConditionneModifEnCarte() {return produitConditionneModifEnCarte;}
+	public void setProduitConditionneModifEnCarte(boolean produitConditionneModifEnCarte) {this.produitConditionneModifEnCarte = produitConditionneModifEnCarte;}
 	
 	private ProduitConditionne produitConditionne;
 	public ProduitConditionne getProduitConditionne() {return produitConditionne;}
@@ -88,10 +97,11 @@ public class ProduitsConditionnesAction extends ActionSupport{
 	}
 	
 	public String validerModif() {
-		log.info("ProduitsConsitionnesAction - validerModif - ProduitConditionneID : " + getProduitConditionneID());
+		log.info("ProduitsConsitionnesAction - validerModif - ProduitConditionneID : " + getProduitConditionneModifID() + ", prix modifié : " + getProduitConditionneModifPrix() + ", enCarte modifé : " + isProduitConditionneModifEnCarte());
 		
-		ProduitConditionne prodCondModif = produitConditionneDAO.findByID(getProduitConditionneID());
-		prodCondModif.setPrixProdCond(getProduitConditionnePrix());
+		ProduitConditionne prodCondModif = produitConditionneDAO.findByID(getProduitConditionneModifID());
+		prodCondModif.setPrixProdCond(getProduitConditionneModifPrix());
+		prodCondModif.setEnCarte(isProduitConditionneModifEnCarte());
 		prodCondModif = produitConditionneDAO.save(prodCondModif);
 		
 		this.produitsConditionnes = produitConditionneDAO.findAll();

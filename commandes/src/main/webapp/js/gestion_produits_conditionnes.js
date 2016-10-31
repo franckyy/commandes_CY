@@ -20,7 +20,7 @@ chezYenApp.controller("produitsConditionnesCtrl", function($scope, $http){
 	
 	$scope.nouveauProduitConditionne = function(myProduit,myConditionnement,conditionnement_prix, enCarte){
 		console.log("myProduit : " + myProduit.idProduit + ", myConditi : " + myConditionnement.idConditionnement + ", prix condi : " + conditionnement_prix + ", in carte ? " + enCarte);
-		console.log("en carte ? : " + $scope.enCarte);
+		
 		$http.post('../gestProduitsConditionnes/nouveau', {
 			"produitID":myProduit.idProduit,
 			"conditionnementID":myConditionnement.idConditionnement,
@@ -52,15 +52,16 @@ chezYenApp.controller("produitsConditionnesCtrl", function($scope, $http){
 		});
 	}
 	
-	$scope.validerModif = function(idProduitConditionne, prixTotal) {
-		console.log("validerModif de prodCondId : " + idProduitConditionne + " et prix total : " + prixTotal);
+	$scope.validerModif = function(idProduitConditionne, prixTotal, enCarte) {
+		console.log("validerModif de prodCondId : " + idProduitConditionne + " et prix total : " + prixTotal + ", enCarte ? : " + enCarte);
 		
 		if(idProduitConditionne != null && idProduitConditionne > 0 && prixTotal!= "" && prixTotal >= 0 && prixTotal != null) {
 			$http.post('../gestProduitsConditionnes/validerModif', {
-				"produitConditionneID": idProduitConditionne,
-				"produitConditionnePrix": prixTotal
+				"produitConditionneModifID": idProduitConditionne,
+				"produitConditionneModifPrix": prixTotal,
+				"produitConditionneModifEnCarte": enCarte				
 			}).success(function(response){
-				$scope.produitsConditionnes = response.data.produitsConditionnes;
+				$scope.produitsConditionnes = response.produitsConditionnes;
 			});
 			fermeturePopUp();
 		}
@@ -72,6 +73,13 @@ chezYenApp.controller("produitsConditionnesCtrl", function($scope, $http){
 	$scope.availableTypes = {
 			'enCarte': 'en carte ?'
 	}
+	
+	$('a.close, #annulerModif').on('click', function() {
+		console.log("annuler");
+		fermeturePopUp();
+		return false;
+	});
+	
 });
 
 
@@ -111,7 +119,7 @@ function openPopUp(popID) {
 function fermeturePopUp() {
 	console.log("fermeture de la popUp");
 	
-	$('fade, .popup_Block').fadeOut(function() {
+	$('fade, .popup_block').fadeOut(function() {
 		$('#fade, a.close').remove(); //...ils disparaissent ensemble
 	});
 }
