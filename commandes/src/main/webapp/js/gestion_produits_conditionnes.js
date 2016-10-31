@@ -24,7 +24,8 @@ chezYenApp.controller("produitsConditionnesCtrl", function($scope, $http){
 		$http.post('../gestProduitsConditionnes/nouveau', {
 			"produitID":myProduit.idProduit,
 			"conditionnementID":myConditionnement.idConditionnement,
-			"produitConditionnePrix":conditionnement_prix
+			"produitConditionnePrix":conditionnement_prix,
+			"produitConditionneEnCarte": enCarte
 		}).success(function(response) {
 			$('#panelNouveauProduitConditionne').slideToggle(600);
 			console.log("prodCond a pousser : " + response.produitConditionne);

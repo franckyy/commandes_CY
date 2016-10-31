@@ -97,11 +97,11 @@ public class ProduitsConditionnesAction extends ActionSupport{
 	
 	public String nouveau(){
 		log.info("ProduitsConditionnesAction - nouveau");
-		log.info("prix : " + getProduitConditionnePrix() + ", produitID : " + getProduitId() + ", condiID : " + getConditionnementID());
+		log.info("prix : " + getProduitConditionnePrix() + ", produitID : " + getProduitId() + ", condiID : " + getConditionnementID() + ", enCarte ? : " + isProduitConditionneEnCarte());
 		
 		boolean existingPC = false;
 		
-		ProduitConditionne pc = new ProduitConditionne(produitDAO.findByID(getProduitId()), conditionnementDAO.findByID(getConditionnementID()), getProduitConditionnePrix(), true);
+		ProduitConditionne pc = new ProduitConditionne(produitDAO.findByID(getProduitId()), conditionnementDAO.findByID(getConditionnementID()), getProduitConditionnePrix(), isProduitConditionneEnCarte());
 		
 		for(ProduitConditionne prodCond : produitConditionneDAO.findAll()) {
 			if(prodCond.getProduit().getIdProduit() == getProduitId() && prodCond.getConditionnement().getIdConditionnement() == getConditionnementID()) {
